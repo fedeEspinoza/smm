@@ -28,7 +28,7 @@ class CategoriaController < ApplicationController
 
     respond_to do |format|
       if @categorium.save
-        format.html { redirect_to @categorium, notice: 'Categorium was successfully created.' }
+        format.html { redirect_to @categorium, notice: 'Se ha creado una nueva Categoria.' }
         format.json { render :show, status: :created, location: @categorium }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CategoriaController < ApplicationController
   def update
     respond_to do |format|
       if @categorium.update(categorium_params)
-        format.html { redirect_to @categorium, notice: 'Categorium was successfully updated.' }
+        format.html { redirect_to @categorium, notice: 'Se ha actualizado la Categoria.' }
         format.json { render :show, status: :ok, location: @categorium }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class CategoriaController < ApplicationController
   def destroy
     @categorium.destroy
     respond_to do |format|
-      format.html { redirect_to categoria_url, notice: 'Categorium was successfully destroyed.' }
+      format.html { redirect_to categoria_url, notice: 'Se ha eliminado la Categoria.' }
       format.json { head :no_content }
     end
   end

@@ -28,7 +28,7 @@ class ZonasController < ApplicationController
 
     respond_to do |format|
       if @zona.save
-        format.html { redirect_to @zona, notice: 'Zona was successfully created.' }
+        format.html { redirect_to @zona, notice: 'Se ha creado una nueva Zona.' }
         format.json { render :show, status: :created, location: @zona }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ZonasController < ApplicationController
   def update
     respond_to do |format|
       if @zona.update(zona_params)
-        format.html { redirect_to @zona, notice: 'Zona was successfully updated.' }
+        format.html { redirect_to @zona, notice: 'Se ha actualizado la Zona.' }
         format.json { render :show, status: :ok, location: @zona }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ZonasController < ApplicationController
   def destroy
     @zona.destroy
     respond_to do |format|
-      format.html { redirect_to zonas_url, notice: 'Zona was successfully destroyed.' }
+      format.html { redirect_to zonas_url, notice: 'Se ha eliminado la Zona.' }
       format.json { head :no_content }
     end
   end
