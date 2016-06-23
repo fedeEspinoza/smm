@@ -1,0 +1,17 @@
+<div class="page-header">
+  <%= link_to tipo_documentos_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to edit_tipo_documento_path(@tipo_documento), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h4>Ver tipo_documento</h4>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Descripcion:</dt>
+  <dd><%= @tipo_documento.descripcion %></dd>
+
+</dl>

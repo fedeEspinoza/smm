@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :prioridads
+  resources :tipo_documentos
   resources :categoria
   resources :zonas
   resources :grupos

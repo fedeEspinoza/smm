@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623221956) do
+ActiveRecord::Schema.define(version: 20160623224204) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20160623221956) do
     t.string   "nombre",      limit: 255
     t.string   "descripcion", limit: 255
     t.integer  "codigo",      limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "prioridads", force: :cascade do |t|
+    t.string   "descripcion", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "tipo_documentos", force: :cascade do |t|
+    t.string   "descripcion", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end

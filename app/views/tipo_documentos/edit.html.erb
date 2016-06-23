@@ -1,0 +1,13 @@
+<div class="page-header">
+  <%= link_to tipo_documentos_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to @tipo_documento, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Ver
+  <% end %>
+  <h4>Editar tipo_documento</h4>
+</div>
+
+<%= render 'form' %>
