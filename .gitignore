@@ -11,4 +11,5 @@
 /log/*
 !/log/.keep
 /tmp
-/config/database.yml #eto es para ignorar la configuración de usuario y contraseña del DBMS
+/config/database.yml 	# Esto es para ignorar la configuración de usuario y contraseña del DBMS
+/db/schema.rb			
