@@ -1,0 +1,33 @@
+<div class="page-header">
+  <%= link_to new_grupo_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Grupo
+  <% end %>
+  <h1>Listing grupos</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Codigo</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @grupos) do |grupo| %>
+            <td><%= grupo.nombre %></td>
+            <td><%= grupo.descripcion %></td>
+            <td><%= grupo.codigo %></td>
+            <td><%= link_to 'Show', grupo %></td>
+        <td><%= link_to 'Edit', edit_grupo_path(grupo) %></td>
+        <td><%= link_to 'Destroy', grupo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
