@@ -1,9 +1,9 @@
 <div class="page-header">
   <%= link_to new_grupo_path, class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Grupo
+    Nuevo Grupo
   <% end %>
-  <h1>Listing grupos</h1>
+  <h1>Listado de grupos</h1>
 </div>
 
 <div class="table-responsive">
@@ -24,9 +24,9 @@
             <td><%= grupo.nombre %></td>
             <td><%= grupo.descripcion %></td>
             <td><%= grupo.codigo %></td>
-            <td><%= link_to 'Show', grupo %></td>
-        <td><%= link_to 'Edit', edit_grupo_path(grupo) %></td>
-        <td><%= link_to 'Destroy', grupo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Ver', grupo %></td>
+        <td><%= link_to 'Editar', edit_grupo_path(grupo) %></td>
+        <td><%= link_to 'Eliminar', grupo, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
       <% end %>
     </tbody>
   </table>

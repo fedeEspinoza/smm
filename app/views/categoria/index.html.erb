@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_categorium_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Nueva Categoria
+  <% end %>
+  <h4>Listado de categoria</h4>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Codigo</th>
+            <th>Descripcion</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @categoria) do |categorium| %>
+            <td><%= categorium.codigo %></td>
+            <td><%= categorium.descripcion %></td>
+            <td><%= link_to 'Ver', categorium %></td>
+        <td><%= link_to 'Editar', edit_categorium_path(categorium) %></td>
+        <td><%= link_to 'Eliminar', categorium, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

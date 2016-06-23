@@ -1,0 +1,20 @@
+<div class="page-header">
+  <%= link_to zonas_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to edit_zona_path(@zona), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h4>Ver zona</h4>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Nombre:</dt>
+  <dd><%= @zona.nombre %></dd>
+
+  <dt>Grupo:</dt>
+  <dd><%= @zona.grupo %></dd>
+
+</dl>

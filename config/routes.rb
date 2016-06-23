@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :categoria
+  resources :zonas
   resources :grupos
   get 'index/index'
 
