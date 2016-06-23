@@ -1,8 +1,18 @@
-rails g scaffold Subestacion codigo:string nombre:string
-rails g scaffold Seccion nombre:string subestacion:references
-rails g scaffold Tomaestado dni:integer apellido:string nombre:string user:references
-rails g scaffold Ruta nombre:string
-rails g scaffold Cliente dni:integer apellido:string nombre:string telefono:string
-rails g scaffold Medidor numero:integer nombre:string novedades:string novedades_criticas:string latitud:string longitud:string cliente:references 
-rails g scaffold RutaMedidor rutum:references medidor:references
-rails g scaffold SeccionTomaestadoRuta seccion:references tomaestado:references rutum:references fecha_inicio:date fecha_fin:date
+/*-*-*-*-*-Scaffold nuevo-*-*-*-*-*/
+
+rails g scaffold Grupo nombre:string descripcion:string codigo:integer 
+rails g scaffold Zona nombre:string grupo:references
+rails g scaffold Categoria codigo:string descripcion:string
+rails g scaffold TipoDocumento descripcion:string
+rails g scaffold Empleado nro_legajo:integer nro_doc:integer apellido:string nombre:string user:references tipo_documento:references
+rails g scaffold Prioridad descripcion:string
+rails g scaffold Novedad codigo:integer descripcion:integer prioridad:references
+rails g scaffold TipoMedidor nombre:string codigo:integer descripcion:string
+rails g scaffold Medidor numero:integer multiplicador:integer tipo_medidor:references
+rails g scaffold Estado descripcion:string
+rails g scaffold Persona tipo_documento:references nro_documento:integer apellido:string nombre:string telefono:string email:string
+rails g scaffold UsuarioPersona user:references persona:references
+rails g scaffold UsuarioMedidor user:references medidor:references
+rails g scaffold HistorialMedicion novedad:references medidor:references user:references estado_medidor:integer
+
+/*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
