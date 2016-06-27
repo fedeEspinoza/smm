@@ -11,7 +11,9 @@ rails g scaffold TipoMedidor nombre:string codigo:integer descripcion:string
 rails g scaffold Medidor numero:integer multiplicador:integer tipo_medidor:references
 rails g scaffold Estado descripcion:string
 rails g scaffold Persona tipo_documento:references nro_documento:integer apellido:string nombre:string telefono:string email:string
-rails g scaffold UsuarioPersona user:references persona:references
-rails g scaffold UsuarioMedidor user:references medidor:references
+rails g scaffold UsuarioPersona usuario:references persona:references
+rails g scaffold UsuarioMedidor usuario:references medidor:references
 rails g scaffold HistorialMedicion novedad:references medidor:references user:references estado_medidor:integer
+rails g scaffold Usuario categoria:references numero:integer razon_social:string domicilio:string circunscripcion:integer sector:integer tipo:integer manzana:integer parcela:integer unidad_funcional:integer estado:references 
+
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
