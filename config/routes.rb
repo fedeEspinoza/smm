@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :medidors
+  resources :tipo_medidors
+  resources :novedads
   resources :prioridads
   resources :tipo_documentos
   resources :categoria

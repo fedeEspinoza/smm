@@ -6,7 +6,7 @@
 #rails g scaffold TipoDocumento descripcion:string
 rails g scaffold Empleado nro_legajo:integer nro_doc:integer apellido:string nombre:string user:references tipo_documento:references
 #rails g scaffold Prioridad descripcion:string
-rails g scaffold Novedad codigo:integer descripcion:integer prioridad:references
+rails g scaffold Novedad codigo:integer descripcion:string prioridad:references
 rails g scaffold TipoMedidor nombre:string codigo:integer descripcion:string
 rails g scaffold Medidor numero:integer multiplicador:integer tipo_medidor:references
 rails g scaffold Estado descripcion:string
@@ -14,5 +14,4 @@ rails g scaffold Persona tipo_documento:references nro_documento:integer apellid
 rails g scaffold UsuarioPersona user:references persona:references
 rails g scaffold UsuarioMedidor user:references medidor:references
 rails g scaffold HistorialMedicion novedad:references medidor:references user:references estado_medidor:integer
-
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/

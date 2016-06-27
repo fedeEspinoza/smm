@@ -1,0 +1,23 @@
+<div class="page-header">
+  <%= link_to medidors_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to edit_medidor_path(@medidor), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h4>Ver medidor</h4>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Numero:</dt>
+  <dd><%= @medidor.numero %></dd>
+
+  <dt>Multiplicador:</dt>
+  <dd><%= @medidor.multiplicador %></dd>
+
+  <dt>Tipo medidor:</dt>
+  <dd><%= @medidor.tipo_medidor %></dd>
+
+</dl>
