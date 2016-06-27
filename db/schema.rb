@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160627211315) do
+ActiveRecord::Schema.define(version: 20160627221423) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
+    t.string   "descripcion", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "estados", force: :cascade do |t|
     t.string   "descripcion", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
@@ -48,6 +54,19 @@ ActiveRecord::Schema.define(version: 20160627211315) do
 
   add_index "novedads", ["prioridad_id"], name: "index_novedads_on_prioridad_id", using: :btree
 
+  create_table "personas", force: :cascade do |t|
+    t.integer  "tipo_documento_id", limit: 4
+    t.integer  "nro_documento",     limit: 4
+    t.string   "apellido",          limit: 255
+    t.string   "nombre",            limit: 255
+    t.string   "telefono",          limit: 255
+    t.string   "email",             limit: 255
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "personas", ["tipo_documento_id"], name: "index_personas_on_tipo_documento_id", using: :btree
+
   create_table "prioridads", force: :cascade do |t|
     t.string   "descripcion", limit: 255
     t.datetime "created_at",              null: false
@@ -79,5 +98,6 @@ ActiveRecord::Schema.define(version: 20160627211315) do
 
   add_foreign_key "medidors", "tipo_medidors"
   add_foreign_key "novedads", "prioridads"
+  add_foreign_key "personas", "tipo_documentos"
   add_foreign_key "zonas", "grupos"
 end

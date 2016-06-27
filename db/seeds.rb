@@ -16,3 +16,20 @@ Prioridad.create(descripcion: 'Baja')
 
 # Tipos de medidores
 # ===================
+
+
+
+# Estado 
+# ===================
+
+Estado.create(descripcion: 'Alta')
+Estado.create(descripcion: 'Baja')
+
+# Tipo de documento
+# ===================
+
+TipoDocumento.create(descripcion: 'CUIT')
+TipoDocumento.create(descripcion: 'LE')
+TipoDocumento.create(descripcion: 'LC')
+TipoDocumento.create(descripcion: 'DNI')
+TipoDocumento.create(descripcion: 'CI')

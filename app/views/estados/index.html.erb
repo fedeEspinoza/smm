@@ -1,0 +1,29 @@
+<div class="page-header">
+  <%= link_to new_estado_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Nuevo Estado
+  <% end %>
+  <h4>Listado de estados</h4>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Descripcion</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @estados) do |estado| %>
+            <td><%= estado.descripcion %></td>
+            <td><%= link_to 'Ver', estado %></td>
+        <td><%= link_to 'Editar', edit_estado_path(estado) %></td>
+        <td><%= link_to 'Eliminar', estado, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

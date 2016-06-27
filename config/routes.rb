@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :personas
+  resources :estados
   resources :medidors
   resources :tipo_medidors
   resources :novedads

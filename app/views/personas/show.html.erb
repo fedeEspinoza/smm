@@ -1,0 +1,32 @@
+<div class="page-header">
+  <%= link_to personas_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to edit_persona_path(@persona), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h4>Ver persona</h4>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Tipo documento:</dt>
+  <dd><%= @persona.tipo_documento %></dd>
+
+  <dt>Nro documento:</dt>
+  <dd><%= @persona.nro_documento %></dd>
+
+  <dt>Apellido:</dt>
+  <dd><%= @persona.apellido %></dd>
+
+  <dt>Nombre:</dt>
+  <dd><%= @persona.nombre %></dd>
+
+  <dt>Telefono:</dt>
+  <dd><%= @persona.telefono %></dd>
+
+  <dt>Email:</dt>
+  <dd><%= @persona.email %></dd>
+
+</dl>
