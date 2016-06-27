@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+# Prioridades
+# ===========
+
+Prioridad.create(descripcion: 'Alta')
+Prioridad.create(descripcion: 'Normal')
+Prioridad.create(descripcion: 'Baja')
+
+# Tipos de medidores
+# ===================

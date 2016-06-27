@@ -19,9 +19,9 @@
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :grupo, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :grupo, class: "form-control" %>
+    <%= f.label :grupo_id, "Grupo", class: "col-sm-2 control-label" %>
+    <div class="col-sm-5">
+      <%= f.collection_select :grupo_id, Grupo.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>
   <div class="form-group">
