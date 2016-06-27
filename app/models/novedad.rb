@@ -2,6 +2,6 @@ class Novedad < ActiveRecord::Base
   belongs_to :prioridad
 
   def to_s 
-  	self.descripcion
+  	self.descripcion	
   end
 end
