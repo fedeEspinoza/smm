@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Starter Template for Bootstrap</title>
+  <title>Sist. Micromedición Medidores</title>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -27,16 +27,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to "Sist. Micromedición Medidores", "#", class: "navbar-brand" %>
+        <%= link_to "Sist. Micromedición Medidores", "/", class: "navbar-brand" %>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li class="<%= 'active' if params[:controller] == 'index' %>"><%= link_to "Inicio", index_path %>
-          <li class="<%= 'active' if params[:controller] == 'categoria' %>"><%= link_to "Categorias", categoria_path %>
+          <li class="<%= 'active' if params[:controller] == 'categoria' %>"><%= link_to "Categorías", categoria_path %>
           <li class="<%= 'active' if params[:controller] == 'grupos' %>"><%= link_to "Grupos", grupos_path %>
           <li class="<%= 'active' if params[:controller] == 'prioridads' %>"><%= link_to "Prioridades", prioridads_path %>
           <li class="<%= 'active' if params[:controller] == 'tipo_documentos' %>"><%= link_to "Tipos de documentos", tipo_documentos_path %>
-          <li class="<%= 'active' if params[:controller] == 'zonaz' %>"><%= link_to "Zonas", zonas_path %>
+          <li class="<%= 'active' if params[:controller] == 'zonas' %>"><%= link_to "Zonas", zonas_path %>
         </ul>
       </div>
     </div>
