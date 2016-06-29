@@ -28,7 +28,7 @@ class NovedadsController < ApplicationController
 
     respond_to do |format|
       if @novedad.save
-        format.html { redirect_to @novedad, notice: 'Novedad was successfully created.' }
+        format.html { redirect_to @novedad, notice: 'Se ha creado una nueva Novedad.' }
         format.json { render :show, status: :created, location: @novedad }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class NovedadsController < ApplicationController
   def update
     respond_to do |format|
       if @novedad.update(novedad_params)
-        format.html { redirect_to @novedad, notice: 'Novedad was successfully updated.' }
+        format.html { redirect_to @novedad, notice: 'Se ha actualizado la novedad.' }
         format.json { render :show, status: :ok, location: @novedad }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class NovedadsController < ApplicationController
   def destroy
     @novedad.destroy
     respond_to do |format|
-      format.html { redirect_to novedads_url, notice: 'Novedad was successfully destroyed.' }
+      format.html { redirect_to novedads_url, notice: 'Se ha eliminado la novedad.' }
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,13 @@
+<div class="page-header">
+  <%= link_to zona_usuarios_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to @zona_usuario, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Ver
+  <% end %>
+  <h4>Editar zona_usuario</h4>
+</div>
+
+<%= render 'form' %>

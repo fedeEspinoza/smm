@@ -1,0 +1,20 @@
+<div class="page-header">
+  <%= link_to usuario_personas_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to edit_usuario_persona_path(@usuario_persona), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h4>Ver usuario_persona</h4>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Usuario:</dt>
+  <dd><%= @usuario_persona.usuario %></dd>
+
+  <dt>Persona:</dt>
+  <dd><%= @usuario_persona.persona %></dd>
+
+</dl>

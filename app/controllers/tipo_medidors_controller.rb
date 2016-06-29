@@ -28,7 +28,7 @@ class TipoMedidorsController < ApplicationController
 
     respond_to do |format|
       if @tipo_medidor.save
-        format.html { redirect_to @tipo_medidor, notice: 'Tipo medidor was successfully created.' }
+        format.html { redirect_to @tipo_medidor, notice: 'Se ha creado un nuevo Tipo de Medidor.' }
         format.json { render :show, status: :created, location: @tipo_medidor }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TipoMedidorsController < ApplicationController
   def update
     respond_to do |format|
       if @tipo_medidor.update(tipo_medidor_params)
-        format.html { redirect_to @tipo_medidor, notice: 'Tipo medidor was successfully updated.' }
+        format.html { redirect_to @tipo_medidor, notice: 'Se ha actualizado el Tipo de Medidor.' }
         format.json { render :show, status: :ok, location: @tipo_medidor }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TipoMedidorsController < ApplicationController
   def destroy
     @tipo_medidor.destroy
     respond_to do |format|
-      format.html { redirect_to tipo_medidors_url, notice: 'Tipo medidor was successfully destroyed.' }
+      format.html { redirect_to tipo_medidors_url, notice: 'Se ha eliminado el Tipo de Medidor.' }
       format.json { head :no_content }
     end
   end

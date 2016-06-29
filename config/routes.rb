@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :zona_usuarios
+  resources :usuario_medidors
+  resources :usuario_personas
+  resources :usuarios
   resources :personas
   resources :estados
   resources :medidors

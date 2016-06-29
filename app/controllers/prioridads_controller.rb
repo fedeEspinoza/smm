@@ -28,7 +28,7 @@ class PrioridadsController < ApplicationController
 
     respond_to do |format|
       if @prioridad.save
-        format.html { redirect_to @prioridad, notice: 'Prioridad was successfully created.' }
+        format.html { redirect_to @prioridad, notice: 'Se ha creado una nueva Prioridad.' }
         format.json { render :show, status: :created, location: @prioridad }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PrioridadsController < ApplicationController
   def update
     respond_to do |format|
       if @prioridad.update(prioridad_params)
-        format.html { redirect_to @prioridad, notice: 'Prioridad was successfully updated.' }
+        format.html { redirect_to @prioridad, notice: 'Se ha actualizado la Prioridad.' }
         format.json { render :show, status: :ok, location: @prioridad }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class PrioridadsController < ApplicationController
   def destroy
     @prioridad.destroy
     respond_to do |format|
-      format.html { redirect_to prioridads_url, notice: 'Prioridad was successfully destroyed.' }
+      format.html { redirect_to prioridads_url, notice: 'Se ha eliminado la Prioridad.' }
       format.json { head :no_content }
     end
   end

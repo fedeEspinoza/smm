@@ -1,0 +1,53 @@
+<div class="page-header">
+  <%= link_to usuarios_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to edit_usuario_path(@usuario), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h4>Ver usuario</h4>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Categorium:</dt>
+  <dd><%= @usuario.categorium %></dd>
+
+  <dt>Numero:</dt>
+  <dd><%= @usuario.numero %></dd>
+
+  <dt>Razon social:</dt>
+  <dd><%= @usuario.razon_social %></dd>
+
+  <dt>Domicilio:</dt>
+  <dd><%= @usuario.domicilio %></dd>
+
+  <dt>Circunscripcion:</dt>
+  <dd><%= @usuario.circunscripcion %></dd>
+
+  <dt>Sector:</dt>
+  <dd><%= @usuario.sector %></dd>
+
+  <dt>Tipo:</dt>
+  <dd><%= @usuario.tipo %></dd>
+
+  <dt>Manzana:</dt>
+  <dd><%= @usuario.manzana %></dd>
+
+  <dt>Parcela:</dt>
+  <dd><%= @usuario.parcela %></dd>
+
+  <dt>Unidad funcional:</dt>
+  <dd><%= @usuario.unidad_funcional %></dd>
+
+  <dt>Latitud:</dt>
+  <dd><%= @usuario.latitud %></dd>
+
+  <dt>Longitud:</dt>
+  <dd><%= @usuario.longitud %></dd>
+
+  <dt>Estado:</dt>
+  <dd><%= @usuario.estado %></dd>
+
+</dl>

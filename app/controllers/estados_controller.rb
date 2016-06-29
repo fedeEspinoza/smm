@@ -28,7 +28,7 @@ class EstadosController < ApplicationController
 
     respond_to do |format|
       if @estado.save
-        format.html { redirect_to @estado, notice: 'Estado was successfully created.' }
+        format.html { redirect_to @estado, notice: 'Se ha creado un nuevo Estado.' }
         format.json { render :show, status: :created, location: @estado }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class EstadosController < ApplicationController
   def update
     respond_to do |format|
       if @estado.update(estado_params)
-        format.html { redirect_to @estado, notice: 'Estado was successfully updated.' }
+        format.html { redirect_to @estado, notice: 'Se ha actualizado el estado.' }
         format.json { render :show, status: :ok, location: @estado }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class EstadosController < ApplicationController
   def destroy
     @estado.destroy
     respond_to do |format|
-      format.html { redirect_to estados_url, notice: 'Estado was successfully destroyed.' }
+      format.html { redirect_to estados_url, notice: 'Se ha eliminado el Estado.' }
       format.json { head :no_content }
     end
   end

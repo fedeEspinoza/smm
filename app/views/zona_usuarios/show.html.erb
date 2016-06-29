@@ -1,0 +1,23 @@
+<div class="page-header">
+  <%= link_to zona_usuarios_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to edit_zona_usuario_path(@zona_usuario), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h4>Ver zona_usuario</h4>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Zona:</dt>
+  <dd><%= @zona_usuario.zona %></dd>
+
+  <dt>Usuario:</dt>
+  <dd><%= @zona_usuario.usuario %></dd>
+
+  <dt>Orden:</dt>
+  <dd><%= @zona_usuario.orden %></dd>
+
+</dl>
