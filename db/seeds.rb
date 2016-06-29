@@ -7,6 +7,12 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+# Usuarios
+# ========
+
+User.create(email: 'usuario@usuario.com', password: 'sumbudrule')
+
+
 # Prioridades
 # ===========
 
@@ -22,7 +28,7 @@ Novedad.create(codigo: 1, descripcion: "Medidor OK", prioridad_id: 4)
 Novedad.create(codigo: 2, descripcion: "Medidor roto No Leido", prioridad_id: 3 )
 Novedad.create(codigo: 3, descripcion: "Cortado sin medidor", prioridad_id: 1)
 Novedad.create(codigo: 4, descripcion: "Cambio medidor", prioridad_id: 3)
-Novedad.create(codigo: 5, descripcion: "R.O.B.O.(req.op.bajo.obs, prioridad_id: )", prioridad_id: 1)
+Novedad.create(codigo: 5, descripcion: "R.O.B.O.(req.op.bajo.obs", prioridad_id: 1)
 Novedad.create(codigo: 6, descripcion: "Medidor sin tapa o rota", prioridad_id: 3)
 Novedad.create(codigo: 7, descripcion: "Medidor sin acceso", prioridad_id: 2)
 Novedad.create(codigo: 8, descripcion: "Medidor en cero", prioridad_id: 3)

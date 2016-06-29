@@ -1,5 +1,5 @@
 class UsuarioMedidorsController < ApplicationController
-  before_action :set_usuario_medidor, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :set_usuario_medidor, only: [:show, :edit, :update, :destroy]
 
   # GET /usuario_medidors
   # GET /usuario_medidors.json
