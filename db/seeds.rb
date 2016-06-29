@@ -70,14 +70,6 @@ Novedad.create(codigo: 99 ,descripcion: "PROXIMO MEDIDOR", prioridad_id: 4 )
 Estado.create(descripcion: 'Alta')
 Estado.create(descripcion: 'Baja')
 
-# Tipo de documento
-# ===================
-
-TipoDocumento.create(descripcion: 'CUIT')
-TipoDocumento.create(descripcion: 'LE')
-TipoDocumento.create(descripcion: 'LC')
-TipoDocumento.create(descripcion: 'DNI')
-TipoDocumento.create(descripcion: 'CI')
 
 # grupo de lectura
 #================
@@ -142,3 +134,22 @@ Categorium.create(codigo: "GR-CO",descripcion: "GRANDES CONSUMOS")
 Categorium.create(codigo: "B-C-O",descripcion: "BAJO CONSUMO OFICIAL")
 Categorium.create(codigo: "M-C-O",descripcion: "MEDIANOS CONSUMOS OFICIALES")
 Categorium.create(codigo: "G-C-O",descripcion: "GRANDES CONSUMOS OFICIALES")
+
+# Tipo de documento
+# ===================
+
+TipoDocumento.create(descripcion: 'CUIT') #1
+TipoDocumento.create(descripcion: 'LE')#2
+TipoDocumento.create(descripcion: 'LC')#3
+TipoDocumento.create(descripcion: 'DNI')#4
+TipoDocumento.create(descripcion: 'CI')#5
+
+#Persona --representa a la persona, la cual puede tener asociado uno o mas usuarios y empleados ==> tener un único padrón de datos
+
+#Persona tipo_documento:references nro_documento:integer apellido:string nombre:string telefono:string email:string
+Persona.create(tipo_documento_id: 4,nro_documento: 32169295,apellido: "Espinoza Casanova",nombre: "Julio Federico", telefono: 0280154620589,email: "fede.espinoza@gmail.com")
+Persona.create(tipo_documento_id: 4,nro_documento: 31343209,apellido: "Moreno",nombre: "Martín Niccolás", telefono: 0280154727607,email: "ttincho77@gmail.com")
+
+#tipo medidor
+#rails g scaffold TipoMedidor nombre:string codigo:integer descripcion:string
+#TipoMedidor.create(nombre:"", codigo: , descripcion: "")
