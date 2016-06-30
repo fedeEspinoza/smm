@@ -17,7 +17,8 @@
 +rails g scaffold UsuarioMedidor usuario:references medidor:references
 +rails g scaffold ZonaUsuario zona:references usuario:references orden:integer
 
-rails g scaffold HistorialMedicion novedad:references medidor:references user:references estado_medidor:integer
++rails g scaffold HistorialMedicion novedad:references medidor:references user:references estado_medidor:integer fecha_medicion:datetime fecha_modificacion:datetime
+
 rails g scaffold Empleado nro_legajo:integer nro_doc:integer apellido:string nombre:string user:references tipo_documento:references
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
