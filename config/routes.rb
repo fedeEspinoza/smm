@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :historial_medicions
   devise_for :users
   resources :zona_usuarios
   resources :usuario_medidors

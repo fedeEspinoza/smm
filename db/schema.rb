@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629220856) do
+ActiveRecord::Schema.define(version: 20160630200159) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(version: 20160629220856) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "historial_medicions", force: :cascade do |t|
+    t.integer  "novedad_id",         limit: 4
+    t.integer  "medidor_id",         limit: 4
+    t.integer  "user_id",            limit: 4
+    t.integer  "estado_medidor",     limit: 4
+    t.datetime "fecha_medicion"
+    t.datetime "fecha_modificacion"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "historial_medicions", ["medidor_id"], name: "index_historial_medicions_on_medidor_id", using: :btree
+  add_index "historial_medicions", ["novedad_id"], name: "index_historial_medicions_on_novedad_id", using: :btree
+  add_index "historial_medicions", ["user_id"], name: "index_historial_medicions_on_user_id", using: :btree
 
   create_table "medidors", force: :cascade do |t|
     t.integer  "numero",          limit: 4
@@ -166,6 +181,9 @@ ActiveRecord::Schema.define(version: 20160629220856) do
 
   add_index "zonas", ["grupo_id"], name: "index_zonas_on_grupo_id", using: :btree
 
+  add_foreign_key "historial_medicions", "medidors"
+  add_foreign_key "historial_medicions", "novedads"
+  add_foreign_key "historial_medicions", "users"
   add_foreign_key "medidors", "tipo_medidors"
   add_foreign_key "novedads", "prioridads"
   add_foreign_key "personas", "tipo_documentos"

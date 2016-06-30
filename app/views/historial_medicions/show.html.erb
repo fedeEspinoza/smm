@@ -1,0 +1,32 @@
+<div class="page-header">
+  <%= link_to historial_medicions_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to edit_historial_medicion_path(@historial_medicion), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h4>Ver historial_medicion</h4>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Novedad:</dt>
+  <dd><%= @historial_medicion.novedad %></dd>
+
+  <dt>Medidor:</dt>
+  <dd><%= @historial_medicion.medidor %></dd>
+
+  <dt>User:</dt>
+  <dd><%= @historial_medicion.user %></dd>
+
+  <dt>Estado medidor:</dt>
+  <dd><%= @historial_medicion.estado_medidor %></dd>
+
+  <dt>Fecha medicion:</dt>
+  <dd><%= @historial_medicion.fecha_medicion %></dd>
+
+  <dt>Fecha modificacion:</dt>
+  <dd><%= @historial_medicion.fecha_modificacion %></dd>
+
+</dl>
