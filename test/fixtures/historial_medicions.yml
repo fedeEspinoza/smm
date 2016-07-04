@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  novedad_id: 
+  medidor_id: 
+  user_id: 
+  estado_medidor: 1
+  fecha_medicion: 2016-06-30 17:01:59
+  fecha_modificacion: 2016-06-30 17:01:59
+
+two:
+  novedad_id: 
+  medidor_id: 
+  user_id: 
+  estado_medidor: 1
+  fecha_medicion: 2016-06-30 17:01:59
+  fecha_modificacion: 2016-06-30 17:01:59

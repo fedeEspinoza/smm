@@ -27,7 +27,7 @@
   <div class="form-group">
     <%= f.label :tipo_medidor_id, "Tipo medidor", class: "col-sm-2 control-label" %>
     <div class="col-sm-5">
-      <%= f.collection_select :tipo_medidor_id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
+      <%= f.collection_select :tipo_medidor_id, TipoMedidor.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>  
   <div class="form-group">
