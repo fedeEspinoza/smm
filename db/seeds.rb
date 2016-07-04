@@ -158,4 +158,6 @@ Persona.create(tipo_documento_id: 4,nro_documento: 31343209,apellido: "Moreno",n
 
 #tipo medidor
 #rails g scaffold TipoMedidor nombre:string codigo:integer descripcion:string
-#TipoMedidor.create(nombre:"", codigo: , descripcion: "")
+TipoMedidor.create(nombre:"Agua", codigo: 0, descripcion: "Medidor de agua")
+TipoMedidor.create(nombre:"Energía activa", codigo: 1, descripcion: "Medidor de energía reactiva")
+TipoMedidor.create(nombre:"Energía reactiva", codigo: 2, descripcion: "Medidor de energía activa")
