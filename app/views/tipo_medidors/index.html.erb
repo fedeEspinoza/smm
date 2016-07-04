@@ -11,8 +11,8 @@
     <thead>
       <tr>
             <th>Nombre</th>
-            <th>Codigo</th>
-            <th>Descripcion</th>
+            <!--<th>Codigo</th>
+            <th>Descripcion</th>-->
             <th></th>
         <th></th>
         <th></th>
@@ -22,8 +22,8 @@
     <tbody>
       <%= content_tag_for(:tr, @tipo_medidors) do |tipo_medidor| %>
             <td><%= tipo_medidor.nombre %></td>
-            <td><%= tipo_medidor.codigo %></td>
-            <td><%= tipo_medidor.descripcion %></td>
+            <!--<td><%= tipo_medidor.codigo %></td>
+            <td><%= tipo_medidor.descripcion %></td>-->
             <td><%= link_to 'Ver', tipo_medidor %></td>
         <td><%= link_to 'Editar', edit_tipo_medidor_path(tipo_medidor) %></td>
         <td><%= link_to 'Eliminar', tipo_medidor, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
