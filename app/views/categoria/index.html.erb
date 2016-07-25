@@ -10,21 +10,29 @@
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-            <th>Código</th>
-            <th>Descripción</th>
-            <th></th>
-        <th></th>
-        <th></th>
+          <th>Código</th>
+          <th>Descripción</th>
+          <th class="text-center col-md-1">&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @categoria) do |categorium| %>
-            <td><%= categorium.codigo %></td>
-            <td><%= categorium.descripcion %></td>
-            <td><%= link_to 'Ver', categorium %></td>
-        <td><%= link_to 'Editar', edit_categorium_path(categorium) %></td>
-        <td><%= link_to 'Eliminar', categorium, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        <td><%= categorium.codigo %></td>
+        <td><%= categorium.descripcion %></td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Acciones
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><%= link_to 'Ver', categorium %></li>
+              <li><%= link_to 'Editar', edit_categorium_path(categorium) %></li>
+              <li><%= link_to 'Eliminar', categorium, method: :delete, data: { confirm: 'Estás seguro?' } %></li>
+            </ul>          
+          </div>
+        </td>
       <% end %>
     </tbody>
   </table>
