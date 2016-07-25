@@ -1,6 +1,4 @@
-class IndexController < ApplicationController  
-  before_action :authenticate_user!
-  
+class IndexController < ApplicationController   
   def index
   end
 end

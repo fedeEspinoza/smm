@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SMM</title>
+  <title>Sistema de Micromedición de Medidores de Agua y Energía Eléctrica</title>
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -24,7 +24,10 @@
         <ul class="sidebar-nav">
           <li class="sidebar-brand"><%= link_to "SMM", "/", class: "navbar-brand" %></li>
           <% if user_signed_in? %>
-            <li><%= link_to "Inicio", index_path %>
+            <li><%= link_to index_path do %>
+              <%= fa_icon "camera-retro", text: "Inicio" %>
+            <% end %>
+            </li>
             <li><%= link_to "Categorías", categoria_path %>
             <li><%= link_to "Grupos", grupos_path %>
             <li><%= link_to "Prioridades", prioridads_path %>
