@@ -22,6 +22,11 @@ gem 'devise'
 
 gem 'cancancan'
 
+#gemas para manejar datepickers
+gem 'jquery-ui-rails'
+
+gem 'jquery_datepicker'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

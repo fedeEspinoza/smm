@@ -13,20 +13,26 @@
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Código</th>
-            <th></th>
-        <th></th>
-        <th></th>
+            <th>&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @grupos) do |grupo| %>
-            <td><%= grupo.nombre %></td>
-            <td><%= grupo.descripcion %></td>
-            <td><%= grupo.codigo %></td>
-            <td><%= link_to 'Ver', grupo %></td>
-        <td><%= link_to 'Editar', edit_grupo_path(grupo) %></td>
-        <td><%= link_to 'Eliminar', grupo, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        <td><%= grupo.nombre %></td>
+        <td><%= grupo.descripcion %></td>
+        <td><%= grupo.codigo %></td>
+        <td style="width: 150px;">
+        <%= link_to grupo, class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+        <%= link_to edit_grupo_path(grupo), class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+        <%= link_to grupo, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+        </td>
       <% end %>
     </tbody>
   </table>

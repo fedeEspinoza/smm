@@ -13,20 +13,26 @@
             <th>Número</th>
             <th>Multiplicador</th>
             <th>Tipo de Medidor</th>
-            <th></th>
-        <th></th>
-        <th></th>
+            <th>&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @medidors) do |medidor| %>
-            <td><%= medidor.numero %></td>
-            <td><%= medidor.multiplicador %></td>
-            <td><%= medidor.tipo_medidor %></td>
-            <td><%= link_to 'Ver', medidor %></td>
-        <td><%= link_to 'Editar', edit_medidor_path(medidor) %></td>
-        <td><%= link_to 'Eliminar', medidor, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        <td><%= medidor.numero %></td>
+        <td><%= medidor.multiplicador %></td>
+        <td><%= medidor.tipo_medidor %></td>
+        <td style="width: 150px;">
+        <%= link_to medidor, class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+        <%= link_to edit_medidor_path(medidor), class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+        <%= link_to medidor, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+        </td>
       <% end %>
     </tbody>
   </table>

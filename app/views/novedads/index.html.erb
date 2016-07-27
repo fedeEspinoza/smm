@@ -13,20 +13,26 @@
             <th>Código</th>
             <th>Descripción</th>
             <th>Prioridad</th>
-            <th></th>
-        <th></th>
-        <th></th>
+            <th>&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @novedads) do |novedad| %>
-            <td><%= novedad.codigo %></td>
-            <td><%= novedad.descripcion %></td>
-            <td><%= novedad.prioridad %></td>
-            <td><%= link_to 'Ver', novedad %></td>
-        <td><%= link_to 'Editar', edit_novedad_path(novedad) %></td>
-        <td><%= link_to 'Eliminar', novedad, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        <td><%= novedad.codigo %></td>
+        <td><%= novedad.descripcion %></td>
+        <td><%= novedad.prioridad %></td>
+        <td style="width: 150px;">
+        <%= link_to novedad, class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+        <%= link_to edit_novedad_path(novedad), class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+        <%= link_to novedad, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+        </td>
       <% end %>
     </tbody>
   </table>

@@ -3,7 +3,7 @@
     <span class="glyphicon glyphicon-plus"></span>
     Nueva Categoría
   <% end %>
-  <h4>Listado de Categoría</h4>
+  <h4>Listado de Categorías</h4>
 </div>
 
 <div class="table-responsive">
@@ -12,7 +12,7 @@
       <tr>
           <th>Código</th>
           <th>Descripción</th>
-          <th class="text-center col-md-1">&nbsp;</th>
+          <th>&nbsp;</th>
       </tr>
     </thead>
 
@@ -20,18 +20,16 @@
       <%= content_tag_for(:tr, @categoria) do |categorium| %>
         <td><%= categorium.codigo %></td>
         <td><%= categorium.descripcion %></td>
-        <td>
-          <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Acciones
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><%= link_to 'Ver', categorium %></li>
-              <li><%= link_to 'Editar', edit_categorium_path(categorium) %></li>
-              <li><%= link_to 'Eliminar', categorium, method: :delete, data: { confirm: 'Estás seguro?' } %></li>
-            </ul>          
-          </div>
+        <td style="width: 150px;">
+        <%= link_to categorium, class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+        <%= link_to edit_categorium_path(categorium), class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+        <%= link_to categorium, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
         </td>
       <% end %>
     </tbody>

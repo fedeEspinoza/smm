@@ -11,18 +11,24 @@
     <thead>
       <tr>
             <th>Descripción</th>
-            <th></th>
-        <th></th>
-        <th></th>
+            <th>&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @prioridads) do |prioridad| %>
-            <td><%= prioridad.descripcion %></td>
-            <td><%= link_to 'Ver', prioridad %></td>
-        <td><%= link_to 'Editar', edit_prioridad_path(prioridad) %></td>
-        <td><%= link_to 'Eliminar', prioridad, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        <td><%= prioridad.descripcion %></td>
+        <td style="width: 150px;">
+        <%= link_to prioridad, class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+        <%= link_to edit_prioridad_path(prioridad), class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+        <%= link_to prioridad, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+        </td>
       <% end %>
     </tbody>
   </table>

@@ -12,19 +12,25 @@
       <tr>
             <th>Nombre</th>
             <th>Grupo</th>
-            <th></th>
-        <th></th>
-        <th></th>
+            <th>&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @zonas) do |zona| %>
-            <td><%= zona.nombre %></td>
-            <td><%= zona.grupo %></td>
-            <td><%= link_to 'Ver', zona %></td>
-        <td><%= link_to 'Editar', edit_zona_path(zona) %></td>
-        <td><%= link_to 'Eliminar', zona, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        <td><%= zona.nombre %></td>
+        <td><%= zona.grupo %></td>
+        <td style="width: 150px;">
+        <%= link_to zona, class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+        <%= link_to edit_zona_path(zona), class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+        <%= link_to zona, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+        </td>
       <% end %>
     </tbody>
   </table>

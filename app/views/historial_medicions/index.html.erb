@@ -14,25 +14,31 @@
             <th>Medidor</th>
             <th>User</th>
             <th>Estado medidor</th>
-            <th>Fecha medicion</th>
-            <th>Fecha modificacion</th>
-            <th></th>
-        <th></th>
-        <th></th>
+            <th>Fecha medición</th>
+            <th>Fecha modificación</th>
+            <th>&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @historial_medicions) do |historial_medicion| %>
-            <td><%= historial_medicion.novedad %></td>
-            <td><%= historial_medicion.medidor %></td>
-            <td><%= historial_medicion.user %></td>
-            <td><%= historial_medicion.estado_medidor %></td>
-            <td><%= historial_medicion.fecha_medicion %></td>
-            <td><%= historial_medicion.fecha_modificacion %></td>
-            <td><%= link_to 'Ver', historial_medicion %></td>
-        <td><%= link_to 'Editar', edit_historial_medicion_path(historial_medicion) %></td>
-        <td><%= link_to 'Eliminar', historial_medicion, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        <td><%= historial_medicion.novedad %></td>
+        <td><%= historial_medicion.medidor %></td>
+        <td><%= historial_medicion.user %></td>
+        <td><%= historial_medicion.estado_medidor %></td>
+        <td><%= historial_medicion.fecha_medicion %></td>
+        <td><%= historial_medicion.fecha_modificacion %></td>
+        <td style="width: 150px;">
+        <%= link_to historial_medicion, class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+        <%= link_to edit_historial_medicion_path(historial_medicion), class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+        <%= link_to historial_medicion, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+        </td>
       <% end %>
     </tbody>
   </table>

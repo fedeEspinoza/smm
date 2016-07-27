@@ -31,22 +31,30 @@
 
     <tbody>
       <%= content_tag_for(:tr, @usuarios) do |usuario| %>
-            <td><%= usuario.categorium %></td>
-            <td><%= usuario.numero %></td>
-            <td><%= usuario.razon_social %></td>
-            <td><%= usuario.domicilio %></td>
-            <td><%= usuario.circunscripcion %></td>
-            <td><%= usuario.sector %></td>
-            <td><%= usuario.tipo %></td>
-            <td><%= usuario.manzana %></td>
-            <td><%= usuario.parcela %></td>
-            <td><%= usuario.unidad_funcional %></td>
-            <td><%= usuario.latitud %></td>
-            <td><%= usuario.longitud %></td>
-            <td><%= usuario.estado %></td>
-            <td><%= link_to 'Ver', usuario %></td>
-        <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
-        <td><%= link_to 'Eliminar', usuario, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        <td><%= usuario.categorium %></td>
+        <td><%= usuario.numero %></td>
+        <td><%= usuario.razon_social %></td>
+        <td><%= usuario.domicilio %></td>
+        <td><%= usuario.circunscripcion %></td>
+        <td><%= usuario.sector %></td>
+        <td><%= usuario.tipo %></td>
+        <td><%= usuario.manzana %></td>
+        <td><%= usuario.parcela %></td>
+        <td><%= usuario.unidad_funcional %></td>
+        <td><%= usuario.latitud %></td>
+        <td><%= usuario.longitud %></td>
+        <td><%= usuario.estado %></td>
+        <td style="width: 150px;">
+        <%= link_to usuario, class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+        <%= link_to edit_usuario_path(usuario), class: 'btn btn-default' do %>
+          <span class="glyphicon glyphicon-pencil"></span>
+        <% end %>
+        <%= link_to usuario, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+          <span class="glyphicon glyphicon-trash"></span>
+        <% end %>
+        </td>
       <% end %>
     </tbody>
   </table>

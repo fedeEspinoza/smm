@@ -38,14 +38,14 @@
   </div>
   <div class="form-group">
     <%= f.label :fecha_medicion, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.datetime_select :fecha_medicion, class: "form-control" %>
+    <div class="col-lg-2">
+      <%= f.text_field :fecha_medicion, class: "form-control", id: "datepicker_medicion", required: true %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :fecha_modificacion, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.datetime_select :fecha_modificacion, class: "form-control" %>
+    <div class="col-lg-2">
+      <%= f.text_field :fecha_modificacion, class: "form-control", id: "datepicker_modificacion", required: true %>
     </div>
   </div>
   <div class="form-group">
@@ -54,3 +54,10 @@
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $('document').ready(function(){
+    $("#datepicker_medicion").datepicker();
+    $("#datepicker_modificacion").datepicker();
+  });
+</script>

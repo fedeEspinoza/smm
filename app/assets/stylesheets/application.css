@@ -12,6 +12,7 @@
  *
  *
  *= require font-awesome
+ *= require jquery-ui
  *= require_tree .
  *= require_self
  */
@@ -30,6 +31,7 @@
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    padding-top: 50px;
 }
 
 #wrapper.toggled {
@@ -141,7 +143,6 @@
         margin-right: 0;
     }
 }
-
 /*Sign-in view*/
 
 .form-signin {
