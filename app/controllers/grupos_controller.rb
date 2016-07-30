@@ -1,5 +1,6 @@
 class GruposController < ApplicationController
-  before_action :authenticate_user!, :set_grupo, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_grupo, only: [:show, :edit, :update, :destroy]
 
   # GET /grupos
   # GET /grupos.json

@@ -1,5 +1,6 @@
 class MedidorsController < ApplicationController
-  before_action :authenticate_user!, :set_medidor, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_medidor, only: [:show, :edit, :update, :destroy]
 
   # GET /medidors
   # GET /medidors.json

@@ -1,5 +1,6 @@
 class TipoMedidorsController < ApplicationController
-  before_action :authenticate_user!, :set_tipo_medidor, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_tipo_medidor, only: [:show, :edit, :update, :destroy]
 
   # GET /tipo_medidors
   # GET /tipo_medidors.json

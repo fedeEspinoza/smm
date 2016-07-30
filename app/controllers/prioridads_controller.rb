@@ -1,5 +1,6 @@
 class PrioridadsController < ApplicationController
-  before_action :authenticate_user!, :set_prioridad, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_prioridad, only: [:show, :edit, :update, :destroy]
 
   # GET /prioridads
   # GET /prioridads.json
