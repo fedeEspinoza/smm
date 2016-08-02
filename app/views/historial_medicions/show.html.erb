@@ -24,9 +24,9 @@
   <dd><%= @historial_medicion.estado_medidor %></dd>
 
   <dt>Fecha medicion:</dt>
-  <dd><%= @historial_medicion.fecha_medicion %></dd>
+  <dd><%= @historial_medicion.fecha_medicion.to_s(:default) %></dd>
 
   <dt>Fecha modificacion:</dt>
-  <dd><%= @historial_medicion.fecha_modificacion %></dd>
+  <dd><%= @historial_medicion.fecha_modificacion.to_s(:default) %></dd>
 
 </dl>

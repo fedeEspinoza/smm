@@ -29,7 +29,7 @@ class HistorialMedicionsController < ApplicationController
 
     respond_to do |format|
       if @historial_medicion.save
-        format.html { redirect_to @historial_medicion, notice: 'Historial medicion was successfully created.' }
+        format.html { redirect_to @historial_medicion, notice: 'Se ha creado una nueva Medición.' }
         format.json { render :show, status: :created, location: @historial_medicion }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class HistorialMedicionsController < ApplicationController
   def update
     respond_to do |format|
       if @historial_medicion.update(historial_medicion_params)
-        format.html { redirect_to @historial_medicion, notice: 'Historial medicion was successfully updated.' }
+        format.html { redirect_to @historial_medicion, notice: 'Se ha actualizado la Medición.' }
         format.json { render :show, status: :ok, location: @historial_medicion }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class HistorialMedicionsController < ApplicationController
   def destroy
     @historial_medicion.destroy
     respond_to do |format|
-      format.html { redirect_to historial_medicions_url, notice: 'Historial medicion was successfully destroyed.' }
+      format.html { redirect_to historial_medicions_url, notice: 'Se ha eliminado la Medición.' }
       format.json { head :no_content }
     end
   end
