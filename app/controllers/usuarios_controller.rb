@@ -25,6 +25,7 @@ class UsuariosController < ApplicationController
   # POST /usuarios
   # POST /usuarios.json
   def create
+    debugger
     @usuario = Usuario.new(usuario_params)
 
     respond_to do |format|
