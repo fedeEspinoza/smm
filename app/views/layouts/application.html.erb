@@ -81,43 +81,43 @@
         <% if user_signed_in? %> 
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li><%= link_to index_path do %>
+                <li><%= link_to index_path, class: params['controller'] == 'index' ? 'current' : '' do %>
                   <%= fa_icon "home", text: "Inicio" %>
                 <% end %>
                 </li>
-                <li><%= link_to categoria_path do %>
+                <li><%= link_to categoria_path, class: params['controller'] == 'categoria' ? 'current' : '' do %>
                   <%= fa_icon "industry", text: "Categorias" %>
                 <% end %>
                 </li>
-                <li><%= link_to grupos_path do %>
+                <li><%= link_to grupos_path, class: params['controller'] == 'grupos' ? 'current' : '' do %>
                   <%= fa_icon "group", text: "Grupos" %>
                 <% end %>  
                 </li>
-                <li><%= link_to prioridads_path do %>
+                <li><%= link_to prioridads_path, class: params['controller'] == 'prioridads' ? 'current' : '' do %>
                   <%= fa_icon "list-alt", text: "Prioridades" %>
                 <% end %>
                 </li>
-                <li><%= link_to zonas_path do %>
+                <li><%= link_to zonas_path, class: params['controller'] == 'zonas' ? 'current' : '' do %>
                   <%= fa_icon "object-group", text: "Zonas" %>
                 <% end %>  
                 </li>
-                <li><%= link_to novedads_path do %>
+                <li><%= link_to novedads_path, class: params['controller'] == 'novedads' ? 'current' : '' do %>
                   <%= fa_icon "newspaper-o", text: "Novedades" %>
                 <% end %>  
                 </li>
-                <li><%= link_to medidors_path do %>
+                <li><%= link_to medidors_path, class: params['controller'] == 'medidors' ? 'current' : '' do %>
                   <%= fa_icon "calculator", text: "Medidores" %>
                 <% end %>  
                 </li>
-                <li><%= link_to estados_path do %>
+                <li><%= link_to estados_path, class: params['controller'] == 'estados' ? 'current' : '' do %>
                   <%= fa_icon "wpforms", text: "Estados" %>
                 <% end %>
                 </li>
-                <li><%= link_to usuarios_path do %>
+                <li><%= link_to usuarios_path, class: params['controller'] == 'usuarios' ? 'current' : '' do %>
                   <%= fa_icon "user", text: "Usuarios" %>
                 <% end %>
                 </li>
-                <li><%= link_to historial_medicions_path do %>
+                <li><%= link_to historial_medicions_path, class: params['controller'] == 'historial_medicions' ? 'current' : '' do %>
                   <%= fa_icon "line-chart", text: "Mediciones" %>
                 <% end %>
                 </li>            
