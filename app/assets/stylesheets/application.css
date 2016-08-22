@@ -46,7 +46,8 @@
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    /*background: #000;*/
+    background: #55ab64;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -87,20 +88,23 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    /*color: #999999;*/
+    color: #fff;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: rgba(255,255,255,0.2);
+    /*background: rgba(255,255,255,0.2);*/
+    background: #049463;
 }
 
 /*Para mostrar la opción activa*/
 .current {
     text-decoration: none;
     color: #ffffff;
-    background: rgba(255,255,255,0.2);
+    /*background: rgba(255,255,255,0.2);*/
+    background-color: #049463;
 }
 
 .sidebar-nav li a:active,
