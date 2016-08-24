@@ -14,43 +14,85 @@
 
   <div class="form-group">
     <%= f.label :tipo_documento_id, "Tipo de documento", class: "col-sm-2 control-label" %>
-    <div class="col-sm-5">
+    <div class="col-sm-2">
       <%= f.collection_select :tipo_documento_id, TipoDocumento.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :nro_documento, "N° de documento", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <div class="col-sm-4">
       <%= f.number_field :nro_documento, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :apellido, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
       <%= f.text_field :apellido, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :nombre, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <div class="col-sm-6">
       <%= f.text_field :nombre, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :telefono, "Teléfono", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <div class="col-sm-5">
       <%= f.text_field :telefono, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :email, "E-mail", class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <div class="col-sm-4">
       <%= f.text_field :email, class: "form-control" %>
     </div>
   </div>
+
+  <div class="page-header">
+    <h4>Usuarios</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-hover" id="worked">
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th>Número</th>
+            <th>Razón social</th>
+            <th>
+              <button type="button" class="btn btn-blue add-row">+</button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= select_tag(:persona, options_from_collection_for_select(Categorium.all, "id", "descripcion"), class: 'form-control') %></td>
+            <td><input class="form-control" type="text"></td>
+            <td><input class="form-control" type="text"></td>
+            <td><button type="button" class="btn btn-danger delete-row">-</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit class: "btn btn-primary", value: "Guardar"%>
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+$(function () {
+    $('#worked .add-row').click(function () {
+      var template = '<tr><td><input class="form-control" type="text"></td></td><td><input class="form-control" type="text"></td><td><input class="form-control" type="text"></td><td><button type="button" class="btn btn-danger delete-row">-</button></td></tr>';
+      $('#worked tbody').append(template);
+    });
+
+    $('#worked').on('click', '.delete-row', function () {
+        $(this).parent().parent().remove();
+    });
+})
+</script>
