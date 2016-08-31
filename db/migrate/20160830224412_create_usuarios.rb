@@ -14,6 +14,7 @@ class CreateUsuarios < ActiveRecord::Migration
       t.string :latitud
       t.string :longitud
       t.references :estado, index: true, foreign_key: true
+      t.references :persona, index: true, foreign_key: true
 
       t.timestamps null: false
     end

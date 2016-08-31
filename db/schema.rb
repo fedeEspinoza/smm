@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160630200159) do
+ActiveRecord::Schema.define(version: 20160830224813) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
@@ -130,16 +130,6 @@ ActiveRecord::Schema.define(version: 20160630200159) do
   add_index "usuario_medidors", ["medidor_id"], name: "index_usuario_medidors_on_medidor_id", using: :btree
   add_index "usuario_medidors", ["usuario_id"], name: "index_usuario_medidors_on_usuario_id", using: :btree
 
-  create_table "usuario_personas", force: :cascade do |t|
-    t.integer  "usuario_id", limit: 4
-    t.integer  "persona_id", limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  add_index "usuario_personas", ["persona_id"], name: "index_usuario_personas_on_persona_id", using: :btree
-  add_index "usuario_personas", ["usuario_id"], name: "index_usuario_personas_on_usuario_id", using: :btree
-
   create_table "usuarios", force: :cascade do |t|
     t.integer  "categorium_id",    limit: 4
     t.integer  "numero",           limit: 4
@@ -154,12 +144,14 @@ ActiveRecord::Schema.define(version: 20160630200159) do
     t.string   "latitud",          limit: 255
     t.string   "longitud",         limit: 255
     t.integer  "estado_id",        limit: 4
+    t.integer  "persona_id",       limit: 4
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end
 
   add_index "usuarios", ["categorium_id"], name: "index_usuarios_on_categorium_id", using: :btree
   add_index "usuarios", ["estado_id"], name: "index_usuarios_on_estado_id", using: :btree
+  add_index "usuarios", ["persona_id"], name: "index_usuarios_on_persona_id", using: :btree
 
   create_table "zona_usuarios", force: :cascade do |t|
     t.integer  "zona_id",    limit: 4
@@ -189,10 +181,9 @@ ActiveRecord::Schema.define(version: 20160630200159) do
   add_foreign_key "personas", "tipo_documentos"
   add_foreign_key "usuario_medidors", "medidors"
   add_foreign_key "usuario_medidors", "usuarios"
-  add_foreign_key "usuario_personas", "personas"
-  add_foreign_key "usuario_personas", "usuarios"
   add_foreign_key "usuarios", "categoria"
   add_foreign_key "usuarios", "estados"
+  add_foreign_key "usuarios", "personas"
   add_foreign_key "zona_usuarios", "usuarios"
   add_foreign_key "zona_usuarios", "zonas"
   add_foreign_key "zonas", "grupos"

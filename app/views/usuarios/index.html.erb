@@ -3,7 +3,7 @@
     <span class="glyphicon glyphicon-plus"></span>
     Nuevo Usuario
   <% end %>
-  <h4>Listado de Usuarios</h4>
+  <h4>Listado de usuarios</h4>
 </div>
 
 <div class="table-responsive">
@@ -19,42 +19,42 @@
             <th>Tipo</th>
             <th>Manzana</th>
             <th>Parcela</th>
-            <th>Unidad funcional</th>-->
+            <th>Unidad funcional</th>
             <th>Latitud</th>
-            <th>Longitud</th>
+            <th>Longitud</th>-->
             <th>Estado</th>
-            <th></th>
-        <th></th>
-        <th></th>
+            <th>Persona</th>
+            <th>&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @usuarios) do |usuario| %>
-        <td><%= usuario.categorium %></td>
-        <td><%= usuario.numero %></td>
-        <td><%= usuario.razon_social %></td>
-        <td><%= usuario.domicilio %></td>
-        <td><%= usuario.circunscripcion %></td>
-        <td><%= usuario.sector %></td>
-        <td><%= usuario.tipo %></td>
-        <td><%= usuario.manzana %></td>
-        <td><%= usuario.parcela %></td>
-        <td><%= usuario.unidad_funcional %></td>
-        <td><%= usuario.latitud %></td>
-        <td><%= usuario.longitud %></td>
-        <td><%= usuario.estado %></td>
-        <td style="width: 150px;">
-        <%= link_to usuario, class: 'btn btn-default' do %>
-          <span class="glyphicon glyphicon-search"></span>
-        <% end %>
-        <%= link_to edit_usuario_path(usuario), class: 'btn btn-default' do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-        <%= link_to usuario, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-        </td>
+            <td><%= usuario.categorium %></td>
+            <td><%= usuario.numero %></td>
+            <td><%= usuario.razon_social %></td>
+            <td><%= usuario.domicilio %></td>
+            <!--<td><%= usuario.circunscripcion %></td>
+            <td><%= usuario.sector %></td>
+            <td><%= usuario.tipo %></td>
+            <td><%= usuario.manzana %></td>
+            <td><%= usuario.parcela %></td>
+            <td><%= usuario.unidad_funcional %></td>
+            <td><%= usuario.latitud %></td>
+            <td><%= usuario.longitud %></td>-->
+            <td><%= usuario.estado %></td>
+            <td><%= usuario.persona %></td>
+            <td style="width: 150px;">
+            <%= link_to usuario, class: 'btn btn-default' do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+            <%= link_to edit_usuario_path(usuario), class: 'btn btn-default' do %>
+              <span class="glyphicon glyphicon-pencil"></span>
+            <% end %>
+            <%= link_to usuario, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+            </td>
       <% end %>
     </tbody>
   </table>

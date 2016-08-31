@@ -14,6 +14,7 @@ one:
   latitud: MyString
   longitud: MyString
   estado_id: 
+  persona_id: 
 
 two:
   categorium_id: 
@@ -29,3 +30,4 @@ two:
   latitud: MyString
   longitud: MyString
   estado_id: 
+  persona_id: 

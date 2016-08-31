@@ -14,23 +14,23 @@
 
   <div class="form-group">
     <%= f.label :categorium_id, "Categoría", class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
+    <div class="col-sm-5">
       <%= f.collection_select :categorium_id, Categorium.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :numero, "Número", class: "col-sm-2 control-label" %>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
       <%= f.number_field :numero, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
     <%= f.label :razon_social, "Razón social", class: "col-sm-2 control-label" %>
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       <%= f.text_field :razon_social, class: "form-control" %>
     </div>
   </div>
-  <!--<div class="form-group">
+  <div class="form-group">
     <%= f.label :domicilio, class: "col-sm-2 control-label" %>
     <div class="col-sm-5">
       <%= f.text_field :domicilio, class: "form-control" %>
@@ -83,11 +83,17 @@
     <div class="col-sm-10">
       <%= f.text_field :longitud, class: "form-control" %>
     </div>
-  </div> -->
+  </div>
   <div class="form-group">
-    <%= f.label :estado_id, "Estado", class: "col-sm-2 control-label" %>
+    <%= f.label :estado_id, class: "col-sm-2 control-label" %>
     <div class="col-sm-5">
       <%= f.collection_select :estado_id, Estado.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :persona_id, class: "col-sm-2 control-label" %>
+    <div class="col-sm-7">
+      <%= f.collection_select :persona_id, Persona.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>
   <div class="form-group">
