@@ -27,7 +27,11 @@
         <td><%= historial_medicion.user %></td>
         <td><%= historial_medicion.estado_medidor %></td>
         <td><%= historial_medicion.fecha_medicion.to_s(:default)%></td>
+        <% if !historial_medicion.fecha_modificacion.nil? %>
         <td><%= historial_medicion.fecha_modificacion.to_s(:default)%></td>
+        <% else %>
+        <td></td>
+        <% end %>
         <td style="width: 150px;">
         <%= link_to historial_medicion, class: 'btn btn-default' do %>
           <span class="glyphicon glyphicon-search"></span>

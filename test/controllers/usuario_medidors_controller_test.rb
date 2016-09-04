@@ -18,7 +18,7 @@ class UsuarioMedidorsControllerTest < ActionController::TestCase
 
   test "should create usuario_medidor" do
     assert_difference('UsuarioMedidor.count') do
-      post :create, usuario_medidor: { medidor_id: @usuario_medidor.medidor_id, usuario_id: @usuario_medidor.usuario_id }
+      post :create, usuario_medidor: { fecha_alta: @usuario_medidor.fecha_alta, fecha_baja: @usuario_medidor.fecha_baja, medidor_id: @usuario_medidor.medidor_id, usuario_id: @usuario_medidor.usuario_id }
     end
 
     assert_redirected_to usuario_medidor_path(assigns(:usuario_medidor))
@@ -35,7 +35,7 @@ class UsuarioMedidorsControllerTest < ActionController::TestCase
   end
 
   test "should update usuario_medidor" do
-    patch :update, id: @usuario_medidor, usuario_medidor: { medidor_id: @usuario_medidor.medidor_id, usuario_id: @usuario_medidor.usuario_id }
+    patch :update, id: @usuario_medidor, usuario_medidor: { fecha_alta: @usuario_medidor.fecha_alta, fecha_baja: @usuario_medidor.fecha_baja, medidor_id: @usuario_medidor.medidor_id, usuario_id: @usuario_medidor.usuario_id }
     assert_redirected_to usuario_medidor_path(assigns(:usuario_medidor))
   end
 

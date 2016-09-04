@@ -11,10 +11,10 @@
 #rails g scaffold Estado descripcion:string
 #rails g scaffold Persona tipo_documento:references nro_documento:integer apellido:string nombre:string telefono:string email:string
 
-#rails g scaffold Usuario categorium:references numero:integer razon_social:string domicilio:string circunscripcion:integer sector:integer tipo:integer manzana:integer parcela:integer unidad_funcional:integer latitud:string longitud:string estado:references persona:references
+#rails g scaffold Usuario categorium:references numero:integer razon_social:string domicilio:string circunscripcion:integer sector:integer tipo:integer manzana:integer parcela:integer unidad_funcional:integer latitud:string longitud:string estado:references persona:references fecha_alta:datetime fecha_baja:datetime
 
-+rails g scaffold UsuarioMedidor usuario:references medidor:references
-+rails g scaffold ZonaUsuario zona:references usuario:references orden:integer
++rails g scaffold UsuarioMedidor usuario:references medidor:references fecha_alta:datetime fecha_baja:datetime
++rails g scaffold ZonaUsuario zona:references usuario:references orden:integer #Ruta de medición
 
 +rails g scaffold HistorialMedicion novedad:references medidor:references user:references estado_medidor:integer fecha_medicion:datetime fecha_modificacion:datetime
 

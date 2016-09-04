@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830224813) do
+ActiveRecord::Schema.define(version: 20160904214939) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
@@ -123,6 +123,8 @@ ActiveRecord::Schema.define(version: 20160830224813) do
   create_table "usuario_medidors", force: :cascade do |t|
     t.integer  "usuario_id", limit: 4
     t.integer  "medidor_id", limit: 4
+    t.datetime "fecha_alta"
+    t.datetime "fecha_baja"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
@@ -145,6 +147,8 @@ ActiveRecord::Schema.define(version: 20160830224813) do
     t.string   "longitud",         limit: 255
     t.integer  "estado_id",        limit: 4
     t.integer  "persona_id",       limit: 4
+    t.datetime "fecha_alta"
+    t.datetime "fecha_baja"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
   end

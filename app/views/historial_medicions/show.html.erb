@@ -27,6 +27,10 @@
   <dd><%= @historial_medicion.fecha_medicion.to_s(:default) %></dd>
 
   <dt>Fecha modificacion:</dt>
-  <dd><%= @historial_medicion.fecha_modificacion.to_s(:default) %></dd>
+  <dd>
+    <% if !@historial_medicion.fecha_modificacion.nil? %>
+    <%= @historial_medicion.fecha_modificacion.to_s(:default) %>
+    <% end %>
+  </dd>
 
 </dl>

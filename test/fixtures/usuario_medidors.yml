@@ -3,7 +3,11 @@
 one:
   usuario_id: 
   medidor_id: 
+  fecha_alta: 2016-09-04 18:48:50
+  fecha_baja: 2016-09-04 18:48:50
 
 two:
   usuario_id: 
   medidor_id: 
+  fecha_alta: 2016-09-04 18:48:50
+  fecha_baja: 2016-09-04 18:48:50

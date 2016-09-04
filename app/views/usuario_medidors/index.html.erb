@@ -12,6 +12,8 @@
       <tr>
             <th>Usuario</th>
             <th>Medidor</th>
+            <th>Fecha alta</th>
+            <th>Fecha baja</th>
             <th></th>
         <th></th>
         <th></th>
@@ -22,6 +24,8 @@
       <%= content_tag_for(:tr, @usuario_medidors) do |usuario_medidor| %>
             <td><%= usuario_medidor.usuario %></td>
             <td><%= usuario_medidor.medidor %></td>
+            <td><%= usuario_medidor.fecha_alta %></td>
+            <td><%= usuario_medidor.fecha_baja %></td>
             <td><%= link_to 'Ver', usuario_medidor %></td>
         <td><%= link_to 'Editar', edit_usuario_medidor_path(usuario_medidor) %></td>
         <td><%= link_to 'Eliminar', usuario_medidor, method: :delete, data: { confirm: '¿Está seguro?' } %></td>

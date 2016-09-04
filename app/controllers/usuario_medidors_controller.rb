@@ -69,6 +69,6 @@ class UsuarioMedidorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_medidor_params
-      params.require(:usuario_medidor).permit(:usuario_id, :medidor_id)
+      params.require(:usuario_medidor).permit(:usuario_id, :medidor_id, :fecha_alta, :fecha_baja)
     end
 end

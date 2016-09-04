@@ -15,6 +15,8 @@ one:
   longitud: MyString
   estado_id: 
   persona_id: 
+  fecha_alta: 2016-09-04 18:48:30
+  fecha_baja: 2016-09-04 18:48:30
 
 two:
   categorium_id: 
@@ -31,3 +33,5 @@ two:
   longitud: MyString
   estado_id: 
   persona_id: 
+  fecha_alta: 2016-09-04 18:48:30
+  fecha_baja: 2016-09-04 18:48:30
