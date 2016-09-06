@@ -1,5 +1,4 @@
 class MedidorsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_medidor, only: [:show, :edit, :update, :destroy]
 
   # GET /medidors
@@ -29,7 +28,7 @@ class MedidorsController < ApplicationController
 
     respond_to do |format|
       if @medidor.save
-        format.html { redirect_to @medidor, notice: 'Se ha creado un nuevo Medidor.' }
+        format.html { redirect_to @medidor, notice: 'Medidor was successfully created.' }
         format.json { render :show, status: :created, location: @medidor }
       else
         format.html { render :new }
@@ -43,7 +42,7 @@ class MedidorsController < ApplicationController
   def update
     respond_to do |format|
       if @medidor.update(medidor_params)
-        format.html { redirect_to @medidor, notice: 'Se ha actualizado el Medidor.' }
+        format.html { redirect_to @medidor, notice: 'Medidor was successfully updated.' }
         format.json { render :show, status: :ok, location: @medidor }
       else
         format.html { render :edit }
@@ -57,7 +56,7 @@ class MedidorsController < ApplicationController
   def destroy
     @medidor.destroy
     respond_to do |format|
-      format.html { redirect_to medidors_url, notice: 'Se ha eliminado el Medidor.' }
+      format.html { redirect_to medidors_url, notice: 'Medidor was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +69,6 @@ class MedidorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def medidor_params
-      params.require(:medidor).permit(:numero, :multiplicador, :tipo_medidor_id)
+      params.require(:medidor).permit(:numero, :multiplicador, :marca, :modelo, :fecha_alta, :fecha_baja, :tipo_medidor_id)
     end
 end

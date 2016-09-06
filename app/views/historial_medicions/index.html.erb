@@ -1,9 +1,9 @@
 <div class="page-header">
   <%= link_to new_historial_medicion_path, class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    Nueva Medición
+    Nuevo Historial medicion
   <% end %>
-  <h4>Listado de Mediciones</h4>
+  <h4>Listado de historial_medicions</h4>
 </div>
 
 <div class="table-responsive">
@@ -14,35 +14,25 @@
             <th>Medidor</th>
             <th>User</th>
             <th>Estado medidor</th>
-            <th>Fecha medición</th>
-            <th>Fecha modificación</th>
-            <th>&nbsp;</th>
+            <th>Fecha medicion</th>
+            <th>Fecha modificacion</th>
+            <th></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @historial_medicions) do |historial_medicion| %>
-        <td><%= historial_medicion.novedad %></td>
-        <td><%= historial_medicion.medidor %></td>
-        <td><%= historial_medicion.user %></td>
-        <td><%= historial_medicion.estado_medidor %></td>
-        <td><%= historial_medicion.fecha_medicion.to_s(:default)%></td>
-        <% if !historial_medicion.fecha_modificacion.nil? %>
-        <td><%= historial_medicion.fecha_modificacion.to_s(:default)%></td>
-        <% else %>
-        <td></td>
-        <% end %>
-        <td style="width: 150px;">
-        <%= link_to historial_medicion, class: 'btn btn-default' do %>
-          <span class="glyphicon glyphicon-search"></span>
-        <% end %>
-        <%= link_to edit_historial_medicion_path(historial_medicion), class: 'btn btn-default' do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-        <%= link_to historial_medicion, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-        </td>
+            <td><%= historial_medicion.novedad %></td>
+            <td><%= historial_medicion.medidor %></td>
+            <td><%= historial_medicion.user %></td>
+            <td><%= historial_medicion.estado_medidor %></td>
+            <td><%= historial_medicion.fecha_medicion %></td>
+            <td><%= historial_medicion.fecha_modificacion %></td>
+            <td><%= link_to 'Ver', historial_medicion %></td>
+        <td><%= link_to 'Editar', edit_historial_medicion_path(historial_medicion) %></td>
+        <td><%= link_to 'Eliminar', historial_medicion, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
       <% end %>
     </tbody>
   </table>

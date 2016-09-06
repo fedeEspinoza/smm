@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+  resources :historial_medicions
   resources :zona_usuarios
   resources :usuario_medidors
   resources :usuarios
-  resources :historial_medicions
+  resources :medidors
+  resources :usuarios
   devise_for :users
   resources :personas
   resources :estados
-  resources :medidors
   resources :tipo_medidors
   resources :novedads
   resources :prioridads

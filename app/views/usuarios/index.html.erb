@@ -11,7 +11,7 @@
     <thead>
       <tr>
             <th>Categoría</th>
-            <th>Numero</th>
+            <th>Número</th>
             <th>Razon social</th>
             <!--<th>Domicilio</th>
             <th>Circunscripcion</th>
@@ -27,8 +27,6 @@
             <!--<th>Fecha alta</th>
             <th>Fecha baja</th> -->
             <th></th>
-        <th></th>
-        <th></th>
       </tr>
     </thead>
 
@@ -50,9 +48,17 @@
             <td><%= usuario.persona %></td>
             <!--<td><%= usuario.fecha_alta %></td>
             <td><%= usuario.fecha_baja %></td>-->
-            <td><%= link_to 'Ver', usuario %></td>
-        <td><%= link_to 'Editar', edit_usuario_path(usuario) %></td>
-        <td><%= link_to 'Eliminar', usuario, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+            <td style="width: 150px;">
+                <%= link_to usuario, class: 'btn btn-default' do %>
+                  <span class="glyphicon glyphicon-search"></span>
+                <% end %>
+                <%= link_to edit_usuario_path(usuario), class: 'btn btn-default' do %>
+                  <span class="glyphicon glyphicon-pencil"></span>
+                <% end %>
+                <%= link_to usuario, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+                  <span class="glyphicon glyphicon-trash"></span>
+                <% end %>
+            </td>
       <% end %>
     </tbody>
   </table>

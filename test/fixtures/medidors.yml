@@ -3,9 +3,17 @@
 one:
   numero: 1
   multiplicador: 1
+  marca: MyString
+  modelo: MyString
+  fecha_alta: 2016-09-06 20:15:17
+  fecha_baja: 2016-09-06 20:15:17
   tipo_medidor_id: 
 
 two:
   numero: 1
   multiplicador: 1
+  marca: MyString
+  modelo: MyString
+  fecha_alta: 2016-09-06 20:15:17
+  fecha_baja: 2016-09-06 20:15:17
   tipo_medidor_id: 

@@ -5,13 +5,13 @@ one:
   medidor_id: 
   user_id: 
   estado_medidor: 1
-  fecha_medicion: 2016-06-30 17:01:59
-  fecha_modificacion: 2016-06-30 17:01:59
+  fecha_medicion: 2016-09-06 20:16:12
+  fecha_modificacion: 2016-09-06 20:16:12
 
 two:
   novedad_id: 
   medidor_id: 
   user_id: 
   estado_medidor: 1
-  fecha_medicion: 2016-06-30 17:01:59
-  fecha_modificacion: 2016-06-30 17:01:59
+  fecha_medicion: 2016-09-06 20:16:12
+  fecha_modificacion: 2016-09-06 20:16:12

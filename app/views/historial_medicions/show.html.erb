@@ -7,7 +7,7 @@
     <span class="glyphicon glyphicon-pencil"></span>
     Editar
   <% end %>
-  <h4>Ver Medición</h4>
+  <h4>Ver historial_medicion</h4>
 </div>
 
 <dl class="dl-horizontal">
@@ -24,13 +24,9 @@
   <dd><%= @historial_medicion.estado_medidor %></dd>
 
   <dt>Fecha medicion:</dt>
-  <dd><%= @historial_medicion.fecha_medicion.to_s(:default) %></dd>
+  <dd><%= @historial_medicion.fecha_medicion %></dd>
 
   <dt>Fecha modificacion:</dt>
-  <dd>
-    <% if !@historial_medicion.fecha_modificacion.nil? %>
-    <%= @historial_medicion.fecha_modificacion.to_s(:default) %>
-    <% end %>
-  </dd>
+  <dd><%= @historial_medicion.fecha_modificacion %></dd>
 
 </dl>

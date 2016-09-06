@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160904214939) do
+ActiveRecord::Schema.define(version: 20160906231612) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
@@ -52,9 +52,13 @@ ActiveRecord::Schema.define(version: 20160904214939) do
   create_table "medidors", force: :cascade do |t|
     t.integer  "numero",          limit: 4
     t.integer  "multiplicador",   limit: 4
+    t.string   "marca",           limit: 255
+    t.string   "modelo",          limit: 255
+    t.datetime "fecha_alta"
+    t.datetime "fecha_baja"
     t.integer  "tipo_medidor_id", limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "medidors", ["tipo_medidor_id"], name: "index_medidors_on_tipo_medidor_id", using: :btree

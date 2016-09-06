@@ -3,36 +3,38 @@
     <span class="glyphicon glyphicon-plus"></span>
     Nuevo Medidor
   <% end %>
-  <h4>Listado de Medidores</h4>
+  <h4>Listado de medidors</h4>
 </div>
 
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-            <th>Número</th>
+            <th>Numero</th>
             <th>Multiplicador</th>
-            <th>Tipo de Medidor</th>
-            <th>&nbsp;</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Fecha alta</th>
+            <th>Fecha baja</th>
+            <th>Tipo medidor</th>
+            <th></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @medidors) do |medidor| %>
-        <td><%= medidor.numero %></td>
-        <td><%= medidor.multiplicador %></td>
-        <td><%= medidor.tipo_medidor %></td>
-        <td style="width: 150px;">
-        <%= link_to medidor, class: 'btn btn-default' do %>
-          <span class="glyphicon glyphicon-search"></span>
-        <% end %>
-        <%= link_to edit_medidor_path(medidor), class: 'btn btn-default' do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-        <%= link_to medidor, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-        </td>
+            <td><%= medidor.numero %></td>
+            <td><%= medidor.multiplicador %></td>
+            <td><%= medidor.marca %></td>
+            <td><%= medidor.modelo %></td>
+            <td><%= medidor.fecha_alta %></td>
+            <td><%= medidor.fecha_baja %></td>
+            <td><%= medidor.tipo_medidor %></td>
+            <td><%= link_to 'Ver', medidor %></td>
+        <td><%= link_to 'Editar', edit_medidor_path(medidor) %></td>
+        <td><%= link_to 'Eliminar', medidor, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
       <% end %>
     </tbody>
   </table>

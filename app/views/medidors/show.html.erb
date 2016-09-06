@@ -7,17 +7,29 @@
     <span class="glyphicon glyphicon-pencil"></span>
     Editar
   <% end %>
-  <h4>Ver Medidor</h4>
+  <h4>Ver medidor</h4>
 </div>
 
 <dl class="dl-horizontal">
-  <dt>Número:</dt>
+  <dt>Numero:</dt>
   <dd><%= @medidor.numero %></dd>
 
   <dt>Multiplicador:</dt>
   <dd><%= @medidor.multiplicador %></dd>
 
-  <dt>Tipo de Medidor:</dt>
+  <dt>Marca:</dt>
+  <dd><%= @medidor.marca %></dd>
+
+  <dt>Modelo:</dt>
+  <dd><%= @medidor.modelo %></dd>
+
+  <dt>Fecha alta:</dt>
+  <dd><%= @medidor.fecha_alta %></dd>
+
+  <dt>Fecha baja:</dt>
+  <dd><%= @medidor.fecha_baja %></dd>
+
+  <dt>Tipo medidor:</dt>
   <dd><%= @medidor.tipo_medidor %></dd>
 
 </dl>

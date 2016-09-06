@@ -18,7 +18,7 @@ class MedidorsControllerTest < ActionController::TestCase
 
   test "should create medidor" do
     assert_difference('Medidor.count') do
-      post :create, medidor: { multiplicador: @medidor.multiplicador, numero: @medidor.numero, tipo_medidor_id: @medidor.tipo_medidor_id }
+      post :create, medidor: { fecha_alta: @medidor.fecha_alta, fecha_baja: @medidor.fecha_baja, marca: @medidor.marca, modelo: @medidor.modelo, multiplicador: @medidor.multiplicador, numero: @medidor.numero, tipo_medidor_id: @medidor.tipo_medidor_id }
     end
 
     assert_redirected_to medidor_path(assigns(:medidor))
@@ -35,7 +35,7 @@ class MedidorsControllerTest < ActionController::TestCase
   end
 
   test "should update medidor" do
-    patch :update, id: @medidor, medidor: { multiplicador: @medidor.multiplicador, numero: @medidor.numero, tipo_medidor_id: @medidor.tipo_medidor_id }
+    patch :update, id: @medidor, medidor: { fecha_alta: @medidor.fecha_alta, fecha_baja: @medidor.fecha_baja, marca: @medidor.marca, modelo: @medidor.modelo, multiplicador: @medidor.multiplicador, numero: @medidor.numero, tipo_medidor_id: @medidor.tipo_medidor_id }
     assert_redirected_to medidor_path(assigns(:medidor))
   end
 
