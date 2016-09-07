@@ -4,6 +4,6 @@ class Usuario < ActiveRecord::Base
   belongs_to :persona
 
   def to_s
-  	"#{self.razon_social} - #{usuario.persona.to_s}"
+  	"#{self.razon_social} - #{self.persona.to_s}"
   end
 end
