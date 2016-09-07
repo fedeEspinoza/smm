@@ -13,39 +13,39 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :novedad, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :novedad, class: "form-control" %>
+    <%= f.label :novedad_id, class: "col-sm-3 control-label" %>
+    <div class="col-sm-5">
+      <%= f.collection_select :novedad_id, Novedad.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :medidor, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :medidor, class: "form-control" %>
+    <%= f.label :medidor_id, class: "col-sm-3 control-label" %>
+    <div class="col-sm-5">
+      <%= f.collection_select :medidor_id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :user, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :user, class: "form-control" %>
+    <%= f.label :user_id, class: "col-sm-3 control-label" %>
+    <div class="col-sm-5">
+      <%= f.collection_select :user_id, User.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :estado_medidor, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
+    <%= f.label :estado_medidor, class: "col-sm-3 control-label" %>
+    <div class="col-sm-3">
       <%= f.number_field :estado_medidor, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :fecha_medicion, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.datetime_select :fecha_medicion, class: "form-control" %>
+    <%= f.label :fecha_medicion, "Fecha de medición", class: "col-sm-3 control-label" %>
+    <div class="col-lg-2">
+      <%= f.text_field :fecha_medicion, class: "form-control", id: "datepicker_medicion", required: true %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :fecha_modificacion, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.datetime_select :fecha_modificacion, class: "form-control" %>
+    <%= f.label :fecha_modificacion, "Fecha de modificación", class: "col-sm-3 control-label" %>
+    <div class="col-lg-2">
+      <%= f.text_field :fecha_modificacion, class: "form-control", id: "datepicker_modificacion", required: false %>
     </div>
   </div>
   <div class="form-group">
@@ -54,3 +54,10 @@
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $('document').ready(function(){
+    $("#datepicker_medicion").datepicker();
+    $("#datepicker_modificacion").datepicker();
+  });
+</script>

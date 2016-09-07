@@ -7,9 +7,9 @@
 #rails g scaffold Prioridad descripcion:string
 #rails g scaffold Novedad codigo:integer descripcion:string prioridad:references
 #rails g scaffold TipoMedidor nombre:string codigo:integer descripcion:string
-#rails g scaffold Medidor numero:integer multiplicador:integer marca:string modelo:string fecha_alta:datetime fecha_baja:datetime tipo_medidor:references 
 #rails g scaffold Estado descripcion:string
 #rails g scaffold Persona tipo_documento:references nro_documento:integer apellido:string nombre:string telefono:string email:string
+#rails g scaffold Medidor numero:integer multiplicador:integer marca:string modelo:string fecha_alta:datetime fecha_baja:datetime tipo_medidor:references 
 
 #rails g scaffold Usuario categorium:references numero:integer razon_social:string domicilio:string circunscripcion:integer sector:integer tipo:integer manzana:integer parcela:integer unidad_funcional:integer latitud:string longitud:string estado:references persona:references fecha_alta:datetime fecha_baja:datetime
 
