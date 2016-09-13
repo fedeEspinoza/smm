@@ -37,7 +37,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Gema para iconos y fonts
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+
+gem 'leaflet-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -14,17 +14,27 @@ class UsuariosController < ApplicationController
 
   # GET /usuarios/new
   def new
+    Leaflet.tile_layer = "http://tile.osm.org/{z}/{x}/{y}.png"
+    # You can also use any other tile layer here if you don't want to use Cloudmade - see http://leafletjs.com/reference.html#tilelayer for more
+    Leaflet.attribution = "Cooperativa de Servicios Públicos Limitados Consumo y Vivienda Rawson" #Detalle del copyright
+    Leaflet.max_zoom = 18
     @usuario = Usuario.new
   end
 
   # GET /usuarios/1/edit
   def edit
+    usuario = Usuario.find(params[:id])
+    @persona = Persona.find(usuario.persona_id)
   end
 
   # POST /usuarios
   # POST /usuarios.json
   def create
+    persona = Persona.new(persona_params)
+    persona.save
     @usuario = Usuario.new(usuario_params)
+    @usuario.estado_id = 1 #Estado "Alta"
+    @usuario.persona_id = persona.id    
 
     respond_to do |format|
       if @usuario.save
@@ -40,13 +50,20 @@ class UsuariosController < ApplicationController
   # PATCH/PUT /usuarios/1
   # PATCH/PUT /usuarios/1.json
   def update
+    @persona = Persona.find(@usuario.persona_id)
     respond_to do |format|
-      if @usuario.update(usuario_params)
-        format.html { redirect_to @usuario, notice: 'Se ha actualizado el Usuario.' }
-        format.json { render :show, status: :ok, location: @usuario }
+      if @persona.update(persona_params)
+        if @usuario.update(usuario_params)
+
+          format.html { redirect_to @usuario, notice: 'Se ha actualizado el Usuario.' }
+          format.json { render :show, status: :ok, location: @usuario }
+        else
+          format.html { render :edit }
+          format.json { render json: @usuario.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @usuario.errors, status: :unprocessable_entity }
+          format.html { render :edit }
+          format.json { render json: @persona.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -70,5 +87,10 @@ class UsuariosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
       params.require(:usuario).permit(:categorium_id, :numero, :razon_social, :domicilio, :circunscripcion, :sector, :tipo, :manzana, :parcela, :unidad_funcional, :latitud, :longitud, :estado_id, :persona_id, :fecha_alta, :fecha_baja)
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def persona_params
+      params.require(:persona).permit(:tipo_documento_id, :nro_documento, :apellido, :nombre, :telefono, :email)
     end
 end

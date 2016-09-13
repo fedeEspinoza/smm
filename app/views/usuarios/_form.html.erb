@@ -12,25 +12,71 @@
     </div>
   <% end %>
 
+  <div class="page-header">
+    <h6>Datos personales</h6>
+  </div>
+
   <div class="form-group">
-    <%= f.label :categorium_id, "Categoría", class: "col-sm-2 control-label" %>
+    <%= label_tag :persona_tipo_documento_id, "Tipo de documento", class: "col-sm-3 control-label" %>
+    <div class="col-sm-2">
+      <%= collection_select :persona, :tipo_documento_id, TipoDocumento.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= label_tag :persona_nro_documento, "N° de documento", class: "col-sm-3 control-label" %>
+    <div class="col-sm-3">
+      <%= text_field :persona, :nro_documento, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :persona_apellido, "Apellido", class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= text_field :persona, :apellido, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :persona_nombre, "Nombre", class: "col-sm-3 control-label" %>
+    <div class="col-sm-5">
+      <%= text_field :persona, :nombre, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :persona_telefono, "Teléfono", class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= text_field :persona, :telefono, :class => "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag :persona_email, "Email", class: "col-sm-3 control-label" %>
+    <div class="col-sm-5">
+      <%= text_field :persona, :email, :class => "form-control" %>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <h6>Datos del usuario</h6>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :categorium_id, "Categoría", class: "col-sm-3 control-label" %>
     <div class="col-sm-5">
       <%= f.collection_select :categorium_id, Categorium.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :numero, "Número", class: "col-sm-2 control-label" %>
+    <%= f.label :numero, "Número", class: "col-sm-3 control-label" %>
     <div class="col-sm-3">
       <%= f.number_field :numero, class: "form-control" %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :razon_social, "Razón social", class: "col-sm-2 control-label" %>
+    <%= f.label :razon_social, "Razón social", class: "col-sm-3 control-label" %>
     <div class="col-sm-5">
       <%= f.text_field :razon_social, class: "form-control" %>
     </div>
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <%= f.label :domicilio, class: "col-sm-2 control-label" %>
     <div class="col-sm-6">
       <%= f.text_field :domicilio, class: "form-control" %>
@@ -89,13 +135,19 @@
     <div class="col-sm-5">
       <%= f.collection_select :estado_id, Estado.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
+  </div> -->
+
+  <div class="page-header">
+    <h6>Medidores</h6>
   </div>
+
   <div class="form-group">
-    <%= f.label :persona_id, class: "col-sm-2 control-label" %>
-    <div class="col-sm-5">
-      <%= f.collection_select :persona_id, Persona.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
+    <%= label_tag :medidor_id, "Medidor", class: "col-sm-3 control-label" %>
+    <div class="col-sm-6">
+      <%= collection_select :medidor, :id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
-  </div>
+  </div>  
+
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit class: "btn btn-primary", value: "Guardar"%>

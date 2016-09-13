@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *
+ *= require leaflet
  *= require font-awesome
  *= require jquery-ui
  *= require_tree .
@@ -24,6 +25,11 @@
  */
 
 /* Toggle Styles */
+
+#map { 
+  height: 500px; 
+  margin-bottom: 50px;
+}
 
 #wrapper {
     padding-left: 0;
@@ -268,3 +274,4 @@
     background-color: #0ebb80;
   }
 }
+
