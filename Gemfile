@@ -11,8 +11,9 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-#gemma para poner las hojas de estilo y javascript de bootstrap
+#gemas para bootstrap
 gem 'twitter-bootstrap-rails', github: 'seyhunak/twitter-bootstrap-rails', branch: 'bootstrap3'
+
 gem 'bootstrap-generators', :git => 'git://github.com/decioferreira/bootstrap-generators.git'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
@@ -40,6 +41,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'font-awesome-rails'
 
 gem 'leaflet-rails'
+
+gem 'nested_form'
+
+gem 'select2-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

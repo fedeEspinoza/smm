@@ -13,15 +13,15 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :novedad_id, class: "col-sm-3 control-label" %>
-    <div class="col-sm-5">
-      <%= f.collection_select :novedad_id, Novedad.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
-    </div>
-  </div>
-  <div class="form-group">
     <%= f.label :medidor_id, class: "col-sm-3 control-label" %>
     <div class="col-sm-5">
       <%= f.collection_select :medidor_id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :novedad_id, class: "col-sm-3 control-label" %>
+    <div class="col-sm-5">
+      <%= f.collection_select :novedad_id, Novedad.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>
   <div class="form-group">

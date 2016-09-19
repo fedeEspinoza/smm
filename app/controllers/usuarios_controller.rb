@@ -34,7 +34,7 @@ class UsuariosController < ApplicationController
     persona.save
     @usuario = Usuario.new(usuario_params)
     @usuario.estado_id = 1 #Estado "Alta"
-    @usuario.persona_id = persona.id    
+    @usuario.persona_id = persona.id      
 
     respond_to do |format|
       if @usuario.save
@@ -86,7 +86,7 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:usuario).permit(:categorium_id, :numero, :razon_social, :domicilio, :circunscripcion, :sector, :tipo, :manzana, :parcela, :unidad_funcional, :latitud, :longitud, :estado_id, :persona_id, :fecha_alta, :fecha_baja)
+      params.require(:usuario).permit(:categorium_id, :numero, :razon_social, :domicilio, :circunscripcion, :sector, :tipo, :manzana, :parcela, :unidad_funcional, :latitud, :longitud, :estado_id, :persona_id, :fecha_alta, :fecha_baja, usuario_medidors_attributes: [:id, :medidor_id, :_destroy])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

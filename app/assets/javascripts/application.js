@@ -10,11 +10,14 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require leaflet
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
 //= require turbolinks
+//= require leaflet
+//= require jquery_nested_form
+//= require select2
+//= require select2_locale_es
 //= require bootstrap
 //= require_tree .
 
@@ -37,4 +40,11 @@ jQuery(function($){
       maxDate: 'today',
       yearSuffix: ''};
    $.datepicker.setDefaults($.datepicker.regional['es']);
+});
+
+$(document).ready(function() { 
+  $('select').select2({
+    theme: "bootstrap",
+    language: "es"
+  }); 
 });
