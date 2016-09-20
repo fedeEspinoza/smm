@@ -152,6 +152,11 @@ TipoDocumento.create(descripcion: 'LC')#3
 TipoDocumento.create(descripcion: 'DNI')#4
 TipoDocumento.create(descripcion: 'CI')#5
 
+# Medidores
+# ===================
+
+
+
 #Persona --representa a la persona, la cual puede tener asociado uno o mas usuarios y empleados ==> tener un único padrón de datos
 
 #Persona tipo_documento:references nro_documento:integer apellido:string nombre:string telefono:string email:string

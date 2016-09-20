@@ -1,4 +1,7 @@
 class Estado < ActiveRecord::Base
+
+	validates :descripcion, presence: true
+
 	def to_s
 		self.descripcion
 	end
