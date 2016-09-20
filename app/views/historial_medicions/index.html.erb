@@ -12,7 +12,6 @@
       <tr>
             <th>Medidor</th>
             <th>Novedad</th>
-            <th>User</th>
             <th>Estado</th>
             <th>Fecha de medición</th>
             <th>Fecha de modificación</th>
@@ -24,7 +23,6 @@
       <%= content_tag_for(:tr, @historial_medicions) do |historial_medicion| %>
             <td><%= historial_medicion.medidor %></td>
             <td><%= historial_medicion.novedad %></td>
-            <td><%= historial_medicion.user %></td>
             <td><%= historial_medicion.estado_medidor %></td>
             <td><%= historial_medicion.fecha_medicion %></td>
             <td><%= historial_medicion.fecha_modificacion %></td>

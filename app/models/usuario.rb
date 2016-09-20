@@ -7,6 +7,9 @@ class Usuario < ActiveRecord::Base
   has_many :medidors, :through => :usuario_medidors
 
   accepts_nested_attributes_for :usuario_medidors, allow_destroy: true
+  accepts_nested_attributes_for :persona
+
+  validates :numero, presence: true
 
   def to_s
   	"#{self.razon_social} - #{self.persona.to_s}"
