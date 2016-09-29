@@ -1,4 +1,4 @@
-<%= nested_form_for(@usuario, html: { class: "form-horizontal", role: "form" }) do |f| %>
+<%= nested_form_for(@usuario, html: { role: "form" }) do |f| %>
   <% if @usuario.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
@@ -11,150 +11,190 @@
     </div>
   <% end %>
 
-  <div class="page-header">
-    <h6>Datos personales</h6>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= fa_icon "male" %> Datos personales</h3>
+    </div>
+    <div class="panel-body">  
+
+      <%= f.fields_for :persona do |p| %>
+
+      <div class="row">
+
+      
+        <%= p.label :tipo_documento_id, "Tipo de doc.", class: "col-sm-2 control-label" %>
+        <div class="col-sm-2">
+          <%= p.collection_select :tipo_documento_id, TipoDocumento.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm"} %>
+        </div>
+      
+      
+        <%= p.label :nro_documento, "N° de documento", class: "col-sm-3 control-label" %>
+        <div class="col-sm-2">
+          <%= p.text_field :nro_documento, :class => "form-control input-sm" %>
+        </div>
+
+      </div>
+      <div class="row">
+
+        <%= p.label :apellido, "Apellido", class: "col-sm-2 control-label" %>
+        <div class="col-sm-4">
+          <%= p.text_field :apellido, :class => "form-control input-sm" %>
+        </div>
+
+        <%= p.label :nombre, "Nombre", class: "col-sm-2 control-label" %>
+        <div class="col-sm-4">
+          <%= p.text_field :nombre, :class => "form-control input-sm" %>
+        </div>
+      </div>
+      <div class="row">
+          <%= p.label :telefono, "Teléfono", class: "col-sm-2 control-label" %>
+          <div class="col-sm-4">
+            <%= p.text_field :telefono, :class => "form-control input-sm" %>
+          </div>
+          <%= p.label :email, "Email", class: "col-sm-2 control-label" %>
+          <div class="col-sm-4">
+            <%= p.text_field :email, :class => "form-control input-sm" %>
+          </div>
+      </div>
+
+      <% end %>
+
+    </div>
   </div>
 
-  <%= f.fields_for :persona do |p| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= fa_icon "user" %> Datos del usuario</h3>
+    </div>
+    <div class="panel-body">  
 
-  <div class="form-group">
-    <%= p.label :tipo_documento_id, "Tipo de documento", class: "col-sm-3 control-label" %>
-    <div class="col-sm-2">
-      <%= p.collection_select :tipo_documento_id, TipoDocumento.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
-    </div>
-  </div>
-  
-  <div class="form-group">
-    <%= p.label :nro_documento, "N° de documento", class: "col-sm-3 control-label" %>
-    <div class="col-sm-3">
-      <%= p.text_field :nro_documento, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= p.label :apellido, "Apellido", class: "col-sm-3 control-label" %>
-    <div class="col-sm-4">
-      <%= p.text_field :apellido, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= p.label :nombre, "Nombre", class: "col-sm-3 control-label" %>
-    <div class="col-sm-5">
-      <%= p.text_field :nombre, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= p.label :telefono, "Teléfono", class: "col-sm-3 control-label" %>
-    <div class="col-sm-4">
-      <%= p.text_field :telefono, :class => "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= p.label :email, "Email", class: "col-sm-3 control-label" %>
-    <div class="col-sm-5">
-      <%= p.text_field :email, :class => "form-control" %>
-    </div>
-  </div>
 
-  <% end %>
+    <div class="row">
 
-  <div class="page-header">
-    <h6>Datos del usuario</h6>
-  </div>
+        <%= f.label :categorium_id, "Categoría", class: "col-sm-2 control-label" %>
+        <div class="col-sm-5">
+          <%= f.collection_select :categorium_id, Categorium.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm"} %>
+        </div>
+        <%= f.label :numero, "Número", class: "col-sm-2 control-label" %>
+        <div class="col-sm-3">
+          <%= f.number_field :numero, class: "form-control input-sm" %>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :categorium_id, "Categoría", class: "col-sm-3 control-label" %>
-    <div class="col-sm-5">
-      <%= f.collection_select :categorium_id, Categorium.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :numero, "Número", class: "col-sm-3 control-label" %>
-    <div class="col-sm-3">
-      <%= f.number_field :numero, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :razon_social, "Razón social", class: "col-sm-3 control-label" %>
-    <div class="col-sm-5">
-      <%= f.text_field :razon_social, class: "form-control" %>
-    </div>
-  </div>
-  <!-- <div class="form-group">
-    <%= f.label :domicilio, class: "col-sm-2 control-label" %>
-    <div class="col-sm-6">
-      <%= f.text_field :domicilio, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :circunscripcion, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :circunscripcion, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :sector, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :sector, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :tipo, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :tipo, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :manzana, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :manzana, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :parcela, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :parcela, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :unidad_funcional, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.number_field :unidad_funcional, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :latitud, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :latitud, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :longitud, class: "col-sm-2 control-label" %>
-    <div class="col-sm-10">
-      <%= f.text_field :longitud, class: "form-control" %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :estado_id, class: "col-sm-2 control-label" %>
-    <div class="col-sm-5">
-      <%= f.collection_select :estado_id, Estado.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
-    </div>
-  </div> -->
 
-  <div class="page-header">
-    <h6>Medidores</h6>
+    <div class="row">
+
+      <%= f.label :razon_social, "Razón social", class: "col-sm-2 control-label" %>
+      <div class="col-sm-5">
+        <%= f.text_field :razon_social, class: "form-control input-sm" %>
+      </div>
+
+    </div>
+    <!-- <div class="form-group">
+      <%= f.label :domicilio, class: "col-sm-2 control-label" %>
+      <div class="col-sm-6">
+        <%= f.text_field :domicilio, class: "form-control input-sm" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :circunscripcion, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :circunscripcion, class: "form-control input-sm" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :sector, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :sector, class: "form-control input-sm" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :tipo, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :tipo, class: "form-control input-sm" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :manzana, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :manzana, class: "form-control input-sm" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :parcela, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :parcela, class: "form-control input-sm" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :unidad_funcional, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.number_field :unidad_funcional, class: "form-control input-sm" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :latitud, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :latitud, class: "form-control input-sm" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :longitud, class: "col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :longitud, class: "form-control input-sm" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :estado_id, class: "col-sm-2 control-label" %>
+      <div class="col-sm-5">
+        <%= f.collection_select :estado_id, Estado.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm"} %>
+      </div>
+    </div> -->
+    <%= hidden_field(:usuario, :latitud) %>
+    <%= hidden_field(:usuario, :longitud) %>
+    </div>
   </div>
 
-  <%= f.fields_for :usuario_medidors do |m| %>
-
-  <div class="form-group">
-    <%= m.label "Medidor", class: "col-sm-3 control-label" %>
-    <div class="col-sm-6">
-      <%= m.collection_select :medidor_id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= fa_icon "map-marker" %> Ubicación del Usuario 
+        <% if params[:id] != nil %>
+          <small>(Arrastre el marcador para cambiar la ubicación) </small>
+        <% else %>
+          <small>(Haga click en el mapa para seleccionar una ubicación) </small>
+        <% end %>
+      </h3>
     </div>
-    <%= m.link_to_remove "", :class => "btn btn-danger glyphicon glyphicon-trash pull-right" %>
-  </div>  
-  <% end %>
-  <p><%= f.link_to_add "Agregar un Medidor", :usuario_medidors , :class => "label label-success" %></p>
+    <div class="panel-body"> 
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= fa_icon "calculator" %> Medidores Asignados</h3>
+    </div>
+    <div class="panel-body">  
+
+      <%= f.fields_for :usuario_medidors do |m| %>
+
+      <div class="row">
+
+        <%= m.label :medidor_id, "Medidor", class: "col-sm-3 control-label" %>
+        <div class="col-sm-6">
+          <%= m.collection_select :medidor_id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm"} %>
+        </div>
+        <%= m.link_to_remove "", :class => "btn btn-danger glyphicon glyphicon-trash pull-right" %>
+
+      </div>
+      <% end %>
+
+
+      <p><%= f.link_to_add "Agregar un Medidor", :usuario_medidors , :class => "label label-success" %></p>
+
+    </div>
+  </div>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
@@ -162,3 +202,67 @@
     </div>
   </div>
 <% end %>
+
+
+<script type="text/javascript">  
+  $('document').ready(function(){
+    var markersArray = [];
+
+    var mymap = L.map('map').setView([-43.296344, -65.091966], 15);
+    L.tileLayer('http://tile.osm.org/{z}/{x}/{y}.png', 
+    {
+      attribution: 'Cooperativa de Servicios Públicos Limitados Consumo y Vivienda Rawson',
+      maxZoom: 18
+    }).addTo(mymap);
+
+    <% if params[:id] != nil %>
+
+      //Creo un nuevo marcador
+      var marker = L.marker([<%= @usuario.latitud %>,<%= @usuario.longitud %>], {draggable: true}).addTo(mymap);
+      mymap.panTo(marker.getLatLng());
+
+      marker.on('dragend', function(event){
+        var marker = event.target;
+        var position = marker.getLatLng();
+        document.getElementById('usuario_latitud').value = position.lat;
+        document.getElementById('usuario_longitud').value = position.lng;
+      });
+      markersArray.push(marker);
+
+    <% end %>
+
+    function validate_marker(){
+      if (markersArray.length == 0){
+        alert("Debe seleccionar una ubicación en el mapa");
+        return false;
+      }
+      return true;
+    }
+
+    function deleteOverlays() {
+      if (markersArray) {
+        for (i in markersArray) {
+          markersArray[i].setMap(null);
+        }
+        markersArray.length = 0;
+      }
+    }
+
+    function placeMarker(e) {      
+      deleteOverlays();
+      var marker = L.marker(e.latlng, {draggable: true}).addTo(mymap);
+      var position = marker.getLatLng();
+      document.getElementById('usuario_latitud').value = position.lat;
+      document.getElementById('usuario_longitud').value = position.lng;
+      marker.on('dragend', function(event){
+        var marker = event.target;
+        var position = marker.getLatLng();
+        document.getElementById('usuario_latitud').value = position.lat;
+        document.getElementById('usuario_longitud').value = position.lng;
+      });
+      markersArray.push(marker);
+    }
+    
+    mymap.on('click', placeMarker);
+  });
+</script>

@@ -9,18 +9,17 @@ class UsuariosController < ApplicationController
 
   # GET /usuarios/1
   # GET /usuarios/1.json
-  def show
-  end
-
-  # GET /usuarios/new
-  def new
+  def show    
     Leaflet.tile_layer = "http://tile.osm.org/{z}/{x}/{y}.png"
     # You can also use any other tile layer here if you don't want to use Cloudmade - see http://leafletjs.com/reference.html#tilelayer for more
     Leaflet.attribution = "Cooperativa de Servicios Públicos Limitados Consumo y Vivienda Rawson" #Detalle del copyright
     Leaflet.max_zoom = 18
+  end
+
+  # GET /usuarios/new
+  def new
     @usuario = Usuario.new 
     @usuario.persona = Persona.new
-
   end
 
   # GET /usuarios/1/edit
@@ -61,6 +60,10 @@ class UsuariosController < ApplicationController
   # DELETE /usuarios/1
   # DELETE /usuarios/1.json
   def destroy
+    @usuario_medidors = UsuarioMedidor.where(:usuario_id => @usuario.id)
+    if !@usuario_medidors.empty?
+      UsuarioMedidor.destroy_all(:usuario_id => @usuario.id)
+    end
     @usuario.destroy
     respond_to do |format|
       format.html { redirect_to usuarios_url, notice: 'Se ha eliminado el Usuario.' }

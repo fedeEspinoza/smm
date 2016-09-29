@@ -10,53 +10,126 @@
   <h4>Ver Usuario</h4>
 </div>
 
-<dl class="dl-horizontal">
-  <dt>Categoría:</dt>
-  <dd><%= @usuario.categorium %></dd>
 
-  <dt>Número:</dt>
-  <dd><%= @usuario.numero %></dd>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= fa_icon "male" %> Datos personales</h3>
+  </div>
+  <div class="panel-body">  
 
-  <dt>Razón social:</dt>
-  <dd><%= @usuario.razon_social %></dd>
+    <dl class="dl-horizontal">
 
-  <dt>Domicilio:</dt>
-  <dd><%= @usuario.domicilio %></dd>
+    <dt>Tipo de documento:</dt>
+    <dd><%= @usuario.persona.tipo_documento %></dd>
 
-  <dt>Circunscripcion:</dt>
-  <dd><%= @usuario.circunscripcion %></dd>
+    <dt>Apellido:</dt>
+    <dd><%= @usuario.persona.apellido %></dd>
 
-  <dt>Sector:</dt>
-  <dd><%= @usuario.sector %></dd>
+    <dt>Nombre:</dt>
+    <dd><%= @usuario.persona.nombre %></dd>
 
-  <dt>Tipo:</dt>
-  <dd><%= @usuario.tipo %></dd>
+    <dt>Teléfono:</dt>
+    <dd><%= @usuario.persona.telefono %></dd>
 
-  <dt>Manzana:</dt>
-  <dd><%= @usuario.manzana %></dd>
+    <dt>Email:</dt>
+    <dd><%= @usuario.persona.email %></dd>
 
-  <dt>Parcela:</dt>
-  <dd><%= @usuario.parcela %></dd>
+    </dl>
 
-  <dt>Unidad funcional:</dt>
-  <dd><%= @usuario.unidad_funcional %></dd>
+  </div>
+</div>
 
-  <dt>Latitud:</dt>
-  <dd><%= @usuario.latitud %></dd>
 
-  <dt>Longitud:</dt>
-  <dd><%= @usuario.longitud %></dd>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= fa_icon "user" %> Datos del usuario</h3>
+  </div>
+  <div class="panel-body">  
 
-  <dt>Estado:</dt>
-  <dd><%= @usuario.estado %></dd>
+    <dl class="dl-horizontal">
 
-  <dt>Persona:</dt>
-  <dd><%= @usuario.persona %></dd>
+    <dt>Categoría:</dt>
+    <dd><%= @usuario.categorium %></dd>
 
-  <dt>Fecha alta:</dt>
-  <dd><%= @usuario.fecha_alta %></dd>
+    <dt>Razón social:</dt>
+    <dd><%= @usuario.razon_social %></dd>
 
-  <dt>Fecha baja:</dt>
-  <dd><%= @usuario.fecha_baja %></dd>
+    <dt>Número:</dt>
+    <dd><%= @usuario.numero %></dd>
 
-</dl>
+    <!--<dt>Domicilio:</dt>
+    <dd><%= @usuario.domicilio %></dd>
+
+    <dt>Circunscripcion:</dt>
+    <dd><%= @usuario.circunscripcion %></dd>
+
+    <dt>Sector:</dt>
+    <dd><%= @usuario.sector %></dd>
+
+    <dt>Tipo:</dt>
+    <dd><%= @usuario.tipo %></dd>
+
+    <dt>Manzana:</dt>
+    <dd><%= @usuario.manzana %></dd>
+
+    <dt>Parcela:</dt>
+    <dd><%= @usuario.parcela %></dd>
+
+    <dt>Unidad funcional:</dt>
+    <dd><%= @usuario.unidad_funcional %></dd>
+
+    <dt>Latitud:</dt>
+    <dd><%= @usuario.latitud %></dd>
+
+    <dt>Longitud:</dt>
+    <dd><%= @usuario.longitud %></dd>
+
+    <dt>Estado:</dt>
+    <dd><%= @usuario.estado %></dd>
+
+    <dt>Fecha alta:</dt>
+    <dd><%= @usuario.fecha_alta %></dd>
+
+    <dt>Fecha baja:</dt>
+    <dd><%= @usuario.fecha_baja %></dd>-->
+  </dl>
+
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= fa_icon "map-marker" %> Ubicación del Usuario</h3>
+  </div>
+  <div class="panel-body"> 
+    <%= map(:center => {
+      :latlng => [@usuario.latitud, @usuario.longitud],
+      :zoom => 15
+    },
+    :markers => [
+      {
+        :latlng => [@usuario.latitud, @usuario.longitud],
+        :popup => @usuario.to_s
+      }
+    ]) %>
+  </div>
+</div>
+  
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= fa_icon "calculator" %> Medidores asignados</h3>
+  </div>
+  <div class="panel-body">  
+    <dl class="dl-horizontal">
+
+      <% @usuario.medidors.each do |m| %>
+
+      <dt>Medidor:</dt>
+      <dd><%= m.to_s %></dd>
+
+      <% end %>
+
+    </dl>
+  </div>
+</div>
+

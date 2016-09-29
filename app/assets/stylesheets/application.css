@@ -29,8 +29,7 @@
 /* Toggle Styles */
 
 #map { 
-  height: 500px; 
-  margin-bottom: 50px;
+  height: 250px; 
 }
 
 #wrapper {
@@ -276,4 +275,10 @@
     background-color: #0ebb80;
   }
 }
+
+.panel-body .row{
+  padding: 5px;
+  float: none;
+}
+
 
