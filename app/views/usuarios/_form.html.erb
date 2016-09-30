@@ -11,7 +11,6 @@
     </div>
   <% end %>
 
-
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title"><%= fa_icon "male" %> Datos personales</h3>
@@ -19,35 +18,30 @@
     <div class="panel-body">  
 
       <%= f.fields_for :persona do |p| %>
-
-      <div class="row">
-
-      
-        <%= p.label :tipo_documento_id, "Tipo de doc.", class: "col-sm-2 control-label" %>
-        <div class="col-sm-2">
-          <%= p.collection_select :tipo_documento_id, TipoDocumento.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm"} %>
-        </div>
-      
-      
-        <%= p.label :nro_documento, "N° de documento", class: "col-sm-3 control-label" %>
-        <div class="col-sm-2">
-          <%= p.text_field :nro_documento, :class => "form-control input-sm" %>
+        <div class="row">
+          <%= p.label :tipo_documento_id, "Tipo de doc.", class: "col-sm-2 control-label" %>
+          <div class="col-sm-2">
+            <%= p.collection_select :tipo_documento_id, TipoDocumento.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm" } %>
+          </div>
+          <%= p.label :nro_documento, "N° de documento", class: "col-sm-3 control-label" %>
+          <div class="col-sm-2">
+            <%= p.text_field :nro_documento, :class => "form-control input-sm" %>
+          </div>
         </div>
 
-      </div>
-      <div class="row">
+        <div class="row">
+          <%= p.label :apellido, "Apellido", class: "col-sm-2 control-label" %>
+          <div class="col-sm-4">
+            <%= p.text_field :apellido, :class => "form-control input-sm" %>
+          </div>
 
-        <%= p.label :apellido, "Apellido", class: "col-sm-2 control-label" %>
-        <div class="col-sm-4">
-          <%= p.text_field :apellido, :class => "form-control input-sm" %>
+          <%= p.label :nombre, "Nombre", class: "col-sm-2 control-label" %>
+          <div class="col-sm-4">
+            <%= p.text_field :nombre, :class => "form-control input-sm" %>
+          </div>
         </div>
 
-        <%= p.label :nombre, "Nombre", class: "col-sm-2 control-label" %>
-        <div class="col-sm-4">
-          <%= p.text_field :nombre, :class => "form-control input-sm" %>
-        </div>
-      </div>
-      <div class="row">
+        <div class="row">
           <%= p.label :telefono, "Teléfono", class: "col-sm-2 control-label" %>
           <div class="col-sm-4">
             <%= p.text_field :telefono, :class => "form-control input-sm" %>
@@ -56,7 +50,7 @@
           <div class="col-sm-4">
             <%= p.text_field :email, :class => "form-control input-sm" %>
           </div>
-      </div>
+        </div>
 
       <% end %>
 
@@ -68,9 +62,7 @@
       <h3 class="panel-title"><%= fa_icon "user" %> Datos del usuario</h3>
     </div>
     <div class="panel-body">  
-
-
-    <div class="row">
+      <div class="row">
 
         <%= f.label :categorium_id, "Categoría", class: "col-sm-2 control-label" %>
         <div class="col-sm-5">
@@ -80,17 +72,14 @@
         <div class="col-sm-3">
           <%= f.number_field :numero, class: "form-control input-sm" %>
         </div>
-
-    </div>
-
-    <div class="row">
-
-      <%= f.label :razon_social, "Razón social", class: "col-sm-2 control-label" %>
-      <div class="col-sm-5">
-        <%= f.text_field :razon_social, class: "form-control input-sm" %>
       </div>
 
-    </div>
+      <div class="row">
+        <%= f.label :razon_social, "Razón social", class: "col-sm-2 control-label" %>
+        <div class="col-sm-5">
+          <%= f.text_field :razon_social, class: "form-control input-sm" %>
+        </div>
+      </div>
     <!-- <div class="form-group">
       <%= f.label :domicilio, class: "col-sm-2 control-label" %>
       <div class="col-sm-6">
@@ -151,8 +140,8 @@
         <%= f.collection_select :estado_id, Estado.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm"} %>
       </div>
     </div> -->
-    <%= hidden_field(:usuario, :latitud) %>
-    <%= hidden_field(:usuario, :longitud) %>
+      <%= hidden_field(:usuario, :latitud) %>
+      <%= hidden_field(:usuario, :longitud) %>
     </div>
   </div>
 
@@ -178,19 +167,14 @@
     <div class="panel-body">  
 
       <%= f.fields_for :usuario_medidors do |m| %>
-
-      <div class="row">
-
-        <%= m.label :medidor_id, "Medidor", class: "col-sm-3 control-label" %>
-        <div class="col-sm-6">
-          <%= m.collection_select :medidor_id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm"} %>
+        <div class="row">
+          <%= m.label :medidor_id, "Medidor", class: "col-sm-3 control-label" %>
+          <div class="col-sm-6">
+            <%= m.collection_select :medidor_id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm"} %>
+          </div>
+          <%= m.link_to_remove "", :class => "btn btn-danger glyphicon glyphicon-trash pull-right" %>
         </div>
-        <%= m.link_to_remove "", :class => "btn btn-danger glyphicon glyphicon-trash pull-right" %>
-
-      </div>
       <% end %>
-
-
       <p><%= f.link_to_add "Agregar un Medidor", :usuario_medidors , :class => "label label-success" %></p>
 
     </div>
@@ -208,7 +192,7 @@
   //Array de marcadores
   var markersArray = [];
   //Variable para mapa
-  var mymap = L.map('map').setView([-43.296344, -65.091966], 15);
+  var mymap ;
 
   /*Verifica que al menos exista un marcador en el mapa*/
   function validateMarker(){
@@ -245,13 +229,14 @@
     markersArray.push(marker);
   }
 
-  $('document').ready(function(){
+  /*Inicializa el mapa*/
+  function initMap(){
+    mymap = L.map('map').setView([-43.296344, -65.091966], 15);
     L.tileLayer('http://tile.osm.org/{z}/{x}/{y}.png', 
     {
       attribution: 'Cooperativa de Servicios Públicos Limitados Consumo y Vivienda Rawson',
       maxZoom: 18
     }).addTo(mymap);
-
     //Si hay un id como parametro en la URL se trata de una edición
     <% if params[:id] != nil %>
       //Creo un marcador con los datos almacenados
@@ -267,5 +252,9 @@
     <% end %>
         
     mymap.on('click', placeMarker);
+  }
+
+  $('document').ready(function(){
+    initMap();    
   });
 </script>

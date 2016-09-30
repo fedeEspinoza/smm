@@ -3,6 +3,8 @@ class Persona < ActiveRecord::Base
   has_many :usuarios
 
   validates :nro_documento, presence: true
+  validates :nro_documento, numericality: { only_integer: true }
+  validates :nro_documento, length: {minimum: 7, maximum: 8}
   validates :apellido, presence: true
   validates :nombre, presence: true
   validates :telefono, presence: true
