@@ -1,4 +1,5 @@
 class HistorialMedicionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_historial_medicion, only: [:show, :edit, :update, :destroy]
 
   # GET /historial_medicions
