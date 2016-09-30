@@ -1,4 +1,4 @@
-<%= nested_form_for(@usuario, html: { role: "form" }) do |f| %>
+<%= nested_form_for(@usuario, html: { role: "form", onsubmit: "return validateMarker()" }) do |f| %>
   <% if @usuario.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
@@ -205,64 +205,67 @@
 
 
 <script type="text/javascript">  
-  $('document').ready(function(){
-    var markersArray = [];
+  //Array de marcadores
+  var markersArray = [];
+  //Variable para mapa
+  var mymap = L.map('map').setView([-43.296344, -65.091966], 15);
 
-    var mymap = L.map('map').setView([-43.296344, -65.091966], 15);
+  /*Verifica que al menos exista un marcador en el mapa*/
+  function validateMarker(){
+    if (markersArray.length == 0){
+      alert("Debe seleccionar una ubicación en el mapa");
+      return false;
+    }
+    return true;
+  }
+
+  /* Elimina todos los marcadores del mapa */
+  function deleteMarkers() {
+    if (markersArray) {
+      for (i in markersArray) {
+        mymap.removeLayer(markersArray[i]);
+      }
+      markersArray.length = 0;
+    }
+  }
+
+  /* Ubica un marcador en el mapa */
+  function placeMarker(e) {      
+    deleteMarkers();
+    var marker = L.marker(e.latlng, {draggable: true}).addTo(mymap);
+    var position = marker.getLatLng();
+    $('#usuario_latitud').val(position.lat.toString());
+    $('#usuario_longitud').val(position.lng.toString());
+    marker.on('dragend', function(event){
+      var marker = event.target;
+      var position = marker.getLatLng();
+      $('#usuario_latitud').val(position.lat.toString());
+      $('#usuario_longitud').val(position.lng.toString());
+    });
+    markersArray.push(marker);
+  }
+
+  $('document').ready(function(){
     L.tileLayer('http://tile.osm.org/{z}/{x}/{y}.png', 
     {
       attribution: 'Cooperativa de Servicios Públicos Limitados Consumo y Vivienda Rawson',
       maxZoom: 18
     }).addTo(mymap);
 
+    //Si hay un id como parametro en la URL se trata de una edición
     <% if params[:id] != nil %>
-
-      //Creo un nuevo marcador
+      //Creo un marcador con los datos almacenados
       var marker = L.marker([<%= @usuario.latitud %>,<%= @usuario.longitud %>], {draggable: true}).addTo(mymap);
       mymap.panTo(marker.getLatLng());
-
       marker.on('dragend', function(event){
         var marker = event.target;
         var position = marker.getLatLng();
-        document.getElementById('usuario_latitud').value = position.lat;
-        document.getElementById('usuario_longitud').value = position.lng;
+        $('#usuario_latitud').val(position.lat.toString());
+        $('#usuario_longitud').val(position.lng.toString());
       });
       markersArray.push(marker);
-
     <% end %>
-
-    function validate_marker(){
-      if (markersArray.length == 0){
-        alert("Debe seleccionar una ubicación en el mapa");
-        return false;
-      }
-      return true;
-    }
-
-    function deleteOverlays() {
-      if (markersArray) {
-        for (i in markersArray) {
-          markersArray[i].setMap(null);
-        }
-        markersArray.length = 0;
-      }
-    }
-
-    function placeMarker(e) {      
-      deleteOverlays();
-      var marker = L.marker(e.latlng, {draggable: true}).addTo(mymap);
-      var position = marker.getLatLng();
-      document.getElementById('usuario_latitud').value = position.lat;
-      document.getElementById('usuario_longitud').value = position.lng;
-      marker.on('dragend', function(event){
-        var marker = event.target;
-        var position = marker.getLatLng();
-        document.getElementById('usuario_latitud').value = position.lat;
-        document.getElementById('usuario_longitud').value = position.lng;
-      });
-      markersArray.push(marker);
-    }
-    
+        
     mymap.on('click', placeMarker);
   });
 </script>
