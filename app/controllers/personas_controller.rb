@@ -2,6 +2,14 @@ class PersonasController < ApplicationController
   before_action :authenticate_user!
   before_action :set_persona, only: [:show, :edit, :update, :destroy]
 
+  # Para obtener personas via AJAX
+  def find_persona
+    tipo_documento = TipoDocumento.find(params[:tipo_documento_id])
+    @persona = Persona.includes(:tipo_documento).where("tipo_documentos.descripcion" => tipo_documento.descripcion, :nro_documento => params[:nro_documento]).first
+    
+    render json: @persona
+  end
+
   # GET /personas
   # GET /personas.json
   def index

@@ -13,7 +13,11 @@
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title"><%= fa_icon "male" %> Datos personales</h3>
+      <h3 class="panel-title"><%= fa_icon "male" %> Datos personales
+      <% if params[:action] == 'new' %>
+        <small>(Seleccione un <b>Tipo de documento</b> y complete el campo <b>N° de documento</b> para realizar una búsqueda de datos) </small>
+      <% end %>
+      </h3>
     </div>
     <div class="panel-body">  
 
@@ -148,7 +152,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title"><%= fa_icon "map-marker" %> Ubicación del Usuario 
-        <% if params[:id] != nil %>
+        <% if params[:action] == 'edit' %>
           <small>(Arrastre el marcador para cambiar la ubicación) </small>
         <% else %>
           <small>(Haga click en el mapa para seleccionar una ubicación) </small>
@@ -175,7 +179,7 @@
           <%= m.link_to_remove "", :class => "btn btn-danger glyphicon glyphicon-trash pull-right" %>
         </div>
       <% end %>
-      <p><%= f.link_to_add "Agregar un Medidor", :usuario_medidors , :class => "label label-success" %></p>
+      <p><%= f.link_to_add "Asignar un Medidor", :usuario_medidors , :class => "label label-success" %></p>
 
     </div>
   </div>
@@ -256,5 +260,47 @@
 
   $('document').ready(function(){
     initMap();    
+    $('#usuario_persona_attributes_tipo_documento_id').change(function(){
+      var tipo_documento_id = parseInt($('#usuario_persona_attributes_tipo_documento_id').val(),10);
+      var nro_documento = parseInt($('#usuario_persona_attributes_nro_documento').val(),10);
+      $.ajax({
+        url: '/personas/find_persona/'+tipo_documento_id+'/'+nro_documento,
+        type: 'GET'
+      })
+      .done(function(data){
+        $('#usuario_persona_attributes_apellido').val('');
+        $('#usuario_persona_attributes_nombre').val('');
+        $('#usuario_persona_attributes_telefono').val('');
+        $('#usuario_persona_attributes_email').val('');
+        if (data != null)
+        {
+          $('#usuario_persona_attributes_apellido').val(data.apellido.toString());
+          $('#usuario_persona_attributes_nombre').val(data.nombre.toString());
+          $('#usuario_persona_attributes_telefono').val(data.telefono.toString());
+          $('#usuario_persona_attributes_email').val(data.email.toString());
+        }
+      });
+    });
+    $('#usuario_persona_attributes_nro_documento').on('keyup',function(){
+      var tipo_documento_id = parseInt($('#usuario_persona_attributes_tipo_documento_id').val(),10);
+      var nro_documento = parseInt($('#usuario_persona_attributes_nro_documento').val(),10);
+      $.ajax({
+        url: '/personas/find_persona/'+tipo_documento_id+'/'+nro_documento,
+        type: 'GET'
+      })
+      .done(function(data){
+        $('#usuario_persona_attributes_apellido').val('');
+        $('#usuario_persona_attributes_nombre').val('');
+        $('#usuario_persona_attributes_telefono').val('');
+        $('#usuario_persona_attributes_email').val('');
+        if (data != null)
+        {
+          $('#usuario_persona_attributes_apellido').val(data.apellido.toString());
+          $('#usuario_persona_attributes_nombre').val(data.nombre.toString());
+          $('#usuario_persona_attributes_telefono').val(data.telefono.toString());
+          $('#usuario_persona_attributes_email').val(data.email.toString());
+        }
+      });
+    });
   });
 </script>

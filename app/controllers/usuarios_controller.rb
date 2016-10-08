@@ -30,8 +30,15 @@ class UsuariosController < ApplicationController
   # POST /usuarios
   # POST /usuarios.json
   def create
-    @usuario = Usuario.new(usuario_params)
+    @usuario = Usuario.new(usuario_params)    
     @usuario.estado_id = 1 #Estado "Alta"
+
+    persona_params = usuario_params[:persona_attributes]
+    persona = Persona.where(tipo_documento_id: persona_params[:tipo_documento_id], nro_documento: persona_params[:nro_documento]).first
+    if !persona.blank?
+      persona.update(persona_params)
+      @usuario.persona = persona
+    end
 
     respond_to do |format|
       if @usuario.save

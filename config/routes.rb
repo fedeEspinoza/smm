@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   root 'index#index'
 
   get 'index' => 'index#index'
+  get 'personas/find_persona/:tipo_documento_id/:nro_documento' => 'personas#find_persona'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

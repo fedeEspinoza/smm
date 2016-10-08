@@ -10,8 +10,10 @@ class Usuario < ActiveRecord::Base
   accepts_nested_attributes_for :persona
 
   validates :numero, presence: true
+  #validates :latitud, :presence => { :message => "Debe seleccionar una ubicación en el mapa" }
+  #validates :longitud, :presence => { :message => "Debe seleccionar una ubicación en el mapa" }
 
   def to_s
-  	"#{self.razon_social} - #{self.persona.to_s}"
+  	"#{self.persona.to_s} - #{self.razon_social}"
   end
 end

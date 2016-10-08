@@ -11,6 +11,6 @@ class Persona < ActiveRecord::Base
   validates :email, presence: true
 
   def to_s
-  	"#{self.nro_documento} - #{apellido}, #{nombre}"
+  	"#{self.tipo_documento} #{self.nro_documento} - #{apellido}, #{nombre}"
   end
 end
