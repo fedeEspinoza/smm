@@ -2,7 +2,7 @@
   <% if @usuario.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-      <h5><b>Atención. Hubo <%= pluralize(@usuario.errors.count, "error") %></b></h5>
+      <h5><b>Atención! Ocurrieron los siguientes errores </b></h5>
       <ul>
       <% @usuario.errors.messages.values.each do |msg| %>
         <%msg.each do  |m| %>
