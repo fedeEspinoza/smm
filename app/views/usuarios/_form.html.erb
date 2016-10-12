@@ -1,11 +1,13 @@
-<%= nested_form_for(@usuario, html: { role: "form", onsubmit: "return validateMarker()" }) do |f| %>
+<%= nested_form_for(@usuario, html: { role: "form"}) do |f| %>
   <% if @usuario.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-      <h5>Atención. Hubo <%= pluralize(@usuario.errors.count, "error") %></h5>
+      <h5><b>Atención. Hubo <%= pluralize(@usuario.errors.count, "error") %></b></h5>
       <ul>
-      <% @usuario.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% @usuario.errors.messages.values.each do |msg| %>
+        <%msg.each do  |m| %>
+          <li><%= m %></li>
+        <%end %>
       <% end %>
       </ul>
     </div>
@@ -15,7 +17,7 @@
     <div class="panel-heading">
       <h3 class="panel-title"><%= fa_icon "male" %> Datos personales
       <% if params[:action] == 'new' %>
-        <small>(Seleccione un <b>Tipo de documento</b> y complete el campo <b>N° de documento</b> para realizar una búsqueda de datos) </small>
+        <small>(Seleccione un <b>Tipo de documento</b> y complete el campo <b>Número de documento</b> para realizar una búsqueda de datos) </small>
       <% end %>
       </h3>
     </div>
@@ -23,36 +25,36 @@
 
       <%= f.fields_for :persona do |p| %>
         <div class="row">
-          <%= p.label :tipo_documento_id, "Tipo de doc.", class: "col-sm-2 control-label" %>
+          <%= p.label :tipo_documento_id, "Tipo de documento", class: "col-sm-2 control-label" %>
           <div class="col-sm-2">
-            <%= p.collection_select :tipo_documento_id, TipoDocumento.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm" } %>
+            <%= p.collection_select :tipo_documento_id, TipoDocumento.all, :id, :to_s, {prompt: false, selected: TipoDocumento.where(descripcion: "DNI").first.id}, {:class => "form-control"} %>
           </div>
-          <%= p.label :nro_documento, "N° de documento", class: "col-sm-3 control-label" %>
+          <%= p.label :nro_documento, "Número de documento", class: "col-sm-3 control-label" %>
           <div class="col-sm-2">
-            <%= p.text_field :nro_documento, :class => "form-control input-sm" %>
+            <%= p.text_field :nro_documento, :class => "form-control" %>
           </div>
         </div>
 
         <div class="row">
           <%= p.label :apellido, "Apellido", class: "col-sm-2 control-label" %>
           <div class="col-sm-4">
-            <%= p.text_field :apellido, :class => "form-control input-sm" %>
+            <%= p.text_field :apellido, :class => "form-control" %>
           </div>
 
           <%= p.label :nombre, "Nombre", class: "col-sm-2 control-label" %>
           <div class="col-sm-4">
-            <%= p.text_field :nombre, :class => "form-control input-sm" %>
+            <%= p.text_field :nombre, :class => "form-control" %>
           </div>
         </div>
 
         <div class="row">
           <%= p.label :telefono, "Teléfono", class: "col-sm-2 control-label" %>
           <div class="col-sm-4">
-            <%= p.text_field :telefono, :class => "form-control input-sm" %>
+            <%= p.text_field :telefono, :class => "form-control" %>
           </div>
           <%= p.label :email, "Email", class: "col-sm-2 control-label" %>
           <div class="col-sm-4">
-            <%= p.text_field :email, :class => "form-control input-sm" %>
+            <%= p.text_field :email, :class => "form-control" %>
           </div>
         </div>
 
@@ -70,78 +72,78 @@
 
         <%= f.label :categorium_id, "Categoría", class: "col-sm-2 control-label" %>
         <div class="col-sm-5">
-          <%= f.collection_select :categorium_id, Categorium.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm"} %>
+          <%= f.collection_select :categorium_id, Categorium.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
         </div>
         <%= f.label :numero, "Número", class: "col-sm-2 control-label" %>
         <div class="col-sm-3">
-          <%= f.number_field :numero, class: "form-control input-sm" %>
+          <%= f.number_field :numero, class: "form-control" %>
         </div>
       </div>
 
       <div class="row">
         <%= f.label :razon_social, "Razón social", class: "col-sm-2 control-label" %>
         <div class="col-sm-5">
-          <%= f.text_field :razon_social, class: "form-control input-sm" %>
+          <%= f.text_field :razon_social, class: "form-control" %>
         </div>
       </div>
     <!-- <div class="form-group">
       <%= f.label :domicilio, class: "col-sm-2 control-label" %>
       <div class="col-sm-6">
-        <%= f.text_field :domicilio, class: "form-control input-sm" %>
+        <%= f.text_field :domicilio, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :circunscripcion, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.number_field :circunscripcion, class: "form-control input-sm" %>
+        <%= f.number_field :circunscripcion, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :sector, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.number_field :sector, class: "form-control input-sm" %>
+        <%= f.number_field :sector, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :tipo, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.number_field :tipo, class: "form-control input-sm" %>
+        <%= f.number_field :tipo, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :manzana, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.number_field :manzana, class: "form-control input-sm" %>
+        <%= f.number_field :manzana, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :parcela, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.number_field :parcela, class: "form-control input-sm" %>
+        <%= f.number_field :parcela, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :unidad_funcional, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.number_field :unidad_funcional, class: "form-control input-sm" %>
+        <%= f.number_field :unidad_funcional, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :latitud, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.text_field :latitud, class: "form-control input-sm" %>
+        <%= f.text_field :latitud, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :longitud, class: "col-sm-2 control-label" %>
       <div class="col-sm-10">
-        <%= f.text_field :longitud, class: "form-control input-sm" %>
+        <%= f.text_field :longitud, class: "form-control" %>
       </div>
     </div>
     <div class="form-group">
       <%= f.label :estado_id, class: "col-sm-2 control-label" %>
       <div class="col-sm-5">
-        <%= f.collection_select :estado_id, Estado.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm"} %>
+        <%= f.collection_select :estado_id, Estado.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
       </div>
     </div> -->
       <%= hidden_field(:usuario, :latitud) %>
@@ -174,7 +176,7 @@
         <div class="row">
           <%= m.label :medidor_id, "Medidor", class: "col-sm-3 control-label" %>
           <div class="col-sm-6">
-            <%= m.collection_select :medidor_id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control input-sm"} %>
+            <%= m.collection_select :medidor_id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
           </div>
           <%= m.link_to_remove "", :class => "btn btn-danger glyphicon glyphicon-trash pull-right" %>
         </div>
@@ -197,15 +199,6 @@
   var markersArray = [];
   //Variable para mapa
   var mymap ;
-
-  /*Verifica que al menos exista un marcador en el mapa*/
-  function validateMarker(){
-    if (markersArray.length == 0){
-      alert("Debe seleccionar una ubicación en el mapa");
-      return false;
-    }
-    return true;
-  }
 
   /* Elimina todos los marcadores del mapa */
   function deleteMarkers() {
@@ -241,8 +234,8 @@
       attribution: 'Cooperativa de Servicios Públicos Limitados Consumo y Vivienda Rawson',
       maxZoom: 18
     }).addTo(mymap);
-    //Si hay un id como parametro en la URL se trata de una edición
-    <% if params[:id] != nil %>
+
+    <% if params[:action] == 'edit' %>
       //Creo un marcador con los datos almacenados
       var marker = L.marker([<%= @usuario.latitud %>,<%= @usuario.longitud %>], {draggable: true}).addTo(mymap);
       mymap.panTo(marker.getLatLng());
@@ -267,13 +260,13 @@
         url: '/personas/find_persona/'+tipo_documento_id+'/'+nro_documento,
         type: 'GET'
       })
-      .done(function(data){
+      .done(function(data){        
         $('#usuario_persona_attributes_apellido').val('');
         $('#usuario_persona_attributes_nombre').val('');
         $('#usuario_persona_attributes_telefono').val('');
         $('#usuario_persona_attributes_email').val('');
         if (data != null)
-        {
+        {          
           $('#usuario_persona_attributes_apellido').val(data.apellido.toString());
           $('#usuario_persona_attributes_nombre').val(data.nombre.toString());
           $('#usuario_persona_attributes_telefono').val(data.telefono.toString());
@@ -288,13 +281,13 @@
         url: '/personas/find_persona/'+tipo_documento_id+'/'+nro_documento,
         type: 'GET'
       })
-      .done(function(data){
+      .done(function(data){        
         $('#usuario_persona_attributes_apellido').val('');
         $('#usuario_persona_attributes_nombre').val('');
         $('#usuario_persona_attributes_telefono').val('');
         $('#usuario_persona_attributes_email').val('');
         if (data != null)
-        {
+        {          
           $('#usuario_persona_attributes_apellido').val(data.apellido.toString());
           $('#usuario_persona_attributes_nombre').val(data.nombre.toString());
           $('#usuario_persona_attributes_telefono').val(data.telefono.toString());

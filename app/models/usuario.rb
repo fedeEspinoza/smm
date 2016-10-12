@@ -9,9 +9,8 @@ class Usuario < ActiveRecord::Base
   accepts_nested_attributes_for :usuario_medidors, allow_destroy: true
   accepts_nested_attributes_for :persona
 
-  validates :numero, presence: true
-  #validates :latitud, :presence => { :message => "Debe seleccionar una ubicación en el mapa" }
-  #validates :longitud, :presence => { :message => "Debe seleccionar una ubicación en el mapa" }
+  validates :numero, :presence => { :message => "Debe completar el campo Número" }
+  validates :latitud, :presence => { :message => "Debe seleccionar una ubicación en el mapa" }
 
   def to_s
   	"#{self.persona.to_s} - #{self.razon_social}"

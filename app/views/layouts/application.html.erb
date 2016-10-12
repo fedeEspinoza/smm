@@ -23,139 +23,100 @@
 </head>
 <body>
 
-  <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <% if user_signed_in? %> 
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-              <% end %> 
-              <%= link_to "SMM", "/", class: "navbar-brand" %>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <% if user_signed_in? %> 
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>
-                          <%= link_to edit_user_registration_path do %>
-                            <%= fa_icon "user", text: "Mi cuenta" %>
-                          <% end %>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                          <%= link_to destroy_user_session_path, method: :delete, id: "salir" do %>
-                            <%= fa_icon "sign-out", text: "Salir" %>
-                          <% end %>
-                        </li>
-                    </ul>
-                  </li>
-                </ul>
-              <% end%> 
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
+  <% if user_signed_in? %> 
+  <div id="wrapper">
+  <% else %>
+  <div id="wrapper-toggled">
+  <% end %>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <% if user_signed_in? %> 
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <% end %> 
+        <%= link_to "SMM", "/", class: "navbar-brand" %>
+      </div>
+      <!-- Top Menu Items -->
+      <% if user_signed_in? %> 
+        <ul class="nav navbar-right top-nav">       
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to edit_user_registration_path do %>
+                  <%= fa_icon "user", text: "Mi cuenta" %>
+                <% end %>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete, id: "salir" do %>
+                  <%= fa_icon "sign-out", text: "Salir" %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      <% end%> 
+      <% if user_signed_in? %> 
+      <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">                                  
+          <li class="<%= params['controller'] == 'index' ? 'active' : ''%>"><%= link_to index_path do %>
+              <%= fa_icon "home", text: "Inicio" %>
+            <% end %>
+          </li>
+          <li class="<%= params['controller'] == 'categoria' ? 'active' : ''%>"><%= link_to categoria_path do %>
+              <%= fa_icon "industry", text: "Categorias" %>
+            <% end %>
+          </li>
+          <li class="<%= params['controller'] == 'grupos' ? 'active' : ''%>"><%= link_to grupos_path do %>
+              <%= fa_icon "group", text: "Grupos" %>
+            <% end %>  
+          </li>
+          <li class="<%= params['controller'] == 'prioridads' ? 'active' : ''%>"><%= link_to prioridads_path do %>
+              <%= fa_icon "list-alt", text: "Prioridades" %>
+            <% end %>
+          </li>
+          <li class="<%= params['controller'] == 'zonas' ? 'active' : ''%>"><%= link_to zonas_path do %>
+              <%= fa_icon "object-group", text: "Zonas" %>
+            <% end %>  
+          </li>
+          <li class="<%= params['controller'] == 'novedads' ? 'active' : ''%>"><%= link_to novedads_path do %>
+              <%= fa_icon "newspaper-o", text: "Novedades" %>
+            <% end %>  
+          </li>
+          <li class="<%= params['controller'] == 'medidors' ? 'active' : ''%>"><%= link_to medidors_path do %>
+              <%= fa_icon "calculator", text: "Medidores" %>
+            <% end %>  
+          </li>
+          <li class="<%= params['controller'] == 'usuarios' ? 'active' : ''%>"><%= link_to usuarios_path do %>
+              <%= fa_icon "user", text: "Usuarios" %>
+            <% end %>
+          </li>
+          <li class="<%= params['controller'] == 'historial_medicions' ? 'active' : ''%>"><%= link_to historial_medicions_path do %>
+              <%= fa_icon "line-chart", text: "Mediciones" %>
+            <% end %>
+          </li>            
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+      <% end %>
     </nav>
 
-    <!-- Page Content -->
-    <div class="container">
-  
-    <% if user_signed_in? %> 
-    <div id="wrapper">
-    <% else %>  
-    <div id="wrapper" class="toggled">
-    <% end %>  
-    
-        <!-- Sidebar -->
-        <% if user_signed_in? %> 
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li><%= link_to index_path, class: params['controller'] == 'index' ? 'current' : '' do %>
-                  <%= fa_icon "home", text: "Inicio" %>
-                <% end %>
-                </li>
-                <li><%= link_to categoria_path, class: params['controller'] == 'categoria' ? 'current' : '' do %>
-                  <%= fa_icon "industry", text: "Categorias" %>
-                <% end %>
-                </li>
-                <li><%= link_to grupos_path, class: params['controller'] == 'grupos' ? 'current' : '' do %>
-                  <%= fa_icon "group", text: "Grupos" %>
-                <% end %>  
-                </li>
-                <li><%= link_to prioridads_path, class: params['controller'] == 'prioridads' ? 'current' : '' do %>
-                  <%= fa_icon "list-alt", text: "Prioridades" %>
-                <% end %>
-                </li>
-                <li><%= link_to zonas_path, class: params['controller'] == 'zonas' ? 'current' : '' do %>
-                  <%= fa_icon "object-group", text: "Zonas" %>
-                <% end %>  
-                </li>
-                <li><%= link_to novedads_path, class: params['controller'] == 'novedads' ? 'current' : '' do %>
-                  <%= fa_icon "newspaper-o", text: "Novedades" %>
-                <% end %>  
-                </li>
-                <li><%= link_to medidors_path, class: params['controller'] == 'medidors' ? 'current' : '' do %>
-                  <%= fa_icon "calculator", text: "Medidores" %>
-                <% end %>  
-                </li>
-                <li><%= link_to usuarios_path, class: params['controller'] == 'usuarios' ? 'current' : '' do %>
-                  <%= fa_icon "user", text: "Usuarios" %>
-                <% end %>
-                </li>
-                <li><%= link_to historial_medicions_path, class: params['controller'] == 'historial_medicions' ? 'current' : '' do %>
-                  <%= fa_icon "line-chart", text: "Mediciones" %>
-                <% end %>
-                </li>            
-                </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-        <% end %>
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <%= bootstrap_flash %>
-                <%= yield %>                
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <%= bootstrap_flash %>
+        <%= yield %>                
+      </div>
     </div>
-    <!-- /#wrapper -->
-    </div>
-
-    <!-- Menu Toggle Script -->
-    <script type="text/javascript">
-      $('#document').ready(function(){
-        $("#menu-toggle").click(function(e) {
-          e.preventDefault();
-          $("#wrapper").toggleClass("toggled");
-          if ( $("#menu-toggle span").attr('class') == "glyphicon glyphicon-chevron-left" )
-          {
-            $("#menu-toggle span").removeClass("glyphicon glyphicon-chevron-left");
-            $("#menu-toggle span").addClass("glyphicon glyphicon-chevron-right");
-            console.log("Class name: "+$("#menu-toggle span").attr('class'))
-          }            
-          else
-          {
-            console.log("Class name: "+$("#menu-toggle span").attr('class'))
-            $("#menu-toggle span").removeClass("glyphicon glyphicon-chevron-right");
-            $("#menu-toggle span").addClass("glyphicon glyphicon-chevron-left");
-          }            
-        });
-      });
-    </script>
-
+    <!-- /#page-wrapper -->
+  </div>
+  <!-- /#wrapper -->
 </body>
 </html>
