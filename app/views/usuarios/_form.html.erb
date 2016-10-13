@@ -274,7 +274,7 @@
         }
       });
     });
-    $('#usuario_persona_attributes_nro_documento').on('keyup',function(){
+    $('#usuario_persona_attributes_nro_documento').on('input propertychange paste', function() {
       var tipo_documento_id = parseInt($('#usuario_persona_attributes_tipo_documento_id').val(),10);
       var nro_documento = parseInt($('#usuario_persona_attributes_nro_documento').val(),10);
       $.ajax({
@@ -294,6 +294,6 @@
           $('#usuario_persona_attributes_email').val(data.email.toString());
         }
       });
-    });
+    });    
   });
 </script>
