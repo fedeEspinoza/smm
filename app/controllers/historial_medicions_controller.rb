@@ -26,6 +26,7 @@ class HistorialMedicionsController < ApplicationController
   # POST /historial_medicions.json
   def create
     @historial_medicion = HistorialMedicion.new(historial_medicion_params)
+    @historial_medicion.user_id = current_user.id
 
     respond_to do |format|
       if @historial_medicion.save

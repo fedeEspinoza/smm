@@ -25,12 +25,12 @@
       <%= f.collection_select :novedad_id, Novedad.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <%= f.label :user_id, class: "col-sm-3 control-label" %>
     <div class="col-sm-5">
       <%= f.collection_select :user_id, User.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
-  </div>
+  </div> -->
   <div class="form-group">
     <%= f.label :estado_medidor, class: "col-sm-3 control-label" %>
     <div class="col-sm-3">

@@ -5,6 +5,6 @@ class Novedad < ActiveRecord::Base
   validates :descripcion, :presence => { :message => "Debe completar el campo Descripción" }
 
   def to_s 
-  	self.descripcion	
+  	"#{self.codigo} - #{self.descripcion}"	
   end
 end
