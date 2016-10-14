@@ -4,7 +4,8 @@ class CreateUsuarios < ActiveRecord::Migration
       t.references :categorium, index: true, foreign_key: true
       t.integer :numero
       t.string :razon_social
-      t.string :domicilio
+      t.string :domicilio_postal
+      t.string :domicilio_servicio
       t.integer :circunscripcion
       t.integer :sector
       t.integer :tipo

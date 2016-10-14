@@ -137,24 +137,25 @@ ActiveRecord::Schema.define(version: 20160906231612) do
   add_index "usuario_medidors", ["usuario_id"], name: "index_usuario_medidors_on_usuario_id", using: :btree
 
   create_table "usuarios", force: :cascade do |t|
-    t.integer  "categorium_id",    limit: 4
-    t.integer  "numero",           limit: 4
-    t.string   "razon_social",     limit: 255
-    t.string   "domicilio",        limit: 255
-    t.integer  "circunscripcion",  limit: 4
-    t.integer  "sector",           limit: 4
-    t.integer  "tipo",             limit: 4
-    t.integer  "manzana",          limit: 4
-    t.integer  "parcela",          limit: 4
-    t.integer  "unidad_funcional", limit: 4
-    t.string   "latitud",          limit: 255
-    t.string   "longitud",         limit: 255
-    t.integer  "estado_id",        limit: 4
-    t.integer  "persona_id",       limit: 4
+    t.integer  "categorium_id",      limit: 4
+    t.integer  "numero",             limit: 4
+    t.string   "razon_social",       limit: 255
+    t.string   "domicilio_postal",   limit: 255
+    t.string   "domicilio_servicio", limit: 255
+    t.integer  "circunscripcion",    limit: 4
+    t.integer  "sector",             limit: 4
+    t.integer  "tipo",               limit: 4
+    t.integer  "manzana",            limit: 4
+    t.integer  "parcela",            limit: 4
+    t.integer  "unidad_funcional",   limit: 4
+    t.string   "latitud",            limit: 255
+    t.string   "longitud",           limit: 255
+    t.integer  "estado_id",          limit: 4
+    t.integer  "persona_id",         limit: 4
     t.datetime "fecha_alta"
     t.datetime "fecha_baja"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "usuarios", ["categorium_id"], name: "index_usuarios_on_categorium_id", using: :btree
