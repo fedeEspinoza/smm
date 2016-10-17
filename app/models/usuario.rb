@@ -11,6 +11,7 @@ class Usuario < ActiveRecord::Base
 
   validates :numero, :presence => { :message => "Debe completar el campo Número" }
   validates :numero, numericality: { only_integer: true, :message => "El campo Número debe ser un valor entero"}
+  validates :numero, length: {minimum: 7, maximum: 7, :message => "El campo Número debe tener 7 dígitos"}
   validates :latitud, :presence => { :message => "Debe seleccionar una ubicación en el mapa" }
 
   def to_s
