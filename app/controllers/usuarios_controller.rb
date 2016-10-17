@@ -31,7 +31,7 @@ class UsuariosController < ApplicationController
   # POST /usuarios.json
   def create
     @usuario = Usuario.new(usuario_params)    
-    @usuario.estado_id = 1 #Estado "Alta"
+    @usuario.estado_id = Estado.where(descripcion: "Alta").first.id #Estado "Alta"
 
     persona_params = usuario_params[:persona_attributes]
     persona = Persona.where(tipo_documento_id: persona_params[:tipo_documento_id], nro_documento: persona_params[:nro_documento]).first
@@ -39,6 +39,9 @@ class UsuariosController < ApplicationController
       persona.update(persona_params)
       @usuario.persona = persona
     end
+
+    #Valido que cada usuario pueda tener sólo un medidor de Energia Electrica
+    
 
     respond_to do |format|
       if @usuario.save
