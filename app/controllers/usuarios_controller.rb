@@ -40,16 +40,25 @@ class UsuariosController < ApplicationController
       @usuario.persona = persona
     end
 
-    #Valido que cada usuario pueda tener sólo un medidor de Energia Electrica
-    
-
     respond_to do |format|
-      if @usuario.save
-        format.html { redirect_to @usuario, notice: 'Se ha creado un nuevo Usuario.' }
-        format.json { render :show, status: :created, location: @usuario }
-      else
+      #Valido que cada usuario pueda tener sólo un medidor de Energia Electrica
+      medidores_ids = @usuario.usuario_medidors.map(&:medidor_id)
+      aux_hash = Hash[(1..3).collect { |v| [v, 0] }]
+      cantidad_por_tipo = Medidor.joins(:tipo_medidor).where(id: medidores_ids).group(:tipo_medidor_id).count
+      cantidad_por_tipo = aux_hash.merge(cantidad_por_tipo)
+      cant_tipo_2_y_3 = cantidad_por_tipo[2] + cantidad_por_tipo[3]
+      if (cantidad_por_tipo[2] >= 2) || (cantidad_por_tipo[3] >= 2 || cant_tipo_2_y_3 >= 2)                
+        @usuario.errors[:base] << "No puede asignar más de un medidor de energía eléctrica (Activa o Reactiva)"
         format.html { render :new }
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
+      else      
+        if @usuario.save
+          format.html { redirect_to @usuario, notice: 'Se ha creado un nuevo Usuario.' }
+          format.json { render :show, status: :created, location: @usuario }
+        else
+          format.html { render :new }
+          format.json { render json: @usuario.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
