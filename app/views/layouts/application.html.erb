@@ -98,11 +98,37 @@
           <li class="<%= params['controller'] == 'usuarios' ? 'active' : ''%>"><%= link_to usuarios_path do %>
               <%= fa_icon "user", text: "Usuarios" %>
             <% end %>
-          </li>
+          </li>          
           <li class="<%= params['controller'] == 'historial_medicions' ? 'active' : ''%>"><%= link_to historial_medicions_path do %>
               <%= fa_icon "line-chart", text: "Mediciones" %>
             <% end %>
-          </li>            
+          </li>
+          <% if current_user.role? :admin %>
+            <li class="<%= params['controller'] == 'estados' ? 'active' : ''%>"><%= link_to estados_path do %>
+                <%= fa_icon "list-alt", text: "Estados" %>
+              <% end %>
+            </li>
+            <li class="<%= params['controller'] == 'personas' ? 'active' : ''%>"><%= link_to personas_path do %>
+                <%= fa_icon "male", text: "Personas" %>
+              <% end %>
+            </li>
+            <li class="<%= params['controller'] == 'tipo_documentos' ? 'active' : ''%>"><%= link_to tipo_documentos_path do %>
+                <%= fa_icon "wpforms", text: "Tipos de documentos" %>
+              <% end %>
+            </li>
+            <li class="<%= params['controller'] == 'tipo_medidors' ? 'active' : ''%>"><%= link_to tipo_medidors_path do %>
+                <%= fa_icon "calculator", text: "Tipos de medidores" %>
+              <% end %>
+            </li>
+            <li class="<%= params['controller'] == 'users' ? 'active' : ''%>"><%= link_to tipo_medidors_path do %>
+                <%= fa_icon "user", text: "Users" %>
+              <% end %>
+            </li>
+            <li class="<%= params['controller'] == 'roles' ? 'active' : ''%>"><%= link_to roles_path do %>
+                <%= fa_icon "universal-access", text: "Roles" %>
+              <% end %>
+            </li>
+          <% end %>            
         </ul>
       </div>
       <!-- /.navbar-collapse -->

@@ -11,6 +11,21 @@
 # ========
 
 User.create(email: 'usuario@usuario.com', password: 'sumbudrule')
+User.create(email: 'jefe@jefe.com', password: 'sumbudrule')
+User.create(email: 'admin@admin.com', password: 'sumbudrule')
+
+# Roles
+# ========
+
+Role.create(descripcion: 'usuario')
+Role.create(descripcion: 'jefe')
+Role.create(descripcion: 'admin')
+
+# UserRoles
+# ========
+UserRole.create(user_id: 1, role_id: 1)
+UserRole.create(user_id: 2, role_id: 2)
+UserRole.create(user_id: 3, role_id: 3)
 
 
 # Prioridades

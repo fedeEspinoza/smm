@@ -1,17 +1,17 @@
 <div class="page-header">
-  <%= link_to tipo_documentos_path, class: 'btn btn-default' do %>
+  <%= link_to roles_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Volver
   <% end %>
-  <%= link_to edit_tipo_documento_path(@tipo_documento), class: 'btn btn-primary' do %>
+  <%= link_to edit_role_path(@role), class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
     Editar
   <% end %>
-  <h4>Ver Tipo de documento</h4>
+  <h4>Ver Rol</h4>
 </div>
 
 <dl class="dl-horizontal">
   <dt>Descripción:</dt>
-  <dd><%= @tipo_documento.descripcion %></dd>
+  <dd><%= @role.descripcion %></dd>
 
 </dl>

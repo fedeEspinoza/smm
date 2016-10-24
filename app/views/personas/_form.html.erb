@@ -4,8 +4,10 @@
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
       <h5><b><%= fa_icon "exclamation-circle", text: "Atención! Ocurrieron los siguientes errores" %></b></h5>
       <ul>
-      <% @persona.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% @persona.errors.messages.values.each do |msg| %>
+        <%msg.each do  |m| %>
+          <li><%= m %></li>
+        <%end %>
       <% end %>
       </ul>
     </div>

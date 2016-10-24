@@ -10,7 +10,6 @@
   <h4>Ver Usuario</h4>
 </div>
 
-
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><%= fa_icon "male" %> Datos personales</h3>
@@ -38,7 +37,6 @@
 
   </div>
 </div>
-
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -124,14 +122,17 @@
   </div>
   <div class="panel-body">  
     <dl class="dl-horizontal">
-
-      <% @usuario.medidors.each do |m| %>
-
-      <dt>Medidor:</dt>
-      <dd><%= m.to_s %></dd>
-
+      <% if !@usuario.medidors.empty? %>
+        <% @usuario.medidors.each do |m| %>
+          <dt>Medidor:</dt>
+          <dd><%= m.to_s %></dd>
+        <% end %>
+      <% else %>
+        <div class="alert alert-warning" role="alert">
+          <b><%= fa_icon "exclamation-circle" %></b>
+          Aún no se han asignado Medidores!
+        </div>
       <% end %>
-
     </dl>
   </div>
 </div>

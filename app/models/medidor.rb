@@ -5,9 +5,9 @@ class Medidor < ActiveRecord::Base
   has_many :usuarios, :through => :usuario_medidors
 
   validates :numero, :presence => { :message => "Debe completar el campo Número" }
-  validates :numero, length: {minimum: 8, maximum: 8, :message => "El campo Número debe tener 8 dígitos"}
+  validates :numero, length: {minimum: 1, maximum: 8, :message => "El campo Número puede tener hasta 8 dígitos"}
   validates :multiplicador, :presence => { :message => "Debe completar el campo Multiplicador" }
-  validates :multiplicador, length: {minimum: 3, maximum: 3, :message => "El campo Multiplicador debe tener 3 dígitos"}
+  validates :multiplicador, length: {minimum: 1, maximum: 3, :message => "El campo Multiplicador puede tener hasta 3 dígitos"}
   validates :marca, :presence => { :message => "Debe completar el campo Marca" }
   validates :modelo, :presence => { :message => "Debe completar el campo Modelo" }
 

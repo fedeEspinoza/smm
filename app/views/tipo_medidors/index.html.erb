@@ -1,8 +1,8 @@
 <div class="page-header">
   <%= link_to new_tipo_medidor_path, class: 'btn btn-primary' do %>
-    <%= fa_icon "plus", text: "Nuevo Tipo medidor" %>
+    <%= fa_icon "plus", text: "Nuevo Tipo de medidor" %>
   <% end %>
-  <h4>Listado de tipo_medidors</h4>
+  <h4>Listado de Tipo de medidores</h4>
 </div>
 
 <div class="table-responsive">
@@ -10,22 +10,28 @@
     <thead>
       <tr>
             <th>Nombre</th>
-            <!--<th>Codigo</th>
-            <th>Descripcion</th>-->
-            <th></th>
-        <th></th>
-        <th></th>
+            <th>Código</th>
+            <th>Descripción</th>
+            <th>&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @tipo_medidors) do |tipo_medidor| %>
-            <td><%= tipo_medidor.nombre %></td>
-            <!--<td><%= tipo_medidor.codigo %></td>
-            <td><%= tipo_medidor.descripcion %></td>-->
-            <td><%= link_to 'Ver', tipo_medidor %></td>
-        <td><%= link_to 'Editar', edit_tipo_medidor_path(tipo_medidor) %></td>
-        <td><%= link_to 'Eliminar', tipo_medidor, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+        <td><%= tipo_medidor.nombre %></td>
+        <td><%= tipo_medidor.codigo %></td>
+        <td><%= tipo_medidor.descripcion %></td>
+        <td style="width: 150px;">
+          <%= link_to tipo_medidor, class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+          <%= link_to edit_tipo_medidor_path(tipo_medidor), class: 'btn btn-default' do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+          <%= link_to tipo_medidor, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        </td>                  
       <% end %>
     </tbody>
   </table>

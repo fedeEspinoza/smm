@@ -13,6 +13,19 @@ class Usuario < ActiveRecord::Base
   validates :numero, numericality: { only_integer: true, :message => "El campo Número debe ser un valor entero"}
   validates :numero, length: {minimum: 7, maximum: 7, :message => "El campo Número debe tener 7 dígitos"}
   validates :latitud, :presence => { :message => "Debe seleccionar una ubicación en el mapa" }
+  validate :check_medidores
+
+  #Valido que cada usuario pueda tener sólo un medidor de Energia Electrica
+  def check_medidores
+    medidores_ids = self.usuario_medidors.map(&:medidor_id)
+    aux_hash = Hash[(1..3).collect { |v| [v, 0] }]
+    cantidad_por_tipo = Medidor.joins(:tipo_medidor).where(id: medidores_ids).group(:tipo_medidor_id).count
+    cantidad_por_tipo = aux_hash.merge(cantidad_por_tipo)
+    cant_tipo_2_y_3 = cantidad_por_tipo[2] + cantidad_por_tipo[3]
+    if (cantidad_por_tipo[2] >= 2) || (cantidad_por_tipo[3] >= 2 || cant_tipo_2_y_3 >= 2)                
+      errors.add(:base,"No puede asignar más de un medidor de energía eléctrica (Activa o Reactiva)")
+    end
+  end 
 
   def to_s
   	"#{self.persona.to_s} - #{self.razon_social}"
