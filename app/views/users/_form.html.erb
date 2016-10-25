@@ -13,9 +13,13 @@
 
   <%= render :partial => '/devise/registrations/form' , :locals => {:f => f} %>
   
+  <%= f.label 'Roles' %>
   <div class="form-group">
-    <%= f.label 'Roles' %><br />
-    <%=  build_role_list('/users/role_checkbox') %>
+    <div class="col-sm-4">
+      <ul class="list-group">
+        <%=  build_role_list('/users/role_checkbox') %>
+      </ul>
+    </div>
   </div>
 
   <div class="form-group">

@@ -11,7 +11,7 @@ module RolesHelper
 
   def build_role_list_item(local_role,partialFile)
     role_list_output = ""
-  	role_list_output += render :partial => '/roles/ul', :locals => { :list_items => local_role }
+  	#role_list_output += render :partial => '/roles/ul', :locals => { :list_items => local_role }
     output = render( :partial => partialFile, :locals => {:current_role => local_role})
     return output.html_safe
   end
