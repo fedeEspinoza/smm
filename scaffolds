@@ -24,4 +24,6 @@ rails g scaffold Empleado nro_legajo:integer nro_doc:integer apellido:string nom
 
 #rails g model UserRole user:references role:references
 
+#rails g controller user
+
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/
