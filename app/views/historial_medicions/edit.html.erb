@@ -9,5 +9,15 @@
   <% end %>
   <h4>Editar Medición</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to historial_medicions_path do %>
+        <%= fa_icon "line-chart", text: "Mediciones" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Editar Medición
+  </li>
+</ol>
 
 <%= render 'form' %>

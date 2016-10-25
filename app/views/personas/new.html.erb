@@ -5,5 +5,15 @@
   <% end %>
   <h4>Nueva Persona</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to personas_path do %>
+        <%= fa_icon "male", text: "Personas" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Nueva Persona
+  </li>
+</ol>
 
 <%= render 'form' %>

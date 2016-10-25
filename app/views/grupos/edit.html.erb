@@ -9,5 +9,15 @@
   <% end %>
   <h4>Editar Grupo</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to grupos_path do %>
+        <%= fa_icon "user", text: "Grupos" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Editar Grupo
+  </li>
+</ol>
 
 <%= render 'form' %>

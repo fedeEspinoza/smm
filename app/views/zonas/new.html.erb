@@ -5,5 +5,15 @@
   <% end %>
   <h4>Nueva Zona</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to zonas_path do %>
+        <%= fa_icon "object-group", text: "Zonas" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Nueva Zona
+  </li>
+</ol>
 
 <%= render 'form' %>

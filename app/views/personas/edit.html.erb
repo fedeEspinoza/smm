@@ -9,5 +9,15 @@
   <% end %>
   <h4>Editar Persona</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to personas_path do %>
+        <%= fa_icon "male", text: "Personas" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Editar Persona
+  </li>
+</ol>
 
 <%= render 'form' %>

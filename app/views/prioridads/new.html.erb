@@ -5,5 +5,15 @@
   <% end %>
   <h4>Nueva Prioridad</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to prioridads_path do %>
+        <%= fa_icon "list-alt", text: "Prioridades" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Nueva Prioridad
+  </li>
+</ol>
 
 <%= render 'form' %>

@@ -9,5 +9,15 @@
   <% end %>
   <h4>Editar Prioridad</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to prioridads_path do %>
+        <%= fa_icon "list-alt", text: "Prioridades" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Editar Prioridad
+  </li>
+</ol>
 
 <%= render 'form' %>

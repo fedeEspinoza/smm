@@ -9,6 +9,16 @@
   <% end %>
   <h4>Ver Categoría</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to categoria_path do %>
+        <%= fa_icon "user", text: "Categorías" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Ver Categoría
+  </li>
+</ol>
 
 <dl class="dl-horizontal">
   <dt>Código:</dt>

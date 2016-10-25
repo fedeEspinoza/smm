@@ -9,5 +9,15 @@
   <% end %>
   <h4>Editar Rol</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to roles_path do %>
+        <%= fa_icon "universal-access", text: "Roles" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Editar Rol
+  </li>
+</ol>
 
 <%= render 'form' %>

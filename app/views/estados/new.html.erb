@@ -5,5 +5,15 @@
   <% end %>
   <h4>Nuevo Estado</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to estados_path do %>
+        <%= fa_icon "list-alt", text: "Estados" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Nuevo Estado
+  </li>
+</ol>
 
 <%= render 'form' %>

@@ -9,6 +9,16 @@
   <% end %>
   <h4>Ver Estado</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to estados_path do %>
+        <%= fa_icon "list-alt", text: "Estados" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Ver Estado
+  </li>
+</ol>
 
 <dl class="dl-horizontal">
   <dt>Descripción:</dt>

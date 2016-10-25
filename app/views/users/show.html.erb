@@ -9,7 +9,18 @@
   <% end %>
   <h4>Ver User</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to users_path do %>
+        <%= fa_icon "user", text: "Users" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Ver User
+  </li>
+</ol>
 
+<h4>User</h4>
 <dl class="dl-horizontal">
   <dt>Email:</dt>
   <dd><%= @user.email %></dd>
@@ -25,9 +36,10 @@
 </dl>
 
 <h4>Roles</h4>
-
-<ul>
-<% @user.roles.each do |r|%>
-  <li><%= r.descripcion %></li>
-<% end %>
-</ul>
+<div class="col-sm-4">
+  <ul class="list-group">
+    <% @user.roles.each do |r|%>
+      <li class="list-group-item"><%= r.descripcion %></li>
+    <% end %>
+  </ul>
+</div>

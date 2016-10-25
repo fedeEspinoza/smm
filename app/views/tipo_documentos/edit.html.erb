@@ -9,5 +9,15 @@
   <% end %>
   <h4>Editar Tipo de documento</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to tipo_documentos_path do %>
+        <%= fa_icon "wpforms", text: "Tipos de documento" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Editar Tipo de documento
+  </li>
+</ol>
 
 <%= render 'form' %>

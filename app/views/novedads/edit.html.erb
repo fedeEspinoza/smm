@@ -9,5 +9,15 @@
   <% end %>
   <h4>Editar Novedad</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to novedads_path do %>
+        <%= fa_icon "newspaper-o", text: "Novedades" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Editar Novedad
+  </li>
+</ol>
 
 <%= render 'form' %>

@@ -5,5 +5,15 @@
   <% end %>
   <h4>Nuevo Grupo</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to grupos_path do %>
+        <%= fa_icon "user", text: "Grupos" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Nuevo Grupo
+  </li>
+</ol>
 
 <%= render 'form' %>

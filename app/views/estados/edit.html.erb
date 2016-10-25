@@ -9,5 +9,15 @@
   <% end %>
   <h4>Editar Estado</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to estados_path do %>
+        <%= fa_icon "list-alt", text: "Estados" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Editar Estado
+  </li>
+</ol>
 
 <%= render 'form' %>
