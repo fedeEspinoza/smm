@@ -5,5 +5,15 @@
   <% end %>
   <h4>Nueva Categoría</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to categoria_path do %>
+        <%= fa_icon "user", text: "Categorías" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Nueva Categoría
+  </li>
+</ol>
 
 <%= render 'form' %>
