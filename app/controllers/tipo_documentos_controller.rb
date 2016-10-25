@@ -1,6 +1,7 @@
 class TipoDocumentosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_tipo_documento, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /tipo_documentos
   # GET /tipo_documentos.json

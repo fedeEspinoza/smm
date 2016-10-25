@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :roles
   resources :historial_medicions
   resources :zona_usuarios
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
   resources :usuarios
   resources :medidors
   resources :usuarios
-  devise_for :users
+  devise_for :users, :path => 'user'
   resources :personas
   resources :estados
   resources :tipo_medidors
