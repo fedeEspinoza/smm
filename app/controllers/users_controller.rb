@@ -56,6 +56,11 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    @user = User.find(params[:id])
+    @user_roles = UserRole.where(user: @user.id)
+    if !@user_roles.empty?
+      UserRole.destroy_all(:user => @user.id)
+    end
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'Se ha eliminado el User.' }

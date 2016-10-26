@@ -44,7 +44,7 @@ class UsuariosController < ApplicationController
       if @usuario.save
         format.html { redirect_to @usuario, notice: 'Se ha creado un nuevo Usuario.' }
         format.json { render :show, status: :created, location: @usuario }
-      else
+      else        
         format.html { render :new }
         format.json { render json: @usuario.errors, status: :unprocessable_entity }
       end
@@ -87,6 +87,6 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:usuario).permit(:categorium_id, :numero, :razon_social, :domicilio, :circunscripcion, :sector, :tipo, :manzana, :parcela, :unidad_funcional, :latitud, :longitud, :estado_id, :fecha_alta, :fecha_baja, persona_attributes: [:id, :tipo_documento_id, :nro_documento, :apellido, :nombre, :telefono, :email], usuario_medidors_attributes: [:id, :medidor_id, :_destroy])
+      params.require(:usuario).permit(:categorium_id, :numero, :razon_social, :domicilio, :circunscripcion, :sector, :tipo, :manzana, :parcela, :unidad_funcional, :latitud, :longitud, :estado_id, :fecha_alta, :fecha_baja, persona_attributes: [:tipo_documento_id, :nro_documento, :apellido, :nombre, :telefono, :email], usuario_medidors_attributes: [:id, :medidor_id, :_destroy])
     end
 end
