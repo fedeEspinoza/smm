@@ -16,7 +16,7 @@
 //= require turbolinks
 //= require leaflet
 //= require jquery_nested_form
-//= require select2
+//= require select2-full
 //= require select2_locale_es
 //= require bootstrap
 //= require_tree .

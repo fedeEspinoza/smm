@@ -2,6 +2,7 @@ class PersonasController < ApplicationController
   before_action :authenticate_user!
   before_action :set_persona, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
+  skip_authorize_resource :only => :find_persona
 
   # Para obtener personas via AJAX
   def find_persona

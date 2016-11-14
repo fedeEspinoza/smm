@@ -187,7 +187,7 @@
           <%= m.link_to_remove "", :class => "btn btn-danger glyphicon glyphicon-trash pull-right" %>
         </div>
       <% end %>
-      <p><%= f.link_to_add "Asignar un Medidor", :usuario_medidors , :class => "label label-success" %></p>
+      <p><%= f.link_to_add "Asignar un Medidor", :usuario_medidors , :class => "btn btn-xs btn-success" %></p>
 
     </div>
   </div>
@@ -258,7 +258,7 @@
   }
 
   $('document').ready(function(){
-    initMap();    
+    initMap();        
     $('#usuario_persona_attributes_tipo_documento_id').change(function(){
       var tipo_documento_id = parseInt($('#usuario_persona_attributes_tipo_documento_id').val(),10);
       var nro_documento = parseInt($('#usuario_persona_attributes_nro_documento').val(),10);
