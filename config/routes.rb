@@ -27,6 +27,10 @@ Rails.application.routes.draw do
 
   get 'index' => 'index#index'
   get 'personas/find_persona/:tipo_documento_id/:nro_documento' => 'personas#find_persona'
+
+  post 'restful/log_in' => 'restful#log_in', as: :log_in
+  post 'restful/log_up' => 'restful#log_up', as: :log_up
+  post 'restful/log_out' => 'restful#log_out', as: :log_out
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
