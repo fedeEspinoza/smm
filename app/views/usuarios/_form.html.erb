@@ -82,76 +82,57 @@
 
       <div class="row">
         <%= f.label :razon_social, "Razón social", class: "col-sm-2 control-label" %>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
           <%= f.text_field :razon_social, class: "form-control" %>
         </div>
+        <%= f.label :domicilio_postal, class: "col-sm-2 control-label" %>
+        <div class="col-sm-4">
+          <%= f.text_field :domicilio_postal, class: "form-control" %>
+        </div>
       </div>
-    <!-- <div class="form-group">
-      <%= f.label :domicilio_postal, class: "col-sm-2 control-label" %>
-      <div class="col-sm-6">
-        <%= f.text_field :domicilio_postal, class: "form-control" %>
+      <div class="row">
+        <%= f.label :domicilio_servicio, class: "col-sm-2 control-label" %>
+        <div class="col-sm-4">
+          <%= f.text_field :domicilio_servicio, class: "form-control" %>
+        </div>     
+      </div>      
+    <!-- 
+      <div class="form-group">
+        <%= f.label :circunscripcion, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.number_field :circunscripcion, class: "form-control" %>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :domicilio_servicio, class: "col-sm-2 control-label" %>
-      <div class="col-sm-6">
-        <%= f.text_field :domicilio_servicio, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :sector, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.number_field :sector, class: "form-control" %>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :circunscripcion, class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.number_field :circunscripcion, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :tipo, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.number_field :tipo, class: "form-control" %>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :sector, class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.number_field :sector, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :manzana, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.number_field :manzana, class: "form-control" %>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :tipo, class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.number_field :tipo, class: "form-control" %>
+      <div class="form-group">
+        <%= f.label :parcela, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.number_field :parcela, class: "form-control" %>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :manzana, class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.number_field :manzana, class: "form-control" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :parcela, class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.number_field :parcela, class: "form-control" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :unidad_funcional, class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.number_field :unidad_funcional, class: "form-control" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :latitud, class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_field :latitud, class: "form-control" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :longitud, class: "col-sm-2 control-label" %>
-      <div class="col-sm-10">
-        <%= f.text_field :longitud, class: "form-control" %>
-      </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :estado_id, class: "col-sm-2 control-label" %>
-      <div class="col-sm-5">
-        <%= f.collection_select :estado_id, Estado.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
-      </div>
-    </div> -->
+      <div class="form-group">
+        <%= f.label :unidad_funcional, class: "col-sm-2 control-label" %>
+        <div class="col-sm-10">
+          <%= f.number_field :unidad_funcional, class: "form-control" %>
+        </div>
+      </div> -->
       <%= hidden_field(:usuario, :latitud) %>
       <%= hidden_field(:usuario, :longitud) %>
     </div>
@@ -188,6 +169,26 @@
         </div>
       <% end %>
       <p><%= f.link_to_add "Asignar un Medidor", :usuario_medidors , :class => "btn btn-xs btn-success" %></p>
+
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= fa_icon "object-group" %> Asignar Zona</h3>
+    </div>
+    <div class="panel-body">  
+
+      <%= f.fields_for :zona_usuarios do |z| %>
+        <div class="row">
+          <%= z.label :zona_id, "Zona", class: "col-sm-3 control-label" %>
+          <div class="col-sm-6">
+            <%= z.collection_select :zona_id, Zona.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
+          </div>
+          <%= z.link_to_remove "", :class => "btn btn-danger glyphicon glyphicon-trash pull-right" %>
+        </div>
+      <% end %>
+      <p><%= f.link_to_add "Asignar una Zona", :zona_usuarios , :class => "btn btn-xs btn-success" %></p>
 
     </div>
   </div>

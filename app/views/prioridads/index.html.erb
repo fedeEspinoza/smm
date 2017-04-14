@@ -15,6 +15,7 @@
     <thead>
       <tr>
             <th>Descripción</th>
+            <th>Valor</th>
             <th>&nbsp;</th>
       </tr>
     </thead>
@@ -22,6 +23,7 @@
     <tbody>
       <%= content_tag_for(:tr, @prioridads) do |prioridad| %>
         <td><%= prioridad.descripcion %></td>
+        <td><%= prioridad.valor %></td>
         <td style="width: 150px;">
         <%= link_to prioridad, class: 'btn btn-default' do %>
           <span class="glyphicon glyphicon-search"></span>

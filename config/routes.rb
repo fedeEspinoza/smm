@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   post 'restful/log_in' => 'restful#log_in', as: :log_in
   post 'restful/log_up' => 'restful#log_up', as: :log_up
   post 'restful/log_out' => 'restful#log_out', as: :log_out
+  get 'restful/descargar_ruta' => 'restful#descargar_ruta', as: :descargar_ruta
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

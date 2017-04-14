@@ -6,8 +6,12 @@ class Usuario < ActiveRecord::Base
   has_many :usuario_medidors, :foreign_key => 'usuario_id', :class_name => 'UsuarioMedidor'
   has_many :medidors, :through => :usuario_medidors
 
+  has_many :zona_usuarios, :foreign_key => 'usuario_id', :class_name => 'ZonaUsuario'
+  has_many :zonas, :through => :zona_usuarios
+
   accepts_nested_attributes_for :usuario_medidors, allow_destroy: true
   accepts_nested_attributes_for :persona
+  accepts_nested_attributes_for :zona_usuarios, allow_destroy: true
 
   validates :numero, :presence => { :message => "Debe completar el campo Número" }
   validates :numero, numericality: { only_integer: true, :message => "El campo Número debe ser un valor entero"}

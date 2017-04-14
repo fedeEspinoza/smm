@@ -70,6 +70,6 @@ class NovedadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def novedad_params
-      params.require(:novedad).permit(:codigo, :descripcion, :prioridad_id)
+      params.require(:novedad).permit(:codigo, :descripcion, :prioridad_id, :codigo_servicio)
     end
 end

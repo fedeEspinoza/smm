@@ -32,6 +32,12 @@
     </div>
   </div>
   <div class="form-group">
+    <%= f.label :codigo_servicio, "Código de servicio", class: "col-sm-2 control-label" %>
+    <div class="col-sm-2">
+      <%= f.text_field :codigo_servicio, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit class: "btn btn-primary", value: "Guardar"%>
     </div>
