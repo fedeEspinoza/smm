@@ -173,26 +173,6 @@
     </div>
   </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title"><%= fa_icon "object-group" %> Asignar Zona</h3>
-    </div>
-    <div class="panel-body">  
-
-      <%= f.fields_for :zona_usuarios do |z| %>
-        <div class="row">
-          <%= z.label :zona_id, "Zona", class: "col-sm-3 control-label" %>
-          <div class="col-sm-6">
-            <%= z.collection_select :zona_id, Zona.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
-          </div>
-          <%= z.link_to_remove "", :class => "btn btn-danger glyphicon glyphicon-trash pull-right" %>
-        </div>
-      <% end %>
-      <p><%= f.link_to_add "Asignar una Zona", :zona_usuarios , :class => "btn btn-xs btn-success" %></p>
-
-    </div>
-  </div>
-
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit class: "btn btn-primary", value: "Guardar"%>

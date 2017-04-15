@@ -4,20 +4,19 @@ class RestfulController < ApplicationController
   # Autenticacion via android
   def signin
     user_password = params[:contrasenia]
-    user_email = params[:nombre]
-    user = user_email.present? && User.find_by(email: user_email)
+    user_email = params[:nombre]    
 
-    if user
+    if user_email.present? && user_password.present?
+      user = User.find_by(email: user_email)
       if user.valid_password? user_password
         sign_in user
         user.save
-        #render plain: "1"
         render json: user.to_json
       else
-        render plain: "0"
+        render json: { errors: "El nombre de usuario o la clave ingresada son incorrectas" }        
       end
     else
-      render plain: "0"
+      render json: { errors: "Debe completar el campo usuario y clave" }
     end
   end
 
@@ -31,9 +30,9 @@ class RestfulController < ApplicationController
       user.email = user_email
       user.password = user_password
       user.save
-      render plain: "1"
+      render json: user.to_json
     else
-      render plain: "0"
+      render json: { errors: "Debe completar el campo usuario y clave" }
     end
   end 
 
