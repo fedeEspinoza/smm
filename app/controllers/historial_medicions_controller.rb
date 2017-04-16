@@ -1,6 +1,7 @@
 class HistorialMedicionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_historial_medicion, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /historial_medicions
   # GET /historial_medicions.json

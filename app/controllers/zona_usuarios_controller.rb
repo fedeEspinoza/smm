@@ -1,6 +1,7 @@
 class ZonaUsuariosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_zona_usuario, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /zona_usuarios
   # GET /zona_usuarios.json

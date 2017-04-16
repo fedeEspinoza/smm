@@ -10,14 +10,14 @@
 # Usuarios
 # ========
 
-User.create(email: 'usuario@usuario.com', password: 'sumbudrule')
+User.create(email: 'tomaestado@tomaestado.com', password: 'sumbudrule')
 User.create(email: 'jefe@jefe.com', password: 'sumbudrule')
 User.create(email: 'admin@admin.com', password: 'sumbudrule')
 
 # Roles
 # ========
 
-Role.create(descripcion: 'usuario')
+Role.create(descripcion: 'tomaestado')
 Role.create(descripcion: 'jefe')
 Role.create(descripcion: 'admin')
 

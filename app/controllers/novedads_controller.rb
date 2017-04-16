@@ -1,6 +1,7 @@
 class NovedadsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_novedad, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /novedads
   # GET /novedads.json

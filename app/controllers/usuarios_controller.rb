@@ -1,6 +1,7 @@
 class UsuariosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /usuarios
   # GET /usuarios.json
@@ -30,7 +31,6 @@ class UsuariosController < ApplicationController
   # POST /usuarios
   # POST /usuarios.json
   def create
-    debugger
     @usuario = Usuario.new(usuario_params)    
     @usuario.estado_id = Estado.where(descripcion: "Alta").first.id #Estado "Alta"
     @usuario.fecha_alta = DateTime.now

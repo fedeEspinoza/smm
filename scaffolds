@@ -4,8 +4,8 @@
 #rails g scaffold Zona nombre:string grupo:references
 #rails g scaffold Categoria codigo:string descripcion:string
 #rails g scaffold TipoDocumento descripcion:string
-#rails g scaffold Prioridad descripcion:string
-#rails g scaffold Novedad codigo:integer descripcion:string prioridad:references
+#rails g scaffold Prioridad descripcion:string valor:integer
+#rails g scaffold Novedad codigo:integer descripcion:string prioridad:references codigo_servicio:string
 #rails g scaffold TipoMedidor nombre:string codigo:integer descripcion:string
 #rails g scaffold Estado descripcion:string
 #rails g scaffold Persona tipo_documento:references nro_documento:integer apellido:string nombre:string telefono:string email:string
@@ -18,12 +18,13 @@
 
 +rails g scaffold HistorialMedicion novedad:references medidor:references user:references estado_medidor:integer fecha_medicion:datetime fecha_modificacion:datetime
 
-rails g scaffold Empleado nro_legajo:integer nro_doc:integer apellido:string nombre:string user:references fecha_alta:datetime fecha_baja:datetime tipo_documento:references
 
 #rails g scaffold Role descripcion:string
 
 #rails g model UserRole user:references role:references
 
 #rails g controller users
+
+rails g scaffold Empleado nro_legajo:integer nro_documento:integer apellido:string nombre:string user:references fecha_alta:datetime fecha_baja:datetime tipo_documento:references
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/

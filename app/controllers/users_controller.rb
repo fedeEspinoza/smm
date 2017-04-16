@@ -57,9 +57,9 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
-    @user_roles = UserRole.where(user: @user.id)
+    @user_roles = UserRole.where(user_id: @user.id)
     if !@user_roles.empty?
-      UserRole.destroy_all(:user => @user.id)
+      UserRole.destroy_all(:user_id => @user.id)
     end
     @user.destroy
     respond_to do |format|
