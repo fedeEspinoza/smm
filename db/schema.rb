@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20170321215203) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "codigo_servicio", limit: 255
+    t.boolean  "repite_estado"
   end
 
   add_index "novedads", ["prioridad_id"], name: "index_novedads_on_prioridad_id", using: :btree

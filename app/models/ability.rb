@@ -8,7 +8,9 @@ class Ability
        if user.role? :admin
          can :manage, :all
        elsif user.role? :jefe
-        can :manage, [Categorium, Grupo, HistorialMedicion, Medidor, Novedad, Prioridad, Usuario, ZonaUsuario, Zona]
+        can :manage, [HistorialMedicion, Medidor, Novedad, Prioridad, ZonaUsuario, Zona]
+       elsif user.role? :facturacion
+        can :manage, [HistorialMedicion, Usuario]
        elsif user.role? :tomaestado
         can :manage, [HistorialMedicion]
        end
