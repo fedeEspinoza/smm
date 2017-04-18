@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321215203) do
+ActiveRecord::Schema.define(version: 20170418195619) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
@@ -19,6 +19,22 @@ ActiveRecord::Schema.define(version: 20170321215203) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "empleados", force: :cascade do |t|
+    t.integer  "nro_legajo",        limit: 4
+    t.integer  "tipo_documento_id", limit: 4
+    t.integer  "nro_documento",     limit: 4
+    t.string   "apellido",          limit: 255
+    t.string   "nombre",            limit: 255
+    t.integer  "estado_id",         limit: 4
+    t.datetime "fecha_alta"
+    t.datetime "fecha_baja"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "empleados", ["estado_id"], name: "index_empleados_on_estado_id", using: :btree
+  add_index "empleados", ["tipo_documento_id"], name: "index_empleados_on_tipo_documento_id", using: :btree
 
   create_table "estados", force: :cascade do |t|
     t.string   "descripcion", limit: 255
@@ -138,9 +154,11 @@ ActiveRecord::Schema.define(version: 20170321215203) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
+    t.integer  "empleado_id",            limit: 4
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["empleado_id"], name: "fk_rails_8bb6b07f16", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "usuario_medidors", force: :cascade do |t|
@@ -201,6 +219,8 @@ ActiveRecord::Schema.define(version: 20170321215203) do
 
   add_index "zonas", ["grupo_id"], name: "index_zonas_on_grupo_id", using: :btree
 
+  add_foreign_key "empleados", "estados"
+  add_foreign_key "empleados", "tipo_documentos"
   add_foreign_key "historial_medicions", "medidors"
   add_foreign_key "historial_medicions", "novedads"
   add_foreign_key "historial_medicions", "users"
@@ -209,6 +229,7 @@ ActiveRecord::Schema.define(version: 20170321215203) do
   add_foreign_key "personas", "tipo_documentos"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
+  add_foreign_key "users", "empleados"
   add_foreign_key "usuario_medidors", "medidors"
   add_foreign_key "usuario_medidors", "usuarios"
   add_foreign_key "usuarios", "categoria"

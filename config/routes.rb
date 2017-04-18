@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :empleados
   resources :users
   resources :roles
   resources :historial_medicions

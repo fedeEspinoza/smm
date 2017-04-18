@@ -11,8 +11,47 @@
     </div>
   <% end %>
 
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= fa_icon "male" %> Datos del empleado</h3>
+    </div>
+    <div class="panel-body">  
+
+      <%= f.fields_for :empleado do |e| %>
+        <div class="row">
+          <%= e.label :nro_legajo, class: "col-sm-2 control-label" %>
+          <div class="col-sm-2">
+            <%= e.number_field :nro_legajo, :class => "form-control" %>
+          </div>
+          <%= e.label :tipo_documento_id, "Tipo de documento", class: "col-sm-2 control-label" %>
+          <div class="col-sm-2">
+            <%= e.collection_select :tipo_documento_id, TipoDocumento.all, :id, :to_s, {prompt: false, selected: TipoDocumento.where(descripcion: "DNI").first.id}, {:class => "form-control"} %>
+          </div>
+        </div>
+
+        <div class="row">
+          <%= e.label :nro_documento, "N° de documento", class: "col-sm-2 control-label" %>
+          <div class="col-sm-2">
+            <%= e.text_field :nro_documento, :class => "form-control" %>
+          </div>
+          <%= e.label :apellido, class: "col-sm-2 control-label" %>
+          <div class="col-sm-4">
+            <%= e.text_field :apellido, :class => "form-control" %>
+          </div>
+        </div>
+        <div class="row">
+          <%= e.label :nombre, class: "col-sm-2 control-label" %>
+          <div class="col-sm-4">
+            <%= e.text_field :nombre, :class => "form-control" %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+
   <%= render :partial => '/devise/registrations/form' , :locals => {:f => f} %>
-  
+
   <%= f.label 'Roles' %>
   <div class="form-group">
     <div class="col-sm-4">

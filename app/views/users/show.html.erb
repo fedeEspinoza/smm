@@ -20,6 +20,21 @@
   </li>
 </ol>
 
+<h4>Empleado</h4>
+<dl class="dl-horizontal">
+  <dt>Tipo de documento:</dt>
+  <dd><%= @user.empleado.tipo_documento %></dd>
+
+  <dt>N° de documento:</dt>
+  <dd><%= @user.empleado.nro_documento %></dd>
+
+  <dt>Apellido:</dt>
+  <dd><%= @user.empleado.apellido %></dd>
+
+  <dt>Nombre:</dt>
+  <dd><%= @user.empleado.nombre %></dd>
+</dl>
+
 <h4>User</h4>
 <dl class="dl-horizontal">
   <dt>Email:</dt>

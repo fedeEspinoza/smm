@@ -6,14 +6,30 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Tipo de documento
+# ===================
+
+TipoDocumento.create(descripcion: 'CUIT') #1
+TipoDocumento.create(descripcion: 'LE')#2
+TipoDocumento.create(descripcion: 'LC')#3
+TipoDocumento.create(descripcion: 'DNI')#4
+TipoDocumento.create(descripcion: 'CI')#5
+
+# Empleados
+# ========
+
+Empleado.create(nro_legajo: 123, tipo_documento_id: 4,nro_documento: 11446782,apellido: "Moreno",nombre: "Oscar")
+Empleado.create(nro_legajo: 456, tipo_documento_id: 4,nro_documento: 11446687,apellido: "Ferreras",nombre: "Graciela")
+Empleado.create(nro_legajo: 789, tipo_documento_id: 4,nro_documento: 32343209,apellido: "Moreno",nombre: "Felipe")
+Empleado.create(nro_legajo: 999, tipo_documento_id: 4,nro_documento: 32343209,apellido: "Moreno",nombre: "Mika")
 
 # Usuarios
 # ========
 
-User.create(email: 'tomaestado@tomaestado.com', password: 'sumbudrule')
-User.create(email: 'jefe@jefe.com', password: 'sumbudrule')
-User.create(email: 'facturacion@facturacion.com', password: 'sumbudrule')
-User.create(email: 'admin@admin.com', password: 'sumbudrule')
+User.create(email: 'tomaestado@tomaestado.com', password: 'sumbudrule', empleado_id: 1)
+User.create(email: 'jefe@jefe.com', password: 'sumbudrule', empleado_id: 2)
+User.create(email: 'facturacion@facturacion.com', password: 'sumbudrule', empleado_id: 3)
+User.create(email: 'admin@admin.com', password: 'sumbudrule', empleado_id: 4)
 
 # Roles
 # ========
@@ -162,14 +178,7 @@ Categorium.create(codigo: "B-C-O",descripcion: "BAJO CONSUMO OFICIAL")
 Categorium.create(codigo: "M-C-O",descripcion: "MEDIANOS CONSUMOS OFICIALES")
 Categorium.create(codigo: "G-C-O",descripcion: "GRANDES CONSUMOS OFICIALES")
 
-# Tipo de documento
-# ===================
 
-TipoDocumento.create(descripcion: 'CUIT') #1
-TipoDocumento.create(descripcion: 'LE')#2
-TipoDocumento.create(descripcion: 'LC')#3
-TipoDocumento.create(descripcion: 'DNI')#4
-TipoDocumento.create(descripcion: 'CI')#5
 
 #Persona --representa a la persona, la cual puede tener asociado uno o mas usuarios y empleados ==> tener un único padrón de datos
 

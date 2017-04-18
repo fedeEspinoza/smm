@@ -1,0 +1,38 @@
+<div class="page-header">
+  <%= link_to empleados_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to edit_empleado_path(@empleado), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h4>Ver empleado</h4>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Nro legajo:</dt>
+  <dd><%= @empleado.nro_legajo %></dd>
+
+  <dt>Tipo documento:</dt>
+  <dd><%= @empleado.tipo_documento %></dd>
+
+  <dt>Nro documento:</dt>
+  <dd><%= @empleado.nro_documento %></dd>
+
+  <dt>Apellido:</dt>
+  <dd><%= @empleado.apellido %></dd>
+
+  <dt>Nombre:</dt>
+  <dd><%= @empleado.nombre %></dd>
+
+  <dt>Estado:</dt>
+  <dd><%= @empleado.estado %></dd>
+
+  <dt>Fecha alta:</dt>
+  <dd><%= @empleado.fecha_alta %></dd>
+
+  <dt>Fecha baja:</dt>
+  <dd><%= @empleado.fecha_baja %></dd>
+
+</dl>

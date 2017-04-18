@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   has_many :user_roles, :foreign_key => 'user_id', :class_name => 'UserRole'
   has_many :roles, :through => :user_roles
 
+  belongs_to :empleado
+
+  accepts_nested_attributes_for :empleado
+
   def to_s
   	self.email
   end

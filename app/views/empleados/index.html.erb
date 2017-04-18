@@ -1,0 +1,43 @@
+<div class="page-header">
+  <%= link_to new_empleado_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Nuevo Empleado
+  <% end %>
+  <h4>Listado de empleados</h4>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Nro legajo</th>
+            <th>Tipo documento</th>
+            <th>Nro documento</th>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Fecha alta</th>
+            <th>Fecha baja</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @empleados) do |empleado| %>
+            <td><%= empleado.nro_legajo %></td>
+            <td><%= empleado.tipo_documento %></td>
+            <td><%= empleado.nro_documento %></td>
+            <td><%= empleado.apellido %></td>
+            <td><%= empleado.nombre %></td>
+            <td><%= empleado.estado %></td>
+            <td><%= empleado.fecha_alta %></td>
+            <td><%= empleado.fecha_baja %></td>
+            <td><%= link_to 'Ver', empleado %></td>
+        <td><%= link_to 'Editar', edit_empleado_path(empleado) %></td>
+        <td><%= link_to 'Eliminar', empleado, method: :delete, data: { confirm: '¿Está seguro?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

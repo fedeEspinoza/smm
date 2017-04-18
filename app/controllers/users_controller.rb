@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @user.empleado = Empleado.new
   end
 
   # GET /users/1/edit
@@ -27,6 +28,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    empleado = Empleado.new(user_params[:empleado_attributes]) 
+    empleado.estado_id = Estado.where(descripcion: "Alta").first.id #Estado "Alta"
+    empleado.fecha_alta = DateTime.now
+    @user.empleado = empleado
+
 
     respond_to do |format|
       if @user.save
@@ -76,6 +82,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, role_ids: [])
+      params.require(:user).permit(:email, :password, :password_confirmation, empleado_attributes: [:tipo_documento_id, :nro_documento, :nro_legajo, :apellido, :nombre], role_ids: [])
     end
 end
