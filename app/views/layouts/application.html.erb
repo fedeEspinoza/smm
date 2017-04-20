@@ -147,6 +147,14 @@
         <%= yield %>                
       </div>
     </div>
+    <script type="text/javascript">
+      $('document').ready(function() { 
+        $('select').select2({
+          theme: "bootstrap",
+          language: "es"
+        }); 
+      });
+    </script>
     <!-- /#page-wrapper -->
   </div>
   <!-- /#wrapper -->

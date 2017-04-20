@@ -41,10 +41,3 @@ jQuery(function($){
       yearSuffix: ''};
    $.datepicker.setDefaults($.datepicker.regional['es']);
 });
-
-$(document).ready(function() { 
-  $('select').select2({
-    theme: "bootstrap",
-    language: "es"
-  }); 
-});

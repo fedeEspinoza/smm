@@ -33,7 +33,6 @@ class UsersController < ApplicationController
     empleado.fecha_alta = DateTime.now
     @user.empleado = empleado
 
-
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'Se ha creado un nuevo User.' }

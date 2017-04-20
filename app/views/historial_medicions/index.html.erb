@@ -19,6 +19,7 @@
             <th>Estado</th>
             <th>Fecha de medición</th>
             <th>Fecha de modificación</th>
+            <th>Tomaestado</th>
             <th></th>
       </tr>
     </thead>
@@ -30,6 +31,7 @@
             <td><%= historial_medicion.estado_medidor %></td>
             <td><%= historial_medicion.fecha_medicion %></td>
             <td><%= historial_medicion.fecha_modificacion %></td>
+            <td><%= historial_medicion.user.to_s %></td>
             <td style="width: 150px;">
               <%= link_to historial_medicion, class: 'btn btn-default' do %>
                 <span class="glyphicon glyphicon-search"></span>

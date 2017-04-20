@@ -11,7 +11,7 @@ class RestfulController < ApplicationController
       if user.valid_password? user_password
         sign_in user
         user.save
-        render json: user.to_json
+        render json: user.joins(:empleado).to_json
       else
         render json: { errors: "El nombre de usuario o la clave ingresada son incorrectas" }        
       end

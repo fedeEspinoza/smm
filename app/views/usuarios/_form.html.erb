@@ -163,7 +163,7 @@
         <div class="row">
           <%= m.label :medidor_id, "Medidor", class: "col-sm-3 control-label" %>
           <div class="col-sm-6">
-            <%= m.collection_select :medidor_id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
+            <%= m.collection_select :medidor_id, Medidor.all, :id, :to_s, {prompt: false}, {:class => "form-control select"} %>
           </div>
           <%= m.link_to_remove "", :class => "btn btn-danger glyphicon glyphicon-trash pull-right" %>
         </div>
@@ -239,7 +239,7 @@
   }
 
   $('document').ready(function(){
-    initMap();        
+    initMap();    
     $('#usuario_persona_attributes_tipo_documento_id').change(function(){
       var tipo_documento_id = parseInt($('#usuario_persona_attributes_tipo_documento_id').val(),10);
       var nro_documento = parseInt($('#usuario_persona_attributes_nro_documento').val(),10);
@@ -282,5 +282,13 @@
         }
       });
     });    
+  });
+  $('form').on('nested:fieldAdded', function() {
+    console.log("Se ejecuto");
+  /* apply select2 styling */ 
+    $('select').select2({
+      theme: "bootstrap",
+      language: "es"
+    }); 
   });
 </script>
