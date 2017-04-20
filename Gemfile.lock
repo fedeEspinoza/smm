@@ -111,6 +111,7 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    nprogress-rails (0.2.0.2)
     orm_adapter (0.5.0)
     pkg-config (1.1.7)
     rack (1.6.4)
@@ -203,6 +204,7 @@ DEPENDENCIES
   leaflet-rails
   mysql2 (~> 0.3.20)
   nested_form
+  nprogress-rails
   rails (= 4.2.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

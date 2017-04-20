@@ -19,7 +19,15 @@
 //= require select2-full
 //= require select2_locale_es
 //= require bootstrap
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .
+
+NProgress.configure({
+  showSpinner: false,
+  ease: 'ease',
+  speed: 500
+});
 
 jQuery(function($){
    $.datepicker.regional['es'] = {

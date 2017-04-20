@@ -13,12 +13,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require nprogress
+ *= require nprogress-bootstrap
  *= require select2
  *= require select2-bootstrap
  *= require leaflet
  *= require font-awesome
  *= require jquery-ui
  */
+ 
 
 /*!
  * Start Bootstrap - SB Admin Bootstrap Admin Template (http://startbootstrap.com)
