@@ -1,0 +1,23 @@
+<div class="page-header">
+  <%= link_to ruta_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to @rutum, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Ver
+  <% end %>
+  <h4>Editar Ruta</h4>
+</div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to ruta_path do %>
+        <%= fa_icon "road", text: "Rutas" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Editar Ruta
+  </li>
+</ol>
+
+<%= render 'form' %>

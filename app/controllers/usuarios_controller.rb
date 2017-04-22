@@ -70,10 +70,7 @@ class UsuariosController < ApplicationController
   # DELETE /usuarios/1
   # DELETE /usuarios/1.json
   def destroy
-    @usuario_medidors = UsuarioMedidor.where(:usuario_id => @usuario.id)
-    if !@usuario_medidors.empty?
-      UsuarioMedidor.destroy_all(:usuario_id => @usuario.id)
-    end
+    @usuario.usuario_medidors.destroy_all
     @usuario.destroy
     respond_to do |format|
       format.html { redirect_to usuarios_url, notice: 'Se ha eliminado el Usuario.' }

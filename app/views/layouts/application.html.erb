@@ -98,6 +98,10 @@
               <%= fa_icon "calculator", text: "Medidores" %>
             <% end %>  
           </li>
+          <li class="<%= params['controller'] == 'ruta' ? 'active' : ''%>"><%= link_to ruta_path do %>
+              <%= fa_icon "road", text: "Rutas" %>
+            <% end %>  
+          </li>
           <%end%>          
           <li class="<%= params['controller'] == 'historial_medicions' ? 'active' : ''%>"><%= link_to historial_medicions_path do %>
               <%= fa_icon "line-chart", text: "Mediciones" %>

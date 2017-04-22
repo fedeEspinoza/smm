@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  resources :ruta
   resources :empleados
   resources :users
   resources :roles
   resources :historial_medicions
-  resources :zona_usuarios
   resources :usuario_medidors
   resources :usuarios
   resources :medidors

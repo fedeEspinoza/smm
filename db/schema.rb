@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418195619) do
+ActiveRecord::Schema.define(version: 20170422190831) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
@@ -116,6 +116,29 @@ ActiveRecord::Schema.define(version: 20170418195619) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "ruta", force: :cascade do |t|
+    t.integer  "numero",      limit: 4
+    t.string   "nombre",      limit: 255
+    t.integer  "zona_id",     limit: 4
+    t.string   "descripcion", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "ruta", ["zona_id"], name: "index_ruta_on_zona_id", using: :btree
+
+  create_table "ruta_usuarios", force: :cascade do |t|
+    t.integer  "rutum_id",   limit: 4
+    t.integer  "usuario_id", limit: 4
+    t.datetime "fecha_alta"
+    t.datetime "fecha_baja"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "ruta_usuarios", ["rutum_id"], name: "index_ruta_usuarios_on_rutum_id", using: :btree
+  add_index "ruta_usuarios", ["usuario_id"], name: "index_ruta_usuarios_on_usuario_id", using: :btree
 
   create_table "tipo_documentos", force: :cascade do |t|
     t.string   "descripcion", limit: 255
@@ -227,6 +250,9 @@ ActiveRecord::Schema.define(version: 20170418195619) do
   add_foreign_key "medidors", "tipo_medidors"
   add_foreign_key "novedads", "prioridads"
   add_foreign_key "personas", "tipo_documentos"
+  add_foreign_key "ruta", "zonas"
+  add_foreign_key "ruta_usuarios", "ruta"
+  add_foreign_key "ruta_usuarios", "usuarios"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
   add_foreign_key "users", "empleados"

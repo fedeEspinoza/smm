@@ -6,8 +6,8 @@ class Usuario < ActiveRecord::Base
   has_many :usuario_medidors, :foreign_key => 'usuario_id', :class_name => 'UsuarioMedidor'
   has_many :medidors, :through => :usuario_medidors
 
-  has_many :zona_usuarios, :foreign_key => 'usuario_id', :class_name => 'ZonaUsuario'
-  has_many :zonas, :through => :zona_usuarios
+  has_many :ruta_usuarios, :foreign_key => 'usuario_id', :class_name => 'RutaUsuario'
+  has_many :rutum, :through => :ruta_usuarios
 
   accepts_nested_attributes_for :usuario_medidors, allow_destroy: true
   accepts_nested_attributes_for :persona
@@ -32,5 +32,9 @@ class Usuario < ActiveRecord::Base
 
   def to_s
   	"#{self.persona.to_s} - #{self.razon_social}"
+  end
+
+  def data_y_domicilio
+    "Usuario N°: #{self.numero} - Domicilio de servicio: #{self.domicilio_servicio}"
   end
 end
