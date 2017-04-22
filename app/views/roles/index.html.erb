@@ -15,21 +15,21 @@
     <thead>
       <tr>
             <th>Descripción</th>
-            <th>&nbsp;</th>
+            <th class="col-md-2">&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @roles) do |role| %>
       <td><%= role.descripcion %></td>
-      <td style="width: 150px;">
-        <%= link_to role, class: 'btn btn-default' do %>
+      <td class="text-center">
+        <%= link_to role, class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-search"></span>
         <% end %>
-        <%= link_to edit_role_path(role), class: 'btn btn-default' do %>
+        <%= link_to edit_role_path(role), class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-pencil"></span>
         <% end %>
-        <%= link_to role, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+        <%= link_to role, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
           <span class="glyphicon glyphicon-trash"></span>
         <% end %>
       </td>      

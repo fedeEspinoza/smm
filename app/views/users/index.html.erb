@@ -18,7 +18,7 @@
             <th>Último acceso</th>
             <th>IP último acceso</th>
             <th>Cantidad de accesos</th>
-            <th>&nbsp;</th>
+            <th class="col-md-2">&nbsp;</th>
       </tr>
     </thead>
 
@@ -28,14 +28,14 @@
       <td><%= user.last_sign_in_at %></td>
       <td><%= user.last_sign_in_ip %></td>
       <td><%= user.sign_in_count %></td>
-      <td style="width: 150px;">
-        <%= link_to user, class: 'btn btn-default' do %>
+      <td class="text-center">
+        <%= link_to user, class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-search"></span>
         <% end %>
-        <%= link_to edit_user_path(user), class: 'btn btn-default' do %>
+        <%= link_to edit_user_path(user), class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-pencil"></span>
         <% end %>
-        <%= link_to user, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+        <%= link_to user, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
           <span class="glyphicon glyphicon-trash"></span>
         <% end %>
       </td>      

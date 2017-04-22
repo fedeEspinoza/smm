@@ -15,21 +15,21 @@
     <thead>
       <tr>
           <th>Descripción</th>
-          <th>&nbsp;</th>
+          <th class="col-md-2">&nbsp;</th>
       </tr>
     </thead>
 
     <tbody>
       <%= content_tag_for(:tr, @tipo_documentos) do |tipo_documento| %>
         <td><%= tipo_documento.descripcion %></td>
-        <td style="width: 150px;">
-          <%= link_to tipo_documento, class: 'btn btn-default' do %>
+        <td class="text-center">
+          <%= link_to tipo_documento, class: 'btn btn-sm btn-default' do %>
             <span class="glyphicon glyphicon-search"></span>
           <% end %>
-          <%= link_to edit_tipo_documento_path(tipo_documento), class: 'btn btn-default' do %>
+          <%= link_to edit_tipo_documento_path(tipo_documento), class: 'btn btn-sm btn-default' do %>
             <span class="glyphicon glyphicon-pencil"></span>
           <% end %>
-          <%= link_to tipo_documento, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+          <%= link_to tipo_documento, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
             <span class="glyphicon glyphicon-trash"></span>
           <% end %>
         </td>                  

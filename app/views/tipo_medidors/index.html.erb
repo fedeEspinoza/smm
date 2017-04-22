@@ -17,7 +17,7 @@
             <th>Nombre</th>
             <th>Código</th>
             <th>Descripción</th>
-            <th>&nbsp;</th>
+            <th class="col-md-2">&nbsp;</th>
       </tr>
     </thead>
 
@@ -26,14 +26,14 @@
         <td><%= tipo_medidor.nombre %></td>
         <td><%= tipo_medidor.codigo %></td>
         <td><%= tipo_medidor.descripcion %></td>
-        <td style="width: 150px;">
-          <%= link_to tipo_medidor, class: 'btn btn-default' do %>
+        <td class="text-center">
+          <%= link_to tipo_medidor, class: 'btn btn-sm btn-default' do %>
             <span class="glyphicon glyphicon-search"></span>
           <% end %>
-          <%= link_to edit_tipo_medidor_path(tipo_medidor), class: 'btn btn-default' do %>
+          <%= link_to edit_tipo_medidor_path(tipo_medidor), class: 'btn btn-sm btn-default' do %>
             <span class="glyphicon glyphicon-pencil"></span>
           <% end %>
-          <%= link_to tipo_medidor, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+          <%= link_to tipo_medidor, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
             <span class="glyphicon glyphicon-trash"></span>
           <% end %>
         </td>                  

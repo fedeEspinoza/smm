@@ -21,7 +21,7 @@
             <!-- <th>Fecha alta</th>
             <th>Fecha baja</th> -->
             <th>Tipo medidor</th>
-            <th></th>
+            <th class="col-md-2">&nbsp;</th>
       </tr>
     </thead>
 
@@ -34,14 +34,14 @@
             <!-- <td><%= medidor.fecha_alta %></td>
             <td><%= medidor.fecha_baja %></td> -->
             <td><%= medidor.tipo_medidor %></td>
-            <td style="width: 150px;">
-              <%= link_to medidor, class: 'btn btn-default' do %>
+            <td class="text-center">
+              <%= link_to medidor, class: 'btn btn-sm btn-default' do %>
                 <span class="glyphicon glyphicon-search"></span>
               <% end %>
-              <%= link_to edit_medidor_path(medidor), class: 'btn btn-default' do %>
+              <%= link_to edit_medidor_path(medidor), class: 'btn btn-sm btn-default' do %>
                 <span class="glyphicon glyphicon-pencil"></span>
               <% end %>
-              <%= link_to medidor, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+              <%= link_to medidor, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
                 <span class="glyphicon glyphicon-trash"></span>
               <% end %>
             </td>

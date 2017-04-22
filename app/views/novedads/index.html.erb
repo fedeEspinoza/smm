@@ -18,7 +18,7 @@
             <th>Descripción</th>
             <th>Prioridad</th>
             <th>Código de servicio</th>
-            <th>&nbsp;</th>
+            <th class="col-md-2">&nbsp;</th>
       </tr>
     </thead>
 
@@ -28,14 +28,14 @@
         <td><%= novedad.descripcion %></td>
         <td><%= novedad.prioridad %></td>
         <td><%= novedad.codigo_servicio %></td>
-        <td style="width: 150px;">
-        <%= link_to novedad, class: 'btn btn-default' do %>
+        <td class="text-center">
+        <%= link_to novedad, class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-search"></span>
         <% end %>
-        <%= link_to edit_novedad_path(novedad), class: 'btn btn-default' do %>
+        <%= link_to edit_novedad_path(novedad), class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-pencil"></span>
         <% end %>
-        <%= link_to novedad, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+        <%= link_to novedad, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
           <span class="glyphicon glyphicon-trash"></span>
         <% end %>
         </td>

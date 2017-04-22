@@ -17,7 +17,7 @@
             <th>Nombre</th>
             <th>Descripción</th>
             <th>Código</th>
-            <th>&nbsp;</th>
+            <th class="col-md-2">&nbsp;</th>
       </tr>
     </thead>
 
@@ -26,14 +26,14 @@
         <td><%= grupo.nombre %></td>
         <td><%= grupo.descripcion %></td>
         <td><%= grupo.codigo %></td>
-        <td style="width: 150px;">
-        <%= link_to grupo, class: 'btn btn-default' do %>
+        <td class="text-center">
+        <%= link_to grupo, class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-search"></span>
         <% end %>
-        <%= link_to edit_grupo_path(grupo), class: 'btn btn-default' do %>
+        <%= link_to edit_grupo_path(grupo), class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-pencil"></span>
         <% end %>
-        <%= link_to grupo, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+        <%= link_to grupo, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
           <span class="glyphicon glyphicon-trash"></span>
         <% end %>
         </td>

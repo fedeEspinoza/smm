@@ -16,7 +16,7 @@
       <tr>
           <th>Código</th>
           <th>Descripción</th>
-          <th>&nbsp;</th>
+          <th class="col-md-2">&nbsp;</th>
       </tr>
     </thead>
 
@@ -24,14 +24,14 @@
       <%= content_tag_for(:tr, @categoria) do |categorium| %>
         <td><%= categorium.codigo %></td>
         <td><%= categorium.descripcion %></td>
-        <td style="width: 150px;">
-        <%= link_to categorium, class: 'btn btn-default' do %>
+        <td class="text-center">
+        <%= link_to categorium, class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-search"></span>
         <% end %>
-        <%= link_to edit_categorium_path(categorium), class: 'btn btn-default' do %>
+        <%= link_to edit_categorium_path(categorium), class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-pencil"></span>
         <% end %>
-        <%= link_to categorium, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+        <%= link_to categorium, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
           <span class="glyphicon glyphicon-trash"></span>
         <% end %>
         </td>

@@ -16,7 +16,7 @@
       <tr>
             <th>Nombre</th>
             <th>Grupo</th>
-            <th>&nbsp;</th>
+            <th class="col-md-2">&nbsp;</th>
       </tr>
     </thead>
 
@@ -24,14 +24,14 @@
       <%= content_tag_for(:tr, @zonas) do |zona| %>
         <td><%= zona.nombre %></td>
         <td><%= zona.grupo %></td>
-        <td style="width: 150px;">
-        <%= link_to zona, class: 'btn btn-default' do %>
+        <td class="text-center">
+        <%= link_to zona, class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-search"></span>
         <% end %>
-        <%= link_to edit_zona_path(zona), class: 'btn btn-default' do %>
+        <%= link_to edit_zona_path(zona), class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-pencil"></span>
         <% end %>
-        <%= link_to zona, class: 'btn btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+        <%= link_to zona, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
           <span class="glyphicon glyphicon-trash"></span>
         <% end %>
         </td>
