@@ -8,7 +8,7 @@ class RestfulController < ApplicationController
 
     if user_email.present? && user_password.present?
       user = User.find_by(email: user_email)
-      if user.valid_password? user_password
+      if user && user.valid_password?(user_password)
         sign_in user
         user.save        
         user = User.select('users.id, empleados.nro_legajo, users.email').joins(:empleado).find_by(email: user_email)
@@ -21,7 +21,7 @@ class RestfulController < ApplicationController
     end
   end
 
-  # Autenticacion via android
+  # Creacion de usuario via android
   def signup
     user_password = params[:contrasenia]
     user_email = params[:nombre]
