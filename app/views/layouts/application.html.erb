@@ -97,10 +97,21 @@
           <li class="<%= params['controller'] == 'medidors' ? 'active' : ''%>"><%= link_to medidors_path do %>
               <%= fa_icon "calculator", text: "Medidores" %>
             <% end %>  
-          </li>
-          <li class="<%= params['controller'] == 'ruta' ? 'active' : ''%>"><%= link_to ruta_path do %>
-              <%= fa_icon "road", text: "Rutas" %>
-            <% end %>  
+          </li>          
+          <li>
+            <a href="javascript:;" data-toggle="collapse" data-target="#demo">
+              <%= fa_icon "road", text: "Gestión de rutas" %>
+              <%= fa_icon "caret-down" %>
+            </a>
+            <ul id="demo" class="collapse">
+              <li class="<%= params['controller'] == 'ruta' ? 'active' : ''%>"><%= link_to ruta_path do %>
+                <%= fa_icon "road", text: "Rutas" %>
+              <% end %>  
+              </li>
+              <li>
+                <a href="#"><%= fa_icon "road", text: "Asignar ruta" %></a>
+              </li>
+            </ul>
           </li>
           <%end%>          
           <li class="<%= params['controller'] == 'historial_medicions' ? 'active' : ''%>"><%= link_to historial_medicions_path do %>

@@ -32,11 +32,11 @@ class UsuariosController < ApplicationController
   # POST /usuarios.json
   def create
     @usuario = Usuario.new(usuario_params)    
-    @usuario.estado_id = Estado.where(descripcion: "Alta").first.id #Estado "Alta"
+    @usuario.estado = Estado.find_by(descripcion: "Alta") #Estado "Alta"
     @usuario.fecha_alta = DateTime.now
 
     persona_params = usuario_params[:persona_attributes]
-    persona = Persona.where(tipo_documento_id: persona_params[:tipo_documento_id], nro_documento: persona_params[:nro_documento]).first
+    persona = Persona.find_by(tipo_documento_id: persona_params[:tipo_documento_id], nro_documento: persona_params[:nro_documento])
     if !persona.blank?
       persona.update(persona_params)
       @usuario.persona = persona

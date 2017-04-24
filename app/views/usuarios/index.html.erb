@@ -50,7 +50,11 @@
             <td><%= usuario.unidad_funcional %></td>
             <td><%= usuario.latitud %></td>
             <td><%= usuario.longitud %></td>-->
-            <td><%= usuario.estado %></td>
+            <td class="text-center">
+              <span class="label label-<%= usuario.estado.to_s == 'Alta' ? 'success' : 'danger' %>">
+              <%= usuario.estado %>
+              </span>
+            </td>
             <td><%= usuario.persona %></td>
             <!--<td><%= usuario.fecha_alta %></td>
             <td><%= usuario.fecha_baja %></td>-->

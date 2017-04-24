@@ -33,6 +33,7 @@ class RutaController < ApplicationController
         format.html { redirect_to @rutum, notice: 'Se ha creado una nueva Ruta.' }
         format.json { render :show, status: :created, location: @rutum }
       else
+        @usuarios = Usuario.all
         format.html { render :new }
         format.json { render json: @rutum.errors, status: :unprocessable_entity }
       end

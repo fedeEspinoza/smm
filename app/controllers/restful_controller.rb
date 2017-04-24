@@ -39,15 +39,16 @@ class RestfulController < ApplicationController
 
   #Descargar ruta
   def descargar_ruta
-    usuarios = Rutum.find_by(numero: 1).usuarios
-    ruta = usuarios.select("usuarios.latitud as latitud,
+    rutum = Rutum.find_by(numero: 1) #Reemplazar por la búsqueda de la ruta correspondiente al usuario
+    ruta = Usuario.select("usuarios.latitud as latitud,
       usuarios.longitud as longitud,
       usuarios.numero as numero,
-      usuarios.domicilio_postal, 
+      usuarios.domicilio_postal as domicilio_postal, 
       categoria.codigo as categoria, 
       medidors.numero as numero_medidor,
       medidors.multiplicador as multiplicador,
-      medidors.tipo_medidor_id as tipo_medidor_id").joins(:usuario_medidors, :medidors, :categorium)
+      ruta.zona_id as zona_id,
+      medidors.tipo_medidor_id as tipo_medidor_id").joins(:rutum, :medidors, :categorium).where(ruta: {id: rutum.id})
 
     render json: ruta.to_json
   end 

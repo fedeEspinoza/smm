@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     empleado = Empleado.new(user_params[:empleado_attributes]) 
-    empleado.estado_id = Estado.where(descripcion: "Alta").first.id #Estado "Alta"
+    empleado.estado = Estado.find_by(descripcion: "Alta") #Estado "Alta"
     empleado.fecha_alta = DateTime.now
     @user.empleado = empleado
 
@@ -61,11 +61,7 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user = User.find(params[:id])
-    @user_roles = UserRole.where(user_id: @user.id)
-    if !@user_roles.empty?
-      UserRole.destroy_all(:user_id => @user.id)
-    end
+    @user.user_roles.destroy_all
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'Se ha eliminado el User.' }
