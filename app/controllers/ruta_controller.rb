@@ -5,6 +5,14 @@ class RutaController < ApplicationController
   # GET /ruta.json
   def index
     @ruta = Rutum.all
+    respond_to do |format|
+      format.html
+      format.pdf do      
+        render pdf: 'listado_de_rutas',          
+        orientation: 'Landscape',
+        template: 'ruta/listado_de_rutas.html.erb'
+      end
+    end
   end
 
   # GET /ruta/1

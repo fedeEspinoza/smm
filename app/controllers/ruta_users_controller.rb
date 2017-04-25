@@ -29,7 +29,7 @@ class RutaUsersController < ApplicationController
 
     respond_to do |format|
       if @ruta_user.save
-        format.html { redirect_to @ruta_user, notice: 'Ruta user was successfully created.' }
+        format.html { redirect_to @ruta_user, notice: 'La Ruta ha sido asignada.' }
         format.json { render :show, status: :created, location: @ruta_user }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class RutaUsersController < ApplicationController
   def update
     respond_to do |format|
       if @ruta_user.update(ruta_user_params)
-        format.html { redirect_to @ruta_user, notice: 'Ruta user was successfully updated.' }
+        format.html { redirect_to @ruta_user, notice: 'Se ha actualizado la asignación.' }
         format.json { render :show, status: :ok, location: @ruta_user }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class RutaUsersController < ApplicationController
   def destroy
     @ruta_user.destroy
     respond_to do |format|
-      format.html { redirect_to ruta_users_url, notice: 'Ruta user was successfully destroyed.' }
+      format.html { redirect_to ruta_users_url, notice: 'Se ha eliminado la asignación.' }
       format.json { head :no_content }
     end
   end
