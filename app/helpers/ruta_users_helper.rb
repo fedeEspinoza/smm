@@ -1,0 +1,2 @@
+module RutaUsersHelper
+end

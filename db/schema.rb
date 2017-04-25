@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422190831) do
+ActiveRecord::Schema.define(version: 20170424192052) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
@@ -128,6 +128,18 @@ ActiveRecord::Schema.define(version: 20170422190831) do
 
   add_index "ruta", ["zona_id"], name: "index_ruta_on_zona_id", using: :btree
 
+  create_table "ruta_users", force: :cascade do |t|
+    t.integer  "rutum_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "fecha_alta"
+    t.datetime "fecha_baja"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "ruta_users", ["rutum_id"], name: "index_ruta_users_on_rutum_id", using: :btree
+  add_index "ruta_users", ["user_id"], name: "index_ruta_users_on_user_id", using: :btree
+
   create_table "ruta_usuarios", force: :cascade do |t|
     t.integer  "rutum_id",   limit: 4
     t.integer  "usuario_id", limit: 4
@@ -222,17 +234,6 @@ ActiveRecord::Schema.define(version: 20170422190831) do
   add_index "usuarios", ["estado_id"], name: "index_usuarios_on_estado_id", using: :btree
   add_index "usuarios", ["persona_id"], name: "index_usuarios_on_persona_id", using: :btree
 
-  create_table "zona_usuarios", force: :cascade do |t|
-    t.integer  "zona_id",    limit: 4
-    t.integer  "usuario_id", limit: 4
-    t.integer  "orden",      limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  add_index "zona_usuarios", ["usuario_id"], name: "index_zona_usuarios_on_usuario_id", using: :btree
-  add_index "zona_usuarios", ["zona_id"], name: "index_zona_usuarios_on_zona_id", using: :btree
-
   create_table "zonas", force: :cascade do |t|
     t.string   "nombre",     limit: 255
     t.integer  "grupo_id",   limit: 4
@@ -251,6 +252,8 @@ ActiveRecord::Schema.define(version: 20170422190831) do
   add_foreign_key "novedads", "prioridads"
   add_foreign_key "personas", "tipo_documentos"
   add_foreign_key "ruta", "zonas"
+  add_foreign_key "ruta_users", "ruta"
+  add_foreign_key "ruta_users", "users"
   add_foreign_key "ruta_usuarios", "ruta"
   add_foreign_key "ruta_usuarios", "usuarios"
   add_foreign_key "user_roles", "roles"
@@ -261,7 +264,5 @@ ActiveRecord::Schema.define(version: 20170422190831) do
   add_foreign_key "usuarios", "categoria"
   add_foreign_key "usuarios", "estados"
   add_foreign_key "usuarios", "personas"
-  add_foreign_key "zona_usuarios", "usuarios"
-  add_foreign_key "zona_usuarios", "zonas"
   add_foreign_key "zonas", "grupos"
 end

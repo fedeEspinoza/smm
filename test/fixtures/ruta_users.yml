@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rutum_id: 
+  user_id: 
+  fecha_alta: 2017-04-24 16:20:52
+  fecha_baja: 2017-04-24 16:20:52
+
+two:
+  rutum_id: 
+  user_id: 
+  fecha_alta: 2017-04-24 16:20:52
+  fecha_baja: 2017-04-24 16:20:52

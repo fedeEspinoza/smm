@@ -108,8 +108,9 @@
                 <%= fa_icon "road", text: "Rutas" %>
               <% end %>  
               </li>
-              <li>
-                <a href="#"><%= fa_icon "road", text: "Asignar ruta" %></a>
+              <li class="<%= params['controller'] == 'ruta' ? 'active' : ''%>"><%= link_to ruta_users_path do %>
+                <%= fa_icon "road", text: "Asignar Ruta" %>
+              <% end %>  
               </li>
             </ul>
           </li>

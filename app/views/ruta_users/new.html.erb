@@ -1,0 +1,19 @@
+<div class="page-header">
+  <%= link_to ruta_users_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <h4>Asignar Ruta</h4>
+</div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to ruta_users_path do %>
+        <%= fa_icon "road", text: "Listado de Rutas asignadas" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Asignar Ruta
+  </li>
+</ol>
+
+<%= render 'form' %>

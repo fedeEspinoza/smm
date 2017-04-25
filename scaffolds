@@ -24,4 +24,6 @@
 #rails g scaffold Ruta numero:integer nombre:string zona:references descripcion:string
 #rails g model RutaUsuario ruta:references usuario:references fecha_alta:datetime fecha_baja:datetime
 
+rails g scaffold RutaUser ruta:references user:references fecha_alta:datetime fecha_baja:datetime
+
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/

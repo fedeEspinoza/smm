@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ruta_users
   resources :ruta
   resources :empleados
   resources :users

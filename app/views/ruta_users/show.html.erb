@@ -1,0 +1,36 @@
+<div class="page-header">
+  <%= link_to ruta_users_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to edit_ruta_user_path(@ruta_user), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h4>Ver Ruta asignada</h4>
+</div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to ruta_users_path do %>
+        <%= fa_icon "road", text: "Listado de Rutas asignadas" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Ver Ruta asignada
+  </li>
+</ol>
+
+<dl class="dl-horizontal">
+  <dt>Ruta:</dt>
+  <dd><%= @ruta_user.rutum %></dd>
+
+  <dt>User:</dt>
+  <dd><%= @ruta_user.user %></dd>
+
+  <dt>Fecha de alta:</dt>
+  <dd><%= @ruta_user.fecha_alta %></dd>
+
+  <dt>Fecha de baja:</dt>
+  <dd><%= @ruta_user.fecha_baja %></dd>
+
+</dl>
