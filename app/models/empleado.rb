@@ -9,4 +9,8 @@ class Empleado < ActiveRecord::Base
   validates :apellido, :format => {:with => /\A[a-z ñáéíóúü'A-ZÑÁÉÍÓÚÜ]+\z/, :message => "El campo Apellido sólo debe contener letras" }
   validates :nombre, :presence => { :message => "Debe completar el campo Nombre" }
   validates :nombre, :format => {:with => /\A[a-z ñáéíóúü'A-ZÑÁÉÍÓÚÜ]+\z/, :message => "El campo Nombre sólo debe contener letras" }  
+
+  def to_s
+  	"#{self.nro_documento} - #{self.apellido}, #{self.nombre}"  	
+  end
 end

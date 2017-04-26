@@ -50,7 +50,7 @@ class RestfulController < ApplicationController
         medidors.multiplicador as multiplicador,
         ruta.zona_id as zona_id,
         medidors.tipo_medidor_id as tipo_medidor_id").joins(:rutum, :medidors, :categorium).where(ruta: {id: rutum.id})
-        render json: ruta.to_json
+        render json: { ruta: ruta.to_json }
     else
       render json: { errors: "No hay rutas asignadas para el tomaestado actual" }
     end

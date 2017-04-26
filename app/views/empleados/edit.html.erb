@@ -7,7 +7,17 @@
     <span class="glyphicon glyphicon-info-sign"></span>
     Ver
   <% end %>
-  <h4>Editar empleado</h4>
+  <h4>Editar Empleado</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to personas_path do %>
+        <%= fa_icon "male", text: "Empleados" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Editar Empleado
+  </li>
+</ol>
 
 <%= render 'form' %>

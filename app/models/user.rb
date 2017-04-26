@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   	self.email
   end
 
+  def data_y_empleado
+    "#{self.email} - #{self.empleado.tipo_documento}, #{self.empleado}"
+  end
+
   def role?(role)
     return self.roles.find_by(descripcion: role.to_s.camelize)
   end

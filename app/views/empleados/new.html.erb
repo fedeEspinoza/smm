@@ -3,7 +3,17 @@
     <span class="glyphicon glyphicon-list-alt"></span>
     Volver
   <% end %>
-  <h4>Nuevo empleado</h4>
+  <h4>Nuevo Empleado</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to personas_path do %>
+        <%= fa_icon "male", text: "Empleados" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Nuevo Empleado
+  </li>
+</ol>
 
 <%= render 'form' %>

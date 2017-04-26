@@ -1,5 +1,7 @@
 class RutaUsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_ruta_user, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /ruta_users
   # GET /ruta_users.json
@@ -10,6 +12,15 @@ class RutaUsersController < ApplicationController
   # GET /ruta_users/1
   # GET /ruta_users/1.json
   def show
+    @rutum = Rutum.find(@ruta_user.rutum_id)
+    respond_to do |format|
+      format.html
+      format.pdf do      
+        render pdf: 'ruta_tomaestado',          
+        orientation: 'Landscape',
+        template: 'ruta_users/ruta_tomaestado.html.erb'
+      end
+    end
   end
 
   # GET /ruta_users/new

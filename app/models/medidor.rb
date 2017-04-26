@@ -12,6 +12,6 @@ class Medidor < ActiveRecord::Base
   validates :modelo, :presence => { :message => "Debe completar el campo Modelo" }
 
   def to_s
-	"#{self.numero} - #{self.marca} - #{self.modelo}, (#{self.tipo_medidor.to_s})"
+	"#{self.numero} - #{self.marca} - #{self.modelo}, (#{self.tipo_medidor})"
   end 
 end

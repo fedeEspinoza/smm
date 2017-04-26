@@ -7,17 +7,27 @@
     <span class="glyphicon glyphicon-pencil"></span>
     Editar
   <% end %>
-  <h4>Ver empleado</h4>
+  <h4>Ver Empleado</h4>
 </div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to personas_path do %>
+        <%= fa_icon "male", text: "Empleados" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Ver Empleado
+  </li>
+</ol>
 
 <dl class="dl-horizontal">
-  <dt>Nro legajo:</dt>
+  <dt>N° de legajo:</dt>
   <dd><%= @empleado.nro_legajo %></dd>
 
-  <dt>Tipo documento:</dt>
+  <dt>Tipo de documento:</dt>
   <dd><%= @empleado.tipo_documento %></dd>
 
-  <dt>Nro documento:</dt>
+  <dt>N° documento:</dt>
   <dd><%= @empleado.nro_documento %></dd>
 
   <dt>Apellido:</dt>
@@ -29,10 +39,10 @@
   <dt>Estado:</dt>
   <dd><%= @empleado.estado %></dd>
 
-  <dt>Fecha alta:</dt>
+  <dt>Fecha de alta:</dt>
   <dd><%= @empleado.fecha_alta %></dd>
 
-  <dt>Fecha baja:</dt>
+  <dt>Fecha de baja:</dt>
   <dd><%= @empleado.fecha_baja %></dd>
 
 </dl>

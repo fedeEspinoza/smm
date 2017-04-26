@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Estado 
+# ===================
+
+Estado.create(descripcion: 'Alta')
+Estado.create(descripcion: 'Baja')
+
 # Tipo de documento
 # ===================
 
@@ -18,10 +24,10 @@ TipoDocumento.create(descripcion: 'CI')#5
 # Empleados
 # ========
 
-Empleado.create(nro_legajo: 123, tipo_documento_id: 4,nro_documento: 11446782,apellido: "Moreno",nombre: "Oscar")
-Empleado.create(nro_legajo: 456, tipo_documento_id: 4,nro_documento: 11446687,apellido: "Ferreras",nombre: "Graciela")
-Empleado.create(nro_legajo: 789, tipo_documento_id: 4,nro_documento: 32343209,apellido: "Moreno",nombre: "Felipe")
-Empleado.create(nro_legajo: 999, tipo_documento_id: 4,nro_documento: 32343209,apellido: "Moreno",nombre: "Mika")
+Empleado.create(nro_legajo: 123, tipo_documento_id: 4,nro_documento: 11446782,apellido: "Moreno",nombre: "Oscar", estado_id: 1)
+Empleado.create(nro_legajo: 456, tipo_documento_id: 4,nro_documento: 11446687,apellido: "Ferreras",nombre: "Graciela", estado_id: 1)
+Empleado.create(nro_legajo: 789, tipo_documento_id: 4,nro_documento: 32343209,apellido: "Moreno",nombre: "Felipe", estado_id: 1)
+Empleado.create(nro_legajo: 999, tipo_documento_id: 4,nro_documento: 32343209,apellido: "Moreno",nombre: "Mika", estado_id: 1)
 
 # Usuarios
 # ========
@@ -107,12 +113,6 @@ Novedad.create(codigo: 92 ,descripcion: "TERRENO BALDIO", prioridad_id: 3, codig
 TipoMedidor.create(nombre:"Agua", codigo: 0, descripcion: "Medidor de agua")
 TipoMedidor.create(nombre:"Energía activa", codigo: 1, descripcion: "Medidor de energía reactiva")
 TipoMedidor.create(nombre:"Energía reactiva", codigo: 2, descripcion: "Medidor de energía activa")
-
-# Estado 
-# ===================
-
-Estado.create(descripcion: 'Alta')
-Estado.create(descripcion: 'Baja')
 
 
 # grupo de lectura

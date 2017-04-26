@@ -31,7 +31,7 @@ class Usuario < ActiveRecord::Base
   end 
 
   def to_s
-  	"#{self.persona.to_s} - #{self.razon_social}"
+  	"#{self.persona} - #{self.razon_social}"
   end
 
   def data_y_domicilio

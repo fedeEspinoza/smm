@@ -1,5 +1,7 @@
 class RutaController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_rutum, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /ruta
   # GET /ruta.json

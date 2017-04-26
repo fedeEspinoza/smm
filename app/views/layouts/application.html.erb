@@ -73,7 +73,7 @@
           </li>
           <% if current_user.role? :admin %>
           <li class="<%= params['controller'] == 'categoria' ? 'active' : ''%>"><%= link_to categoria_path do %>
-              <%= fa_icon "industry", text: "Categorias" %>
+              <%= fa_icon "industry", text: "Categorías" %>
             <% end %>
           </li>
           <li class="<%= params['controller'] == 'grupos' ? 'active' : ''%>"><%= link_to grupos_path do %>
@@ -98,23 +98,21 @@
               <%= fa_icon "calculator", text: "Medidores" %>
             <% end %>  
           </li>          
-          <li>
-            <a href="javascript:;" data-toggle="collapse" data-target="#demo">
-              <%= fa_icon "road", text: "Gestión de rutas" %>
-              <%= fa_icon "caret-down" %>
-            </a>
-            <ul id="demo" class="collapse">
-              <li class="<%= params['controller'] == 'ruta' ? 'active' : ''%>"><%= link_to ruta_path do %>
-                <%= fa_icon "road", text: "Rutas" %>
-              <% end %>  
-              </li>
-              <li class="<%= params['controller'] == 'ruta' ? 'active' : ''%>"><%= link_to ruta_users_path do %>
-                <%= fa_icon "road", text: "Asignar Ruta" %>
-              <% end %>  
-              </li>
-            </ul>
+          <li class="<%= params['controller'] == 'ruta' ? 'active' : ''%>"><%= link_to ruta_path do %>
+            <%= fa_icon "road", text: "Rutas" %>
+            <% end %>  
           </li>
+          <li class="<%= params['controller'] == 'ruta_users' ? 'active' : ''%>"><%= link_to ruta_users_path do %>
+            <%= fa_icon "paperclip", text: "Rutas asignadas" %>
+            <% end %>  
+          </li>                      
           <%end%>          
+          <% if current_user.role? :admin %>
+          <li class="<%= params['controller'] == 'ruta_users' ? 'active' : ''%>"><%= link_to empleados_path do %>
+            <%= fa_icon "male", text: "Empleados" %>
+            <% end %>  
+          </li>                      
+          <%end%>
           <li class="<%= params['controller'] == 'historial_medicions' ? 'active' : ''%>"><%= link_to historial_medicions_path do %>
               <%= fa_icon "line-chart", text: "Mediciones" %>
             <% end %>

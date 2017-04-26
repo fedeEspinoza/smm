@@ -1,5 +1,7 @@
 class EmpleadosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_empleado, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /empleados
   # GET /empleados.json
@@ -28,7 +30,7 @@ class EmpleadosController < ApplicationController
 
     respond_to do |format|
       if @empleado.save
-        format.html { redirect_to @empleado, notice: 'Empleado was successfully created.' }
+        format.html { redirect_to @empleado, notice: 'Se ha creado un nuevo empleado.' }
         format.json { render :show, status: :created, location: @empleado }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class EmpleadosController < ApplicationController
   def update
     respond_to do |format|
       if @empleado.update(empleado_params)
-        format.html { redirect_to @empleado, notice: 'Empleado was successfully updated.' }
+        format.html { redirect_to @empleado, notice: 'Se ha actualizado el empleado.' }
         format.json { render :show, status: :ok, location: @empleado }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class EmpleadosController < ApplicationController
   def destroy
     @empleado.destroy
     respond_to do |format|
-      format.html { redirect_to empleados_url, notice: 'Empleado was successfully destroyed.' }
+      format.html { redirect_to empleados_url, notice: 'Se ha eliminado el empleado.' }
       format.json { head :no_content }
     end
   end
