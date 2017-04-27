@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   validates :email, :presence => { :message => "Debe completar el campo Email" }
   validates :password, :presence => { :message => "Debe completar el campo Contraseña" }
-  #validates :password_confirmation, :presence => { :message => "Debe completar el campo Confirmar contraseña" }
+  validates :password_confirmation, :presence => { :message => "Debe completar el campo Confirmar contraseña" }
 
   def to_s
   	self.email

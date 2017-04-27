@@ -9,8 +9,8 @@ class RestfulController < ApplicationController
     if user_email.present? && user_password.present?
       user = User.find_by(email: user_email)
       if user && user.valid_password?(user_password)
-        sign_in user
-        user.save        
+        sign_in(user)        
+        user.save    
         user = User.select('users.id, empleados.nro_legajo, users.email').joins(:empleado).find_by(email: user_email)
         render json: user.to_json
       else
