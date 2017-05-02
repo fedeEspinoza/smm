@@ -32,7 +32,7 @@ Empleado.create(nro_legajo: 999, tipo_documento_id: 4,nro_documento: 32343209,ap
 # Usuarios
 # ========
 
-#Comentar las validaciones correspondientes a confirmacion de password en el modelo users para poder ejecutar!
+# Comentar validacion de confirmacion de clave para que funcione!
 User.create(email: 'tomaestado@tomaestado.com', password: 'sumbudrule', empleado_id: 1)
 User.create(email: 'jefe@jefe.com', password: 'sumbudrule', empleado_id: 2)
 User.create(email: 'facturacion@facturacion.com', password: 'sumbudrule', empleado_id: 3)

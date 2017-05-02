@@ -1,5 +1,5 @@
 class RestfulController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  #skip_before_action :verify_authenticity_token
 	
   # Autenticacion via android
   def signin
@@ -8,9 +8,9 @@ class RestfulController < ApplicationController
 
     if user_email.present? && user_password.present?
       user = User.find_by(email: user_email)
-      if user && user.valid_password?(user_password)
-        sign_in(user)        
-        user.save    
+      if user && user.valid_password?(user_password)                        
+        user.save!
+        sign_in(user, scope: :user)        
         user = User.select('users.id, empleados.nro_legajo, users.email').joins(:empleado).find_by(email: user_email)
         render json: user.to_json
       else
@@ -52,7 +52,7 @@ class RestfulController < ApplicationController
         medidors.tipo_medidor_id as tipo_medidor_id").joins(:rutum, :medidors, :categorium).where(ruta: {id: rutum.id})
         render json: { ruta: ruta.to_json }
     else
-      render json: { errors: "No hay rutas asignadas para el tomaestado actual" }
+      render json: { errors: "No hay rutas asignadas para #{current_user.email}" }
     end
   end 
 end

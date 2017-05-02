@@ -108,7 +108,7 @@
           </li>                      
           <%end%>          
           <% if current_user.role? :admin %>
-          <li class="<%= params['controller'] == 'ruta_users' ? 'active' : ''%>"><%= link_to empleados_path do %>
+          <li class="<%= params['controller'] == 'empleados' ? 'active' : ''%>"><%= link_to empleados_path do %>
             <%= fa_icon "male", text: "Empleados" %>
             <% end %>  
           </li>                      
