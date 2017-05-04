@@ -33,10 +33,10 @@ Empleado.create(nro_legajo: 999, tipo_documento_id: 4,nro_documento: 32343209,ap
 # ========
 
 # Comentar validacion de confirmacion de clave para que funcione!
-User.create(email: 'tomaestado@tomaestado.com', password: 'sumbudrule', empleado_id: 1)
-User.create(email: 'jefe@jefe.com', password: 'sumbudrule', empleado_id: 2)
-User.create(email: 'facturacion@facturacion.com', password: 'sumbudrule', empleado_id: 3)
-User.create(email: 'admin@admin.com', password: 'sumbudrule', empleado_id: 4)
+User.create(email: 'tomaestado@tomaestado.com', password: 'sumbudrule', empleado_id: 1, authentication_token: Devise.friendly_token)
+User.create(email: 'jefe@jefe.com', password: 'sumbudrule', empleado_id: 2, authentication_token: Devise.friendly_token)
+User.create(email: 'facturacion@facturacion.com', password: 'sumbudrule', empleado_id: 3, authentication_token: Devise.friendly_token)
+User.create(email: 'admin@admin.com', password: 'sumbudrule', empleado_id: 4, authentication_token: Devise.friendly_token)
 
 # Roles
 # ========
