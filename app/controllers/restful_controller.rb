@@ -9,7 +9,7 @@ class RestfulController < ApplicationController
 
     if user_email.present? && user_password.present?
       user = User.find_by(email: user_email)
-      if user && user.valid_password?(user_password)                        
+      if user && user.valid_password?(user_password) && user.role?(:tomaestado)                         
         user.ensure_authentication_token
         user.save
         sign_in(user, scope: :user)        
@@ -70,6 +70,7 @@ class RestfulController < ApplicationController
     end
   end 
 
+  #Actualmente no se esta usando
   def authenticate_user_from_token!
     user_email = params[:nombre].presence
     user = user_email && User.find_by_email(user_email)
