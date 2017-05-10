@@ -8,11 +8,11 @@ class Ability
        if user.role? :admin
          can :manage, :all
        elsif user.role? :jefe
-        can :manage, [HistorialMedicion, Medidor, Novedad, Prioridad, Rutum, RutaUsuario, RutaUser, Zona]
+        can :manage, [EstadoMedidor, MedidorEstadoMedidor, Medidor, Novedad, Prioridad, Rutum, RutaUsuario, RutaUser, Zona]
        elsif user.role? :facturacion
-        can :manage, [HistorialMedicion, Usuario]
+        can :manage, [EstadoMedidor, MedidorEstadoMedidor, Usuario]
        elsif user.role? :tomaestado
-        can :manage, [HistorialMedicion]
+        can :manage, [EstadoMedidor, MedidorEstadoMedidor]
        end
     #
     # The first argument to `can` is the action you are giving the user

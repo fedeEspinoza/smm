@@ -14,8 +14,6 @@
 #rails g scaffold Usuario categorium:references numero:integer razon_social:string domicilio:string circunscripcion:integer sector:integer tipo:integer manzana:integer parcela:integer unidad_funcional:integer latitud:string longitud:string estado:references persona:references fecha_alta:datetime fecha_baja:datetime
 #rails g model UsuarioMedidor usuario:references medidor:references fecha_alta:datetime fecha_baja:datetime
 
-+rails g scaffold HistorialMedicion novedad:references medidor:references user:references estado_medidor:integer fecha_medicion:datetime fecha_modificacion:datetime
-
 #rails g scaffold Role descripcion:string
 #rails g model UserRole user:references role:references
 #rails g controller users
@@ -23,5 +21,9 @@
 #rails g scaffold Ruta numero:integer nombre:string zona:references descripcion:string
 #rails g model RutaUsuario ruta:references usuario:references fecha_alta:datetime fecha_baja:datetime
 #rails g scaffold RutaUser ruta:references user:references fecha_alta:datetime fecha_baja:datetime
+
+rails g scaffold EstadoMedidor novedad:references user:references estado_actual:integer estado_anterior:integer promedio:integer demanda:integer observacion:string fecha_medicion:datetime fecha_modificacion:datetime 
+
+rails g model MedidorEstadoMedidor medidor:references estado_medidor:references
 
 /*-*-*-*-*-*-*-*-*-*-*-*-*-*-*/

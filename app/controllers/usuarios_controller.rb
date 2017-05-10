@@ -2,6 +2,19 @@ class UsuariosController < ApplicationController
   before_action :authenticate_user!
   before_action :set_usuario, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
+  skip_authorize_resource :only => :get_medidores
+
+  # Para obtener medidores via AJAX
+  def get_medidores    
+    medidores = Medidor.select(
+      "medidors.id as id,
+       medidors.numero as numero,
+       medidors.marca as marca,
+       medidors.modelo as modelo,
+       tipo_medidors.nombre as nombre_tipo_medidor"
+      ).joins(:usuario_medidors, :tipo_medidor).where(usuario_medidors: {usuario_id: params[:usuario_id]})
+    render json: medidores 
+  end
 
   # GET /usuarios
   # GET /usuarios.json

@@ -1,0 +1,52 @@
+<div class="page-header">
+  <%= link_to estado_medidors_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Volver
+  <% end %>
+  <%= link_to edit_estado_medidor_path(@estado_medidor), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Editar
+  <% end %>
+  <h4>Ver Medición</h4>
+</div>
+<ol class="breadcrumb">
+  <li>
+    <%= link_to estado_medidors_path do %>
+        <%= fa_icon "line-chart", text: "Mediciones" %>
+    <% end %>
+  </li>
+  <li class="active">
+    Ver Medición
+  </li>
+</ol>
+
+
+<dl class="dl-horizontal">
+  <dt>Novedad:</dt>
+  <dd><%= @estado_medidor.novedad %></dd>
+
+  <dt>Tomaestado:</dt>
+  <dd><%= @estado_medidor.user.data_y_empleado %></dd>
+
+  <dt>Estado actual:</dt>
+  <dd><%= @estado_medidor.estado_actual %></dd>
+
+  <dt>Estado anterior:</dt>
+  <dd><%= @estado_medidor.estado_anterior %></dd>
+
+  <dt>Promedio:</dt>
+  <dd><%= @estado_medidor.promedio %></dd>
+
+  <dt>Demanda:</dt>
+  <dd><%= @estado_medidor.demanda %></dd>
+
+  <dt>Observación:</dt>
+  <dd><%= @estado_medidor.observacion %></dd>
+
+  <dt>Fecha de medición:</dt>
+  <dd><%= @estado_medidor.fecha_medicion %></dd>
+
+  <dt>Fecha de modificación:</dt>
+  <dd><%= @estado_medidor.fecha_modificacion %></dd>
+
+</dl>

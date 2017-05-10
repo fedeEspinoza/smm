@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  novedad_id: 
+  user_id: 
+  estado_actual: 1
+  estado_anterior: 1
+  promedio: 1
+  demanda: 1
+  observacion: MyString
+  fecha_medicion: 2017-05-06 15:08:24
+  fecha_modificacion: 2017-05-06 15:08:24
+
+two:
+  novedad_id: 
+  user_id: 
+  estado_actual: 1
+  estado_anterior: 1
+  promedio: 1
+  demanda: 1
+  observacion: MyString
+  fecha_medicion: 2017-05-06 15:08:24
+  fecha_modificacion: 2017-05-06 15:08:24

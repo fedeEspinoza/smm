@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%= link_to historial_medicions_path, class: 'btn btn-default' do %>
+  <%= link_to estado_medidors_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Volver
   <% end %>
-  <%= link_to @historial_medicion, class: 'btn btn-primary' do %>
+  <%= link_to @estado_medidor, class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-info-sign"></span>
     Ver
   <% end %>
@@ -11,7 +11,7 @@
 </div>
 <ol class="breadcrumb">
   <li>
-    <%= link_to historial_medicions_path do %>
+    <%= link_to estado_medidors_path do %>
         <%= fa_icon "line-chart", text: "Mediciones" %>
     <% end %>
   </li>

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  resources :estado_medidors
   resources :ruta_users
   resources :ruta
   resources :empleados
   resources :users
   resources :roles
-  resources :historial_medicions
   resources :usuario_medidors
   resources :usuarios
   resources :medidors
@@ -28,11 +28,13 @@ Rails.application.routes.draw do
   root 'index#index'
 
   get 'index' => 'index#index'
-  get 'personas/find_persona/:tipo_documento_id/:nro_documento' => 'personas#find_persona'
+  get 'personas/find_persona/:tipo_documento_id/:nro_documento' => 'personas#find_persona', as: :find_persona
+  get 'usuarios/get_medidores/:usuario_id' => 'usuarios#get_medidores', as: :get_medidores
 
   post 'restful/signin' => 'restful#signin', as: :signin
   post 'restful/signup' => 'restful#signup', as: :signup
   post 'restful/descargar_ruta' => 'restful#descargar_ruta', as: :descargar_ruta
+  get 'restful/chequear_ruta' => 'restful#chequear_ruta', as: :chequear_ruta
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

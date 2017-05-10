@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503115551) do
+ActiveRecord::Schema.define(version: 20170506180839) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
@@ -36,6 +36,23 @@ ActiveRecord::Schema.define(version: 20170503115551) do
   add_index "empleados", ["estado_id"], name: "index_empleados_on_estado_id", using: :btree
   add_index "empleados", ["tipo_documento_id"], name: "index_empleados_on_tipo_documento_id", using: :btree
 
+  create_table "estado_medidors", force: :cascade do |t|
+    t.integer  "novedad_id",         limit: 4
+    t.integer  "user_id",            limit: 4
+    t.integer  "estado_actual",      limit: 4
+    t.integer  "estado_anterior",    limit: 4
+    t.integer  "promedio",           limit: 4
+    t.integer  "demanda",            limit: 4
+    t.string   "observacion",        limit: 255
+    t.datetime "fecha_medicion"
+    t.datetime "fecha_modificacion"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "estado_medidors", ["novedad_id"], name: "index_estado_medidors_on_novedad_id", using: :btree
+  add_index "estado_medidors", ["user_id"], name: "index_estado_medidors_on_user_id", using: :btree
+
   create_table "estados", force: :cascade do |t|
     t.string   "descripcion", limit: 255
     t.datetime "created_at",              null: false
@@ -50,20 +67,15 @@ ActiveRecord::Schema.define(version: 20170503115551) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "historial_medicions", force: :cascade do |t|
-    t.integer  "novedad_id",         limit: 4
-    t.integer  "medidor_id",         limit: 4
-    t.integer  "user_id",            limit: 4
-    t.integer  "estado_medidor",     limit: 4
-    t.datetime "fecha_medicion"
-    t.datetime "fecha_modificacion"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+  create_table "medidor_estado_medidors", force: :cascade do |t|
+    t.integer  "medidor_id",        limit: 4
+    t.integer  "estado_medidor_id", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
-  add_index "historial_medicions", ["medidor_id"], name: "index_historial_medicions_on_medidor_id", using: :btree
-  add_index "historial_medicions", ["novedad_id"], name: "index_historial_medicions_on_novedad_id", using: :btree
-  add_index "historial_medicions", ["user_id"], name: "index_historial_medicions_on_user_id", using: :btree
+  add_index "medidor_estado_medidors", ["estado_medidor_id"], name: "index_medidor_estado_medidors_on_estado_medidor_id", using: :btree
+  add_index "medidor_estado_medidors", ["medidor_id"], name: "index_medidor_estado_medidors_on_medidor_id", using: :btree
 
   create_table "medidors", force: :cascade do |t|
     t.integer  "numero",          limit: 4
@@ -246,9 +258,10 @@ ActiveRecord::Schema.define(version: 20170503115551) do
 
   add_foreign_key "empleados", "estados"
   add_foreign_key "empleados", "tipo_documentos"
-  add_foreign_key "historial_medicions", "medidors"
-  add_foreign_key "historial_medicions", "novedads"
-  add_foreign_key "historial_medicions", "users"
+  add_foreign_key "estado_medidors", "novedads"
+  add_foreign_key "estado_medidors", "users"
+  add_foreign_key "medidor_estado_medidors", "estado_medidors"
+  add_foreign_key "medidor_estado_medidors", "medidors"
   add_foreign_key "medidors", "tipo_medidors"
   add_foreign_key "novedads", "prioridads"
   add_foreign_key "personas", "tipo_documentos"

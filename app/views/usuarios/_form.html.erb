@@ -19,7 +19,7 @@
       <% if params[:action] == 'new' %>
         <small>(Seleccione un <b>Tipo de documento</b> y complete el campo <b>Número de documento</b> para realizar una búsqueda de datos) </small>
       <% end %>
-      </h3>
+      </h3>      
     </div>
     <div class="panel-body">  
 
@@ -31,8 +31,9 @@
           </div>
           <%= p.label :nro_documento, "Número de documento", class: "col-sm-3 control-label" %>
           <div class="col-sm-2">
-            <%= p.text_field :nro_documento, :class => "form-control" %>
+            <%= p.number_field :nro_documento, :class => "form-control" %>
           </div>
+          <span id="loading-image" style="display: none;"><img src="<%= asset_path('loading.gif')%>"/></span>
         </div>
 
         <div class="row">
@@ -243,6 +244,7 @@
     $('#usuario_persona_attributes_tipo_documento_id').change(function(){
       var tipo_documento_id = parseInt($('#usuario_persona_attributes_tipo_documento_id').val(),10);
       var nro_documento = parseInt($('#usuario_persona_attributes_nro_documento').val(),10);
+      $('#loading-image').show();
       $.ajax({
         url: '/personas/find_persona/'+tipo_documento_id+'/'+nro_documento,
         type: 'GET'
@@ -259,11 +261,13 @@
           $('#usuario_persona_attributes_telefono').val(data.telefono.toString());
           $('#usuario_persona_attributes_email').val(data.email.toString());
         }
+        $('#loading-image').hide();
       });
     });
     $('#usuario_persona_attributes_nro_documento').on('input propertychange paste', function() {
       var tipo_documento_id = parseInt($('#usuario_persona_attributes_tipo_documento_id').val(),10);
       var nro_documento = parseInt($('#usuario_persona_attributes_nro_documento').val(),10);
+      $('#loading-image').show();
       $.ajax({
         url: '/personas/find_persona/'+tipo_documento_id+'/'+nro_documento,
         type: 'GET'
@@ -278,8 +282,9 @@
           $('#usuario_persona_attributes_apellido').val(data.apellido.toString());
           $('#usuario_persona_attributes_nombre').val(data.nombre.toString());
           $('#usuario_persona_attributes_telefono').val(data.telefono.toString());
-          $('#usuario_persona_attributes_email').val(data.email.toString());
+          $('#usuario_persona_attributes_email').val(data.email.toString());          
         }
+        $('#loading-image').hide();
       });
     });    
   });

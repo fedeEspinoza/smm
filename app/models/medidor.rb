@@ -4,8 +4,8 @@ class Medidor < ActiveRecord::Base
   has_many :usuario_medidors, :foreign_key => 'medidor_id', :class_name => 'UsuarioMedidor'
   has_many :usuarios, :through => :usuario_medidors
 
-  has_many :historial_medicions, :foreign_key => 'medidor_id', :class_name => 'HistorialMedicion'
-  has_many :historial_medicions, :through => :historial_medicions
+  has_many :medidor_estado_medidors, :foreign_key => 'medidor_id', :class_name => 'MedidorEstadoMedidor'
+  has_many :estado_medidors, :through => :medidor_estado_medidors
 
   validates :numero, :presence => { :message => "Debe completar el campo Número" }
   validates :numero, length: {minimum: 1, maximum: 8, :message => "El campo Número puede tener hasta 8 dígitos"}

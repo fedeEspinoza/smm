@@ -52,6 +52,12 @@ gem 'wicked_pdf'
 
 gem 'wkhtmltopdf-binary'
 
+gem 'jquery-datatables-rails', '3.1.1'
+
+gem 'ajax-datatables-rails', github: 'antillas21/ajax-datatables-rails', branch: 'master'
+
+gem 'kaminari'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

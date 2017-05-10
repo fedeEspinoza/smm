@@ -27,9 +27,12 @@ class MedidorsController < ApplicationController
   # POST /medidors.json
   def create
     @medidor = Medidor.new(medidor_params)
+    @medidor.fecha_alta = DateTime.now
 
     respond_to do |format|
       if @medidor.save
+        estado_medidor = EstadoMedidor.create(novedad_id: 1, user_id: current_user.id, estado_actual: 0, estado_anterior: 0, fecha_medicion: DateTime.now)
+        MedidorEstadoMedidor.create(medidor_id: @medidor.id, estado_medidor_id: estado_medidor.id)
         format.html { redirect_to @medidor, notice: 'Se ha creado un nuevo Medidor.' }
         format.json { render :show, status: :created, location: @medidor }
       else
@@ -55,7 +58,10 @@ class MedidorsController < ApplicationController
 
   # DELETE /medidors/1
   # DELETE /medidors/1.json
-  def destroy
+  def destroy    
+    #VERIFICAR, NO ELIMINA!!
+    @medidor.estado_medidors.destroy_all
+    @medidor.medidor_estado_medidors.destroy_all
     @medidor.destroy
     respond_to do |format|
       format.html { redirect_to medidors_url, notice: 'Se ha eliminado el Medidor.' }

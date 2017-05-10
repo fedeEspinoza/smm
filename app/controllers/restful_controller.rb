@@ -51,6 +51,8 @@ class RestfulController < ApplicationController
 
       rutum = Rutum.joins(:users).find_by(users: {id: user.id}) 
       if !rutum.blank?
+        mes_actual = EstadoMedidor.order(fecha_medicion: :desc).first.fecha_medicion.month
+        anio_actual = EstadoMedidor.order(fecha_medicion: :desc).first.fecha_medicion.year
         ruta = Usuario.select("usuarios.id as id,
           usuarios.latitud as latitud,
           usuarios.longitud as longitud,
@@ -60,7 +62,13 @@ class RestfulController < ApplicationController
           medidors.numero as numero_medidor,
           medidors.multiplicador as multiplicador,
           ruta.zona_id as zona_id,
-          medidors.tipo_medidor_id as tipo_medidor_id").joins(:rutum, :medidors, :categorium).where(ruta: {id: rutum.id})
+          medidors.tipo_medidor_id as tipo_medidor_id").joins(:rutum, :categorium, :medidors).where(ruta: {id: rutum.id}).merge(
+          Medidor.select("
+            medidors.id as id_medidor,  
+            estado_medidors.estado_anterior as estado_anterior").joins(:estado_medidors).
+          where("month(estado_medidors.fecha_medicion) = ?",mes_actual).
+          where("year(estado_medidors.fecha_medicion) = ?",anio_actual)
+        )
         render json: { ruta: ruta }
       else
         render json: { errors: "No hay rutas asignadas para #{user.email}" }
@@ -70,7 +78,66 @@ class RestfulController < ApplicationController
     end
   end 
 
-  #Actualmente no se esta usando
+  #Se utiliza solo para chequear que la ruta se descargue como corresponde. Eliminar cuando este terminado!!
+  def chequear_ruta
+    rutum = Rutum.joins(:users).find_by(users: {id: current_user.id}) 
+      if !rutum.blank?
+        mes_actual = EstadoMedidor.order(fecha_medicion: :desc).first.fecha_medicion.month
+        anio_actual = EstadoMedidor.order(fecha_medicion: :desc).first.fecha_medicion.year
+        ruta = Usuario.select("usuarios.id as id,
+          usuarios.latitud as latitud,
+          usuarios.longitud as longitud,
+          usuarios.numero as numero,
+          usuarios.domicilio_postal as domicilio_postal, 
+          categoria.codigo as categoria, 
+          medidors.numero as numero_medidor,
+          medidors.multiplicador as multiplicador,
+          ruta.zona_id as zona_id,
+          medidors.tipo_medidor_id as tipo_medidor_id").joins(:rutum, :categorium, :medidors).where(ruta: {id: rutum.id}).merge(
+          Medidor.select("
+            medidors.id as id_medidor,  
+            estado_medidors.id as id_estado_medidor,
+            estado_medidors.estado_anterior as estado_anterior").joins(:estado_medidors).
+          where("month(estado_medidors.fecha_medicion) = ?",mes_actual).
+          where("year(estado_medidors.fecha_medicion) = ?",anio_actual)
+        )
+        render json: { ruta: ruta }
+      else
+        render json: { errors: "No hay rutas asignadas para #{current_user.email}" }
+      end
+  end
+
+  #Guardar medicion
+  def guardar_medicion
+    user_email = params[:nombre].presence
+    user = user_email && User.find_by_email(user_email)
+
+    # Notice how we use Devise.secure_compare to compare the token
+    # in the database with the token given in the params, mitigating
+    # timing attacks.
+    if user && Devise.secure_compare(user.authentication_token, params[:user_token])
+      medidor = Medidor.find(params[:medidor_id])
+      estado_medidor = EstadoMedidor.new
+      novedad_id = params[:novedad_id]
+      user_id = user.id
+      estado_actual = params[:estado_actual]
+      estado_anterior = params[:estado_anterior]
+      promedio = params[:promedio]
+      demanda = params[:demanda]
+      observacion = params[:observacion]
+      fecha_medicion = params[:fecha_medicion]
+      if estado_medidor.save
+        MedidorEstadoMedidor.create(medidor_id: medidor.id, estado_medidor_id: estado_medidor.id)
+        render json: { message: "La medicion se guardo con exito!." }
+      else
+        render json: { errors: "Ocurrió un error al guardar el estado en el servidor." }
+      end
+    else
+      render json: { errors: "Necesitas iniciar sesión o crear una cuenta para poder continuar." }
+    end
+  end 
+
+  #Actualmente no se esta usando. Eliminar cuando este terminado
   def authenticate_user_from_token!
     user_email = params[:nombre].presence
     user = user_email && User.find_by_email(user_email)

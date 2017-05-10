@@ -949,3 +949,11 @@ Medidor.create(numero: 	31728	, multiplicador: 0, marca: '	ABB	 ' , modelo: '0',
 Medidor.create(numero: 	31729	, multiplicador: 0, marca: '	ABB	 ' , modelo: '0', fecha_alta: '	2016-09-22 23:34:45	 ', tipo_medidor_id: 	1	)
 Medidor.create(numero: 	31730	, multiplicador: 0, marca: '	ABB	 ' , modelo: '0', fecha_alta: '	2016-09-22 23:34:45	 ', tipo_medidor_id: 	1	)
 Medidor.create(numero: 	32416	, multiplicador: 0, marca: '	SCHLUMBERGER MULTIMAC	 ' , modelo: '0', fecha_alta: '	2016-09-22 23:34:45	 ', tipo_medidor_id: 	1	)
+
+
+#Comentar para poner datos reales!
+medidors = Medidor.all
+medidors.each do |m|
+	estado_medidor = EstadoMedidor.create(novedad_id: 1, user_id: 4, estado_actual: 0, estado_anterior: 0, fecha_medicion: DateTime.now)
+	MedidorEstadoMedidor.create(medidor_id: m.id, estado_medidor_id: estado_medidor.id)
+end

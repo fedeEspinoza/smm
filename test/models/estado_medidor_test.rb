@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class HistorialMedicionTest < ActiveSupport::TestCase
+class EstadoMedidorTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
