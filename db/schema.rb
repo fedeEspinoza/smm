@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506180839) do
+ActiveRecord::Schema.define(version: 20170511214502) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170506180839) do
   create_table "empleados", force: :cascade do |t|
     t.integer  "nro_legajo",        limit: 4
     t.integer  "tipo_documento_id", limit: 4
-    t.integer  "nro_documento",     limit: 4
+    t.integer  "nro_documento",     limit: 8
     t.string   "apellido",          limit: 255
     t.string   "nombre",            limit: 255
     t.integer  "estado_id",         limit: 4
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20170506180839) do
 
   create_table "personas", force: :cascade do |t|
     t.integer  "tipo_documento_id", limit: 4
-    t.integer  "nro_documento",     limit: 4
+    t.integer  "nro_documento",     limit: 8
     t.string   "apellido",          limit: 255
     t.string   "nombre",            limit: 255
     t.string   "telefono",          limit: 255
