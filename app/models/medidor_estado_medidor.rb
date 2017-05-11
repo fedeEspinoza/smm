@@ -1,4 +1,4 @@
 class MedidorEstadoMedidor < ActiveRecord::Base
-  belongs_to :medidor
-  belongs_to :estado_medidor
+  belongs_to :medidor, :foreign_key => 'medidor_id', :class_name => 'Medidor'
+  belongs_to :estado_medidor, :foreign_key => 'estado_medidor_id', :class_name => 'EstadoMedidor'
 end

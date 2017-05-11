@@ -59,9 +59,9 @@ class MedidorsController < ApplicationController
   # DELETE /medidors/1
   # DELETE /medidors/1.json
   def destroy    
-    #VERIFICAR, NO ELIMINA!!
-    @medidor.estado_medidors.destroy_all
+    estado_ids = @medidor.medidor_estado_medidors.map(&:estado_medidor_id)
     @medidor.medidor_estado_medidors.destroy_all
+    EstadoMedidor.where(id: estado_ids).destroy_all
     @medidor.destroy
     respond_to do |format|
       format.html { redirect_to medidors_url, notice: 'Se ha eliminado el Medidor.' }
