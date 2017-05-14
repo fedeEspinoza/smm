@@ -14,14 +14,14 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><%= fa_icon "search" %> Buscar medición
-      <small> Seleccione un Usuario y a continuación, uno de sus Medidores asignados </small>
+      <small> (Seleccione un <b>Usuario</b> y a continuación, uno de sus <b>Medidores</b> asignados)</small>
     </h3>
   </div>
   <div class="panel-body">
     <div class="row">
       <%= label_tag "usuario", "Usuario", class: "col-sm-1 control-label" %>
-      <div class="col-sm-5">
-        <%= select_tag "usuario", options_from_collection_for_select(Usuario.all, :id, :to_s), {prompt: "Seleccione un Usuario", id: "usuario", class: "form-control"}%>
+      <div class="col-sm-6">
+        <%= select_tag "usuario", options_from_collection_for_select(Usuario.all, :id, :data_y_domicilio), {prompt: "Seleccione un Usuario", id: "usuario", class: "form-control"}%>
       </div>         
     </div>
     <div class="row">

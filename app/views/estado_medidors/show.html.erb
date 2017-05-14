@@ -22,11 +22,18 @@
 
 
 <dl class="dl-horizontal">
-  <dt>Novedad:</dt>
-  <dd><%= @estado_medidor.novedad %></dd>
 
   <dt>Tomaestado:</dt>
   <dd><%= @estado_medidor.user.data_y_empleado %></dd>
+
+  <dt>Fecha de medición:</dt>
+  <dd><%= @estado_medidor.fecha_medicion %></dd>
+
+  <dt>Fecha de modificación:</dt>
+  <dd><%= @estado_medidor.fecha_modificacion %></dd>
+
+  <dt>Novedad:</dt>
+  <dd><%= @estado_medidor.novedad %></dd>
 
   <dt>Estado actual:</dt>
   <dd><%= @estado_medidor.estado_actual %></dd>
@@ -42,11 +49,5 @@
 
   <dt>Observación:</dt>
   <dd><%= @estado_medidor.observacion %></dd>
-
-  <dt>Fecha de medición:</dt>
-  <dd><%= @estado_medidor.fecha_medicion %></dd>
-
-  <dt>Fecha de modificación:</dt>
-  <dd><%= @estado_medidor.fecha_modificacion %></dd>
 
 </dl>

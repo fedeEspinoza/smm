@@ -7,7 +7,7 @@ class EstadoMedidorsController < ApplicationController
   # GET /estado_medidors.json
   def index
     if params[:medidor_id].present?
-      medidor_id = Medidor.find_by(id: params[:medidor_id]).id
+      medidor_id = Medidor.find(params[:medidor_id]).id
     else
       medidor_id = 0
     end    

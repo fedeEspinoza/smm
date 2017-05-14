@@ -6,7 +6,7 @@ class PersonasController < ApplicationController
 
   # Para obtener personas via AJAX
   def find_persona
-    persona = Persona.joins(:tipo_documento).where(nro_documento: params[:nro_documento]).where(tipo_documentos: { id: params[:tipo_documento_id] }).first
+    persona = Persona.joins(:tipo_documento).where(nro_documento: params[:nro_documento], tipo_documentos: { id: params[:tipo_documento_id] }).take
     
     render json: persona
   end
