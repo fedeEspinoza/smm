@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   post 'restful/signin' => 'restful#signin', as: :signin
   post 'restful/signup' => 'restful#signup', as: :signup
   post 'restful/descargar_ruta' => 'restful#descargar_ruta', as: :descargar_ruta
+  post 'restful/guardar_medicion' => 'restful#guardar_medicion', as: :guardar_medicion
   get 'restful/chequear_ruta' => 'restful#chequear_ruta', as: :chequear_ruta
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

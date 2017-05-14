@@ -118,14 +118,14 @@ class RestfulController < ApplicationController
     if user && Devise.secure_compare(user.authentication_token, params[:user_token])
       medidor = Medidor.find(params[:medidor_id])
       estado_medidor = EstadoMedidor.new
-      novedad_id = params[:novedad_id]
-      user_id = user.id
-      estado_actual = params[:estado_actual]
-      estado_anterior = params[:estado_anterior]
-      promedio = params[:promedio]
-      demanda = params[:demanda]
-      observacion = params[:observacion]
-      fecha_medicion = params[:fecha_medicion]
+      estado_medidor.novedad_id = params[:novedad_id]
+      estado_medidor.user_id = user.id
+      estado_medidor.estado_actual = params[:estado_actual]
+      estado_medidor.estado_anterior = params[:estado_anterior]
+      estado_medidor.promedio = params[:promedio]
+      estado_medidor.demanda = params[:demanda]
+      estado_medidor.observacion = params[:observacion]
+      estado_medidor.fecha_medicion = params[:fecha_medicion]
       if estado_medidor.save
         MedidorEstadoMedidor.create(medidor_id: medidor.id, estado_medidor_id: estado_medidor.id)
         render json: { message: "La medicion se guardo con exito!." }
