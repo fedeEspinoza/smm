@@ -7,26 +7,29 @@
     <span class="glyphicon glyphicon-pencil"></span>
     Editar
   <% end %>
-  <h4>Ver User</h4>
+  <h4>Ver Cuenta</h4>
 </div>
 <ol class="breadcrumb">
   <li>
     <%= link_to users_path do %>
-        <%= fa_icon "user", text: "Users" %>
+        <%= fa_icon "user", text: "Cuentas" %>
     <% end %>
   </li>
   <li class="active">
-    Ver User
+    Ver Cuenta
   </li>
 </ol>
 
-<h4>Empleado</h4>
+<legend><small>Empleado</small></legend>
 <dl class="dl-horizontal">
   <dt>Tipo de documento:</dt>
   <dd><%= @user.empleado.tipo_documento %></dd>
 
   <dt>N° de documento:</dt>
   <dd><%= @user.empleado.nro_documento %></dd>
+
+  <dt>N° de legajo:</dt>
+  <dd><%= @user.empleado.nro_legajo %></dd>
 
   <dt>Apellido:</dt>
   <dd><%= @user.empleado.apellido %></dd>
@@ -35,7 +38,7 @@
   <dd><%= @user.empleado.nombre %></dd>
 </dl>
 
-<h4>User</h4>
+<legend><small>Cuenta</small></legend>
 <dl class="dl-horizontal">
   <dt>Email:</dt>
   <dd><%= @user.email %></dd>
@@ -50,7 +53,7 @@
   <dd><%= @user.sign_in_count %></dd>
 </dl>
 
-<h4>Roles</h4>
+<legend><small>Roles</small></legend>
 <div class="col-sm-4">
   <ul class="list-group">
     <% @user.roles.each do |r|%>

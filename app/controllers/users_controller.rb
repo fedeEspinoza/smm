@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'Se ha creado un nuevo User.' }
+        format.html { redirect_to @user, notice: 'Se ha creado una nueva Cuenta.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Se ha actualizado el User.' }
+        format.html { redirect_to @user, notice: 'Se ha actualizado la Cuenta.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     @user.user_roles.destroy_all
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'Se ha eliminado el User.' }
+      format.html { redirect_to users_url, notice: 'Se ha eliminado la Cuenta.' }
       format.json { head :no_content }
     end
   end

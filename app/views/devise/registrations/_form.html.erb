@@ -1,24 +1,25 @@
-
-  <%= f.label :email %>
+  <legend><small>Cuenta</small></legend>
+  
   <div class="form-group">
-    <div class="col-lg-3">
+    <%= f.label :email, class: "col-sm-4 control-label" %>
+    <div class="col-sm-7">
       <%= f.email_field :email, :class => "form-control", autofocus: true %>
     </div>
   </div>
 
-  <%= f.label :password, "Clave" %>
   <div class="form-group">
+    <%= f.label :password, "Clave", class: "col-sm-4 control-label" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
+      <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
     <% end %>
-    <div class="col-lg-4">
+    <div class="col-sm-7">
       <%= f.password_field :password, :class => "form-control", autocomplete: "off" %>
     </div>
   </div>
 
-  <%= f.label :password_confirmation, "Confirmar clave" %>
   <div class="form-group">
-    <div class="col-lg-4">
+    <%= f.label :password_confirmation, "Confirmar clave", class: "col-sm-4 control-label" %>
+    <div class="col-sm-7">
       <%= f.password_field :password_confirmation, :class => "form-control", autocomplete: "off" %>
-    </div>
+    </div>    
   </div>
