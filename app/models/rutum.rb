@@ -15,7 +15,7 @@ class Rutum < ActiveRecord::Base
   validates :descripcion, :presence => { :message => "Debe completar el campo Descripción" }
 
   def to_s
-  	"Ruta N° #{self.numero} - Zona: #{self.zona}"
+  	"Ruta N° #{self.numero} - #{self.nombre}, Zona: #{self.zona}"
   end
 
 end

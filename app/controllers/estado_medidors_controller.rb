@@ -53,6 +53,7 @@ class EstadoMedidorsController < ApplicationController
   # PATCH/PUT /estado_medidors/1.json
   def update
     respond_to do |format|
+      @estado_medidor.fecha_modificacion = DateTime.now
       if @estado_medidor.update(estado_medidor_params)
         format.html { redirect_to @estado_medidor, notice: 'Se ha actualizado la Medición.' }
         format.json { render :show, status: :ok, location: @estado_medidor }

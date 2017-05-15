@@ -7,6 +7,14 @@ class RutaUsersController < ApplicationController
   # GET /ruta_users.json
   def index
     @ruta_users = RutaUser.all
+    respond_to do |format|
+      format.html
+      format.pdf do      
+        render pdf: 'listado_de_rutas_asignadas',          
+        orientation: 'Landscape',
+        template: 'ruta_users/listado_de_rutas_asignadas.html.erb'
+      end
+    end
   end
 
   # GET /ruta_users/1

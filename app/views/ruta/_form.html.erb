@@ -59,7 +59,7 @@
       <%= f.fields_for :ruta_usuarios do |m| %>
         <div class="row">
           <%= m.label :usuario_id, "Usuario", class: "col-sm-2 control-label" %>
-          <div class="col-sm-6">
+          <div class="col-sm-7">
             <%= m.collection_select :usuario_id, Usuario.all, :id, :data_y_domicilio, {prompt: false}, {:class => "form-control select"} %>
           </div>
           <%= m.link_to_remove "", :class => "btn btn-sm btn-danger glyphicon glyphicon-trash pull-right" %>

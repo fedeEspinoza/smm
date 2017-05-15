@@ -28,7 +28,7 @@
 NProgress.configure({
   showSpinner: false,
   ease: 'ease',
-  speed: 500
+  speed: 1000
 });
 
 jQuery(function($){

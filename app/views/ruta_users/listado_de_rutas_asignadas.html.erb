@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h4>Listado de Rutas asignadas</h4>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Ruta</th>
+            <th>Tomaestado</th>
+            <th>Fecha de alta</th>
+            <th>Fecha de baja</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @ruta_users) do |ruta_user| %>
+        <td><%= ruta_user.rutum %></td>
+        <td><%= ruta_user.user %></td>
+        <td><%= ruta_user.fecha_alta %></td>
+        <td><%= ruta_user.fecha_baja %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
