@@ -20,13 +20,13 @@
   <div class="panel-body">
     <div class="row">
       <%= label_tag "usuario", "Usuario", class: "col-sm-1 control-label" %>
-      <div class="col-sm-6">
+      <div class="col-sm-7">
         <%= select_tag "usuario", options_from_collection_for_select(Usuario.all, :id, :data_y_domicilio), {prompt: "Seleccione un Usuario", id: "usuario", class: "form-control"}%>
       </div>         
     </div>
     <div class="row">
       <%= label_tag "medidor", "Medidor", class: "col-sm-1 control-label" %>
-      <div class="col-sm-5">
+      <div class="col-sm-6">
         <%= select_tag "medidor", nil, {prompt: "Seleccione un Medidor", id: "medidor", class: "form-control"}%>
       </div>   
       <span id="loading-image" style="display: none;"><img src="<%= asset_path('loading.gif')%>"/></span>      

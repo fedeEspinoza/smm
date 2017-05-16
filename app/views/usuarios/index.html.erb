@@ -37,7 +37,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @usuarios) do |usuario| %>
-            <td><%= usuario.categorium %></td>
+            <td><%= usuario.categorium.codigo %></td>
             <td><%= usuario.numero %></td>
             <td><%= usuario.razon_social %></td>
             <!--<td><%= usuario.domicilio_postal %></td>
