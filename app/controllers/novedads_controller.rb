@@ -44,7 +44,7 @@ class NovedadsController < ApplicationController
   def update
     respond_to do |format|
       if @novedad.update(novedad_params)
-        format.html { redirect_to @novedad, notice: 'Se ha actualizado la novedad.' }
+        format.html { redirect_to @novedad, notice: 'Se ha actualizado la Novedad.' }
         format.json { render :show, status: :ok, location: @novedad }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class NovedadsController < ApplicationController
   def destroy
     @novedad.destroy
     respond_to do |format|
-      format.html { redirect_to novedads_url, notice: 'Se ha eliminado la novedad.' }
+      format.html { redirect_to novedads_url, notice: 'Se ha eliminado la Novedad.' }
       format.json { head :no_content }
     end
   end

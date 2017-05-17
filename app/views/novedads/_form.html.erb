@@ -38,6 +38,12 @@
     </div>
   </div>
   <div class="form-group">
+    <%= f.label :repite_estado, class: "col-sm-2 control-label" %>
+    <div class="col-sm-2">
+      <%= f.check_box :repite_estado, { class: 'form-control' }, true, false %>      
+    </div>
+  </div>
+  <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <%= f.submit class: "btn btn-primary", value: "Guardar"%>
     </div>

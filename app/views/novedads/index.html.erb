@@ -18,6 +18,7 @@
             <th>Descripción</th>
             <th>Prioridad</th>
             <th>Código de servicio</th>
+            <th>Repite estado</th>
             <th class="col-md-2">&nbsp;</th>
       </tr>
     </thead>
@@ -28,6 +29,7 @@
         <td><%= novedad.descripcion %></td>
         <td><%= novedad.prioridad %></td>
         <td><%= novedad.codigo_servicio %></td>
+        <td><%= (novedad.repite_estado)? "SI": "NO" %></td>
         <td class="text-center">
         <%= link_to novedad, class: 'btn btn-sm btn-default' do %>
           <span class="glyphicon glyphicon-search"></span>
