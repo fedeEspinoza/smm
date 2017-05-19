@@ -45,7 +45,6 @@ class UsuariosController < ApplicationController
   # POST /usuarios.json
   def create
     @usuario = Usuario.new(usuario_params)    
-    @usuario.estado = Estado.find_by(descripcion: "Alta") #Estado "Alta"
     @usuario.fecha_alta = DateTime.now
 
     persona_params = usuario_params[:persona_attributes]
@@ -99,6 +98,6 @@ class UsuariosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def usuario_params
-      params.require(:usuario).permit(:categorium_id, :numero, :razon_social, :domicilio_postal, :domicilio_servicio, :circunscripcion, :sector, :tipo, :manzana, :parcela, :unidad_funcional, :latitud, :longitud, :estado_id, :fecha_alta, :fecha_baja, persona_attributes: [:tipo_documento_id, :nro_documento, :apellido, :nombre, :telefono, :email], usuario_medidors_attributes: [:id, :medidor_id, :_destroy])
+      params.require(:usuario).permit(:categorium_id, :numero, :razon_social, :domicilio_postal, :domicilio_servicio, :circunscripcion, :sector, :tipo, :manzana, :parcela, :unidad_funcional, :latitud, :longitud, :fecha_alta, :fecha_baja, persona_attributes: [:tipo_documento_id, :nro_documento, :apellido, :nombre, :telefono, :email], usuario_medidors_attributes: [:id, :medidor_id, :_destroy])
     end
 end

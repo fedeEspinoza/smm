@@ -1,6 +1,5 @@
 class Empleado < ActiveRecord::Base
   belongs_to :tipo_documento
-  belongs_to :estado
 
   validates :nro_documento, :presence => { :message => "Debe completar el campo Número de documento" }
   validates :nro_documento, numericality: { only_integer: true, :message => "El campo Número de documento debe ser un valor entero"}

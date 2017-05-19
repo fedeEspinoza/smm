@@ -6,12 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# Estado 
-# ===================
-
-Estado.create(descripcion: 'Alta')
-Estado.create(descripcion: 'Baja')
-
 # Tipo de documento
 # ===================
 
@@ -24,10 +18,10 @@ TipoDocumento.create(descripcion: 'CI')#5
 # Empleados
 # ========
 
-Empleado.create(nro_legajo: 123, tipo_documento_id: 4,nro_documento: 11446782,apellido: "Moreno",nombre: "Oscar", estado_id: 1)
-Empleado.create(nro_legajo: 456, tipo_documento_id: 4,nro_documento: 11446687,apellido: "Ferreras",nombre: "Graciela", estado_id: 1)
-Empleado.create(nro_legajo: 789, tipo_documento_id: 4,nro_documento: 32343209,apellido: "Moreno",nombre: "Felipe", estado_id: 1)
-Empleado.create(nro_legajo: 999, tipo_documento_id: 4,nro_documento: 32343209,apellido: "Moreno",nombre: "Mika", estado_id: 1)
+Empleado.create(nro_legajo: 123, tipo_documento_id: 4,nro_documento: 11446782,apellido: "Moreno",nombre: "Oscar")
+Empleado.create(nro_legajo: 456, tipo_documento_id: 4,nro_documento: 11446687,apellido: "Ferreras",nombre: "Graciela")
+Empleado.create(nro_legajo: 789, tipo_documento_id: 4,nro_documento: 32343209,apellido: "Moreno",nombre: "Felipe")
+Empleado.create(nro_legajo: 999, tipo_documento_id: 4,nro_documento: 32343209,apellido: "Moreno",nombre: "Mika")
 
 # Usuarios
 # ========
@@ -69,7 +63,7 @@ Novedad.create(codigo: 1, descripcion: "Medidor OK", prioridad_id: 4, codigo_ser
 Novedad.create(codigo: 2, descripcion: "Medidor roto No Leido", prioridad_id: 3 , codigo_servicio: "T", repite_estado: 1)
 Novedad.create(codigo: 3, descripcion: "Cortado sin medidor", prioridad_id: 1, codigo_servicio: "E", repite_estado: 1)
 Novedad.create(codigo: 4, descripcion: "Cambio medidor", prioridad_id: 3, codigo_servicio: "T", repite_estado: 0)
-Novedad.create(codigo: 5, descripcion: "R.O.B.O.(req.op.bajo.obs", prioridad_id: 1, codigo_servicio: "E", repite_estado: 1)
+Novedad.create(codigo: 5, descripcion: "R.O.B.O.(req.op.bajo.obs)", prioridad_id: 1, codigo_servicio: "E", repite_estado: 1)
 Novedad.create(codigo: 6, descripcion: "Medidor sin tapa o rota", prioridad_id: 3, codigo_servicio: "T", repite_estado: 0)
 Novedad.create(codigo: 7, descripcion: "Medidor sin acceso", prioridad_id: 2, codigo_servicio: "E", repite_estado: 1)
 Novedad.create(codigo: 8, descripcion: "Medidor en cero", prioridad_id: 3, codigo_servicio: "E", repite_estado: 1)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511214502) do
+ActiveRecord::Schema.define(version: 20170519213833) do
 
   create_table "categoria", force: :cascade do |t|
     t.string   "codigo",      limit: 255
@@ -26,14 +26,12 @@ ActiveRecord::Schema.define(version: 20170511214502) do
     t.integer  "nro_documento",     limit: 8
     t.string   "apellido",          limit: 255
     t.string   "nombre",            limit: 255
-    t.integer  "estado_id",         limit: 4
     t.datetime "fecha_alta"
     t.datetime "fecha_baja"
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
   end
 
-  add_index "empleados", ["estado_id"], name: "index_empleados_on_estado_id", using: :btree
   add_index "empleados", ["tipo_documento_id"], name: "index_empleados_on_tipo_documento_id", using: :btree
 
   create_table "estado_medidors", force: :cascade do |t|
@@ -48,16 +46,11 @@ ActiveRecord::Schema.define(version: 20170511214502) do
     t.datetime "fecha_modificacion"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.string   "periodo",            limit: 255
   end
 
   add_index "estado_medidors", ["novedad_id"], name: "index_estado_medidors_on_novedad_id", using: :btree
   add_index "estado_medidors", ["user_id"], name: "index_estado_medidors_on_user_id", using: :btree
-
-  create_table "estados", force: :cascade do |t|
-    t.string   "descripcion", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
 
   create_table "grupos", force: :cascade do |t|
     t.string   "nombre",      limit: 255
@@ -235,7 +228,6 @@ ActiveRecord::Schema.define(version: 20170511214502) do
     t.integer  "unidad_funcional",   limit: 4
     t.string   "latitud",            limit: 255
     t.string   "longitud",           limit: 255
-    t.integer  "estado_id",          limit: 4
     t.integer  "persona_id",         limit: 4
     t.datetime "fecha_alta"
     t.datetime "fecha_baja"
@@ -244,7 +236,6 @@ ActiveRecord::Schema.define(version: 20170511214502) do
   end
 
   add_index "usuarios", ["categorium_id"], name: "index_usuarios_on_categorium_id", using: :btree
-  add_index "usuarios", ["estado_id"], name: "index_usuarios_on_estado_id", using: :btree
   add_index "usuarios", ["persona_id"], name: "index_usuarios_on_persona_id", using: :btree
 
   create_table "zonas", force: :cascade do |t|
@@ -256,7 +247,6 @@ ActiveRecord::Schema.define(version: 20170511214502) do
 
   add_index "zonas", ["grupo_id"], name: "index_zonas_on_grupo_id", using: :btree
 
-  add_foreign_key "empleados", "estados"
   add_foreign_key "empleados", "tipo_documentos"
   add_foreign_key "estado_medidors", "novedads"
   add_foreign_key "estado_medidors", "users"
@@ -276,7 +266,6 @@ ActiveRecord::Schema.define(version: 20170511214502) do
   add_foreign_key "usuario_medidors", "medidors"
   add_foreign_key "usuario_medidors", "usuarios"
   add_foreign_key "usuarios", "categoria"
-  add_foreign_key "usuarios", "estados"
   add_foreign_key "usuarios", "personas"
   add_foreign_key "zonas", "grupos"
 end

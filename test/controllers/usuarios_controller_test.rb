@@ -18,7 +18,7 @@ class UsuariosControllerTest < ActionController::TestCase
 
   test "should create usuario" do
     assert_difference('Usuario.count') do
-      post :create, usuario: { categorium_id: @usuario.categorium_id, circunscripcion: @usuario.circunscripcion, domicilio: @usuario.domicilio, estado_id: @usuario.estado_id, fecha_alta: @usuario.fecha_alta, fecha_baja: @usuario.fecha_baja, latitud: @usuario.latitud, longitud: @usuario.longitud, manzana: @usuario.manzana, numero: @usuario.numero, parcela: @usuario.parcela, persona_id: @usuario.persona_id, razon_social: @usuario.razon_social, sector: @usuario.sector, tipo: @usuario.tipo, unidad_funcional: @usuario.unidad_funcional }
+      post :create, usuario: { categorium_id: @usuario.categorium_id, circunscripcion: @usuario.circunscripcion, domicilio: @usuario.domicilio, fecha_alta: @usuario.fecha_alta, fecha_baja: @usuario.fecha_baja, latitud: @usuario.latitud, longitud: @usuario.longitud, manzana: @usuario.manzana, numero: @usuario.numero, parcela: @usuario.parcela, persona_id: @usuario.persona_id, razon_social: @usuario.razon_social, sector: @usuario.sector, tipo: @usuario.tipo, unidad_funcional: @usuario.unidad_funcional }
     end
 
     assert_redirected_to usuario_path(assigns(:usuario))
@@ -35,7 +35,7 @@ class UsuariosControllerTest < ActionController::TestCase
   end
 
   test "should update usuario" do
-    patch :update, id: @usuario, usuario: { categorium_id: @usuario.categorium_id, circunscripcion: @usuario.circunscripcion, domicilio: @usuario.domicilio, estado_id: @usuario.estado_id, fecha_alta: @usuario.fecha_alta, fecha_baja: @usuario.fecha_baja, latitud: @usuario.latitud, longitud: @usuario.longitud, manzana: @usuario.manzana, numero: @usuario.numero, parcela: @usuario.parcela, persona_id: @usuario.persona_id, razon_social: @usuario.razon_social, sector: @usuario.sector, tipo: @usuario.tipo, unidad_funcional: @usuario.unidad_funcional }
+    patch :update, id: @usuario, usuario: { categorium_id: @usuario.categorium_id, circunscripcion: @usuario.circunscripcion, domicilio: @usuario.domicilio, fecha_alta: @usuario.fecha_alta, fecha_baja: @usuario.fecha_baja, latitud: @usuario.latitud, longitud: @usuario.longitud, manzana: @usuario.manzana, numero: @usuario.numero, parcela: @usuario.parcela, persona_id: @usuario.persona_id, razon_social: @usuario.razon_social, sector: @usuario.sector, tipo: @usuario.tipo, unidad_funcional: @usuario.unidad_funcional }
     assert_redirected_to usuario_path(assigns(:usuario))
   end
 

@@ -32,8 +32,8 @@
         <td><%= empleado.apellido %></td>
         <td><%= empleado.nombre %></td>
         <td class="text-center">
-          <span class="label label-<%= empleado.estado.to_s == 'Alta' ? 'success' : 'danger' %>">
-            <%= empleado.estado %>
+          <span class="label label-<%= empleado.fecha_baja != nil ? 'danger' : 'success' %>">
+            <%= empleado.fecha_baja != nil ? "Baja" : "Alta" %>
           </span>
         </td>
         <td class="text-center">

@@ -14,7 +14,6 @@ class CreateUsuarios < ActiveRecord::Migration
       t.integer :unidad_funcional
       t.string :latitud
       t.string :longitud
-      t.references :estado, index: true, foreign_key: true
       t.references :persona, index: true, foreign_key: true
       t.datetime :fecha_alta
       t.datetime :fecha_baja

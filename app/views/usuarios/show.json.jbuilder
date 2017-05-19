@@ -1,1 +1,1 @@
-json.extract! @usuario, :id, :categorium_id, :numero, :razon_social, :domicilio, :circunscripcion, :sector, :tipo, :manzana, :parcela, :unidad_funcional, :latitud, :longitud, :estado_id, :persona_id, :fecha_alta, :fecha_baja, :created_at, :updated_at
+json.extract! @usuario, :id, :categorium_id, :numero, :razon_social, :domicilio, :circunscripcion, :sector, :tipo, :manzana, :parcela, :unidad_funcional, :latitud, :longitud, :persona_id, :fecha_alta, :fecha_baja, :created_at, :updated_at

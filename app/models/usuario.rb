@@ -1,6 +1,5 @@
 class Usuario < ActiveRecord::Base
   belongs_to :categorium
-  belongs_to :estado
   belongs_to :persona
 
   has_many :usuario_medidors, :foreign_key => 'usuario_id', :class_name => 'UsuarioMedidor'

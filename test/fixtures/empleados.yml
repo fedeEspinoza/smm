@@ -6,7 +6,6 @@ one:
   nro_documento: 1
   apellido: MyString
   nombre: MyString
-  estado_id: 
   fecha_alta: 2017-04-18 16:54:38
   fecha_baja: 2017-04-18 16:54:38
 
@@ -16,6 +15,5 @@ two:
   nro_documento: 1
   apellido: MyString
   nombre: MyString
-  estado_id: 
   fecha_alta: 2017-04-18 16:54:38
   fecha_baja: 2017-04-18 16:54:38

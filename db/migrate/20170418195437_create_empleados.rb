@@ -6,7 +6,6 @@ class CreateEmpleados < ActiveRecord::Migration
       t.integer :nro_documento
       t.string :apellido
       t.string :nombre
-      t.references :estado, index: true, foreign_key: true
       t.datetime :fecha_alta
       t.datetime :fecha_baja
 

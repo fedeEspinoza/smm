@@ -13,7 +13,6 @@ one:
   unidad_funcional: 1
   latitud: MyString
   longitud: MyString
-  estado_id: 
   persona_id: 
   fecha_alta: 2016-09-04 18:48:30
   fecha_baja: 2016-09-04 18:48:30
@@ -31,7 +30,6 @@ two:
   unidad_funcional: 1
   latitud: MyString
   longitud: MyString
-  estado_id: 
   persona_id: 
   fecha_alta: 2016-09-04 18:48:30
   fecha_baja: 2016-09-04 18:48:30

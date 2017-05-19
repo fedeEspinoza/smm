@@ -123,11 +123,7 @@
             <% end %>
           </li>          
           <%end%>
-          <% if current_user.role? :admin %>
-            <li class="<%= params['controller'] == 'estados' ? 'active' : ''%>"><%= link_to estados_path do %>
-                <%= fa_icon "list-alt", text: "Estados" %>
-              <% end %>
-            </li>
+          <% if current_user.role? :admin %>            
             <li class="<%= params['controller'] == 'personas' ? 'active' : ''%>"><%= link_to personas_path do %>
                 <%= fa_icon "male", text: "Personas" %>
               <% end %>

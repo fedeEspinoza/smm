@@ -18,7 +18,7 @@ class EmpleadosControllerTest < ActionController::TestCase
 
   test "should create empleado" do
     assert_difference('Empleado.count') do
-      post :create, empleado: { apellido: @empleado.apellido, estado_id: @empleado.estado_id, fecha_alta: @empleado.fecha_alta, fecha_baja: @empleado.fecha_baja, nombre: @empleado.nombre, nro_documento: @empleado.nro_documento, nro_legajo: @empleado.nro_legajo, tipo_documento_id: @empleado.tipo_documento_id }
+      post :create, empleado: { apellido: @empleado.apellido, fecha_alta: @empleado.fecha_alta, fecha_baja: @empleado.fecha_baja, nombre: @empleado.nombre, nro_documento: @empleado.nro_documento, nro_legajo: @empleado.nro_legajo, tipo_documento_id: @empleado.tipo_documento_id }
     end
 
     assert_redirected_to empleado_path(assigns(:empleado))
@@ -35,7 +35,7 @@ class EmpleadosControllerTest < ActionController::TestCase
   end
 
   test "should update empleado" do
-    patch :update, id: @empleado, empleado: { apellido: @empleado.apellido, estado_id: @empleado.estado_id, fecha_alta: @empleado.fecha_alta, fecha_baja: @empleado.fecha_baja, nombre: @empleado.nombre, nro_documento: @empleado.nro_documento, nro_legajo: @empleado.nro_legajo, tipo_documento_id: @empleado.tipo_documento_id }
+    patch :update, id: @empleado, empleado: { apellido: @empleado.apellido, fecha_alta: @empleado.fecha_alta, fecha_baja: @empleado.fecha_baja, nombre: @empleado.nombre, nro_documento: @empleado.nro_documento, nro_legajo: @empleado.nro_legajo, tipo_documento_id: @empleado.tipo_documento_id }
     assert_redirected_to empleado_path(assigns(:empleado))
   end
 

@@ -51,8 +51,8 @@
             <td><%= usuario.latitud %></td>
             <td><%= usuario.longitud %></td>-->
             <td class="text-center">
-              <span class="label label-<%= usuario.estado.to_s == 'Alta' ? 'success' : 'danger' %>">
-              <%= usuario.estado %>
+              <span class="label label-<%= usuario.fecha_baja != nil ? 'danger' : 'success' %>">
+                <%= usuario.fecha_baja != nil ? "Baja" : "Alta" %>
               </span>
             </td>
             <td><%= usuario.persona %></td>

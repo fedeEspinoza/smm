@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :usuarios
   devise_for :users, :path => 'user'
   resources :personas
-  resources :estados
   resources :tipo_medidors
   resources :novedads
   resources :prioridads
