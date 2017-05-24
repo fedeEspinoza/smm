@@ -10,18 +10,75 @@ class EstadoMedidorsController < ApplicationController
       medidor_id = Medidor.find(params[:medidor_id]).id
     else
       medidor_id = 0
-    end    
-    ids = MedidorEstadoMedidor.where(medidor_id: medidor_id).map(&:estado_medidor_id)
-    estados = EstadoMedidor.joins(:novedad, :user).where(id: ids).order(fecha_medicion: :desc)
+    end 
+    if params[:fecha_desde].present? && params[:fecha_hasta].present?
+      ids = MedidorEstadoMedidor.where(medidor_id: medidor_id).map(&:estado_medidor_id)
+      estados = EstadoMedidor.joins(:novedad, :user).where(id: ids).where("DATE_FORMAT(fecha_medicion,'%Y-%m-%d') >= ?", params[:fecha_desde].to_date.strftime("%Y-%m-%d")).where("DATE_FORMAT(fecha_medicion,'%Y-%m-%d') <= ?", params[:fecha_hasta].to_date.strftime("%Y-%m-%d")).order(fecha_medicion: :desc)
+    else
+      ids = MedidorEstadoMedidor.where(medidor_id: medidor_id).map(&:estado_medidor_id)
+      estados = EstadoMedidor.joins(:novedad, :user).where(id: ids).order(fecha_medicion: :desc)
+    end
     respond_to do |format|
       format.html
       format.json { render json: EstadoMedidorDatatable.new(view_context,{query: estados}) }
     end
   end
 
+  #Index para mostrar mediciones por ruta
+  def index_ruta
+    @anio = Date.today.year
+    @mes = Date.today.month
+    
+    if params[:ruta_id].present?
+      ruta_id = Rutum.find(params[:ruta_id]).id
+    else
+      ruta_id = 0
+    end
+    if params[:mes].present? && params[:anio].present?
+        ruta = Usuario.select("
+          usuarios.numero as numero,
+          usuarios.domicilio_servicio as domicilio_servicio, 
+          medidors.numero as numero_medidor,
+          medidors.marca as marca,
+          medidors.modelo as modelo,
+          medidors.tipo_medidor_id as tipo_medidor_id,
+          estado_medidors.id as id_estado_medidor,
+          estado_medidors.estado_actual as estado_actual,
+          estado_medidors.promedio as promedio,
+          estado_medidors.fecha_medicion as fecha_medicion"
+          ).joins(:rutum, :categorium, :medidors).where(ruta: {id: ruta_id}).merge(
+          Medidor.joins(:estado_medidors).
+          where("month(estado_medidors.fecha_medicion) = ?",params[:mes]).
+          where("year(estado_medidors.fecha_medicion) = ?",params[:anio])
+        )
+    else
+        ruta = Usuario.select("
+          usuarios.numero as numero,
+          usuarios.domicilio_servicio as domicilio_servicio, 
+          medidors.numero as numero_medidor,
+          medidors.marca as marca,
+          medidors.modelo as modelo,
+          medidors.tipo_medidor_id as tipo_medidor_id,
+          estado_medidors.id as id_estado_medidor,
+          estado_medidors.estado_actual as estado_actual,
+          estado_medidors.promedio as promedio,
+          estado_medidors.fecha_medicion as fecha_medicion"
+          ).joins(:rutum, :categorium, :medidors).where(ruta: {id: ruta_id}).merge(
+          Medidor.joins(:estado_medidors)
+        )
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: HistorialRutaDatatable.new(view_context,{query: ruta}) }
+    end
+  end
+
   # GET /estado_medidors/1
   # GET /estado_medidors/1.json
-  def show
+  def show    
+    medidor_id = MedidorEstadoMedidor.where(estado_medidor_id: @estado_medidor.id).take.medidor_id
+    @medidor = Medidor.find(medidor_id)
   end
 
   # GET /estado_medidors/new
@@ -31,6 +88,8 @@ class EstadoMedidorsController < ApplicationController
 
   # GET /estado_medidors/1/edit
   def edit
+    medidor_id = MedidorEstadoMedidor.where(estado_medidor_id: @estado_medidor.id).take.medidor_id
+    @medidor = Medidor.find(medidor_id)
   end
 
   # POST /estado_medidors
@@ -52,6 +111,8 @@ class EstadoMedidorsController < ApplicationController
   # PATCH/PUT /estado_medidors/1
   # PATCH/PUT /estado_medidors/1.json
   def update
+    medidor_id = MedidorEstadoMedidor.where(estado_medidor_id: @estado_medidor.id).take.medidor_id
+    @medidor = Medidor.find(medidor_id)
     respond_to do |format|
       @estado_medidor.fecha_modificacion = DateTime.now
       if @estado_medidor.update(estado_medidor_params)

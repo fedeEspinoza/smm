@@ -38,6 +38,7 @@ class RutaUsersController < ApplicationController
 
   # GET /ruta_users/1/edit
   def edit
+    @rutum = Rutum.find(@ruta_user.rutum_id)
   end
 
   # POST /ruta_users

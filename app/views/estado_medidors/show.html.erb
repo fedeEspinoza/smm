@@ -1,7 +1,6 @@
 <div class="page-header">
-  <%= link_to estado_medidors_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Volver
+  <%= link_to :back, class: 'btn btn-default' do %>
+    <%= fa_icon "mail-reply", text: "Volver" %>
   <% end %>
   <%= link_to edit_estado_medidor_path(@estado_medidor), class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
@@ -20,34 +19,86 @@
   </li>
 </ol>
 
+<div class="row">
+  <div class="col-md-6">
+  
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= fa_icon "calculator" %> Datos del Medidor</h3>
+  </div>
+  <div class="panel-body">      
+    <dl class="dl-horizontal">
 
-<dl class="dl-horizontal">
+      <dt>Número:</dt>
+      <dd><%= @medidor.numero %></dd>
 
-  <dt>Tomaestado:</dt>
-  <dd><%= @estado_medidor.user.data_y_empleado %></dd>
+      <dt>Multiplicador:</dt>
+      <dd><%= @medidor.multiplicador %></dd>
 
-  <dt>Fecha de medición:</dt>
-  <dd><%= @estado_medidor.fecha_medicion %></dd>
+      <dt>Marca:</dt>
+      <dd><%= @medidor.marca %></dd>
 
-  <dt>Fecha de modificación:</dt>
-  <dd><%= @estado_medidor.fecha_modificacion %></dd>
+      <dt>Modelo:</dt>
+      <dd><%= @medidor.modelo %></dd>
 
-  <dt>Novedad:</dt>
-  <dd><%= @estado_medidor.novedad %></dd>
+      <dt>Fecha de alta:</dt>
+      <dd><%= @medidor.fecha_alta %></dd>
 
-  <dt>Estado actual:</dt>
-  <dd><%= @estado_medidor.estado_actual %></dd>
+      <dt>Fecha de baja:</dt>
+      <dd><%= @medidor.fecha_baja %></dd>
 
-  <dt>Estado anterior:</dt>
-  <dd><%= @estado_medidor.estado_anterior %></dd>
+      <dt>Tipo de medidor:</dt>
+      <dd><%= @medidor.tipo_medidor %></dd>
 
-  <dt>Promedio:</dt>
-  <dd><%= @estado_medidor.promedio %></dd>
+    </dl>
+  </div>
+</div>
 
-  <dt>Demanda:</dt>
-  <dd><%= @estado_medidor.demanda %></dd>
+</div>
+  
+<div class="col-md-6">
 
-  <dt>Observación:</dt>
-  <dd><%= @estado_medidor.observacion %></dd>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= fa_icon "line-chart" %> Datos de la Medición</h3>
+  </div>
+  <div class="panel-body">      
 
-</dl>
+      <dl class="dl-horizontal">
+
+        <dt>Tomaestado:</dt>
+        <dd><%= @estado_medidor.user.data_y_empleado %></dd>
+
+        <dt>Fecha de medición:</dt>
+        <dd><%= @estado_medidor.fecha_medicion %></dd>
+            
+        <dt>Período:</dt>
+        <dd><%= @estado_medidor.periodo %></dd>
+
+        <dt>Fecha de modificación:</dt>
+        <dd><%= @estado_medidor.fecha_modificacion %></dd>
+        
+        <dt>Novedad:</dt>
+        <dd><%= @estado_medidor.novedad %></dd>
+        
+        <dt>Estado actual:</dt>
+        <dd><%= @estado_medidor.estado_actual %></dd>
+
+        <dt>Promedio:</dt>
+        <dd><%= @estado_medidor.promedio %></dd>
+
+
+        <% if @medidor.tipo_medidor.codigo == 2 %> 
+          <dt>Demanda:</dt>
+          <dd><%= @estado_medidor.demanda %></dd>
+        <% end %>
+
+        <dt>Observación:</dt>
+        <dd><%= @estado_medidor.observacion %></dd>
+
+      </dl>
+  </div>
+</div>
+
+</div>
+</div>

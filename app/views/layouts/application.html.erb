@@ -113,8 +113,12 @@
             <% end %>  
           </li>                      
           <%end%>
-          <li class="<%= params['controller'] == 'estado_medidors' ? 'active' : ''%>"><%= link_to estado_medidors_path do %>
-              <%= fa_icon "line-chart", text: "Mediciones" %>
+          <li class="<%= ((params['controller'] == 'estado_medidors') && (params['action'] == 'index')) ? 'active' : ''%>"><%= link_to estado_medidors_path do %>
+              <%= fa_icon "line-chart", text: "Mediciones por Medidor" %>
+            <% end %>
+          </li>          
+          <li class="<%= ((params['controller'] == 'estado_medidors') && (params['action'] == 'index_ruta')) ? 'active' : ''%>"><%= link_to index_ruta_path do %>
+              <%= fa_icon "line-chart", text: "Mediciones por Ruta" %>
             <% end %>
           </li>          
           <% if current_user.role? :facturacion or current_user.role? :admin %>

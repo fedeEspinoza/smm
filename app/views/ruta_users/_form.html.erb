@@ -13,12 +13,20 @@
     </div>
   <% end %>
 
+  <% if params[:action] != 'edit'%>
   <div class="form-group">
     <%= f.label :rutum_id, "Ruta", class: "col-sm-3 control-label" %>
     <div class="col-sm-5">
       <%= f.collection_select :rutum_id, Rutum.all, :id, :to_s, {prompt: false}, {:class => "form-control"} %>
     </div>
   </div>
+  <% else %>
+  <div class="well">
+    <b>Ruta:</b> <%= @rutum %><br/>
+    <b>Descripción:</b> <%= @rutum.descripcion %>
+    <b>Fecha de alta:</b> <%= @ruta_user.fecha_alta %>
+  </div>
+  <% end %>
   <div class="form-group">
     <%= f.label :user_id, "Tomaestado", class: "col-sm-3 control-label" %>
     <div class="col-sm-6">

@@ -4,12 +4,12 @@ class EstadoMedidorDatatable < AjaxDatatablesRails::Base
 
   def sortable_columns
     # Declare strings in this format: ModelName.column_name
-    @sortable_columns ||= ['Novedad.descripcion', 'User.email', 'EstadoMedidor.estado_actual', 'EstadoMedidor.promedio', 'EstadoMedidor.demanda', 'EstadoMedidor.fecha_medicion']
+    @sortable_columns ||= ['Novedad.descripcion', 'User.email', 'EstadoMedidor.estado_actual', 'EstadoMedidor.promedio', 'EstadoMedidor.demanda', 'EstadoMedidor.fecha_medicion', 'EstadoMedidor.fecha_medicion']
   end
 
   def searchable_columns
     # Declare strings in this format: ModelName.column_name
-    @searchable_columns ||= ['Novedad.descripcion', 'User.email', 'EstadoMedidor.estado_actual', 'EstadoMedidor.promedio', 'EstadoMedidor.demanda', 'EstadoMedidor.fecha_medicion']
+    @searchable_columns ||= ['Novedad.descripcion', 'User.email', 'EstadoMedidor.estado_actual', 'EstadoMedidor.promedio', 'EstadoMedidor.demanda', 'EstadoMedidor.fecha_medicion', 'EstadoMedidor.fecha_medicion']
   end
 
   private
@@ -22,6 +22,7 @@ class EstadoMedidorDatatable < AjaxDatatablesRails::Base
         record.estado_actual,
         record.promedio,
         record.fecha_medicion.to_s(:default),
+        record.periodo,
         '<td class="text-center">
             <a class="btn btn-sm btn-default" href="'+Rails.application.routes.url_helpers.estado_medidor_path(record.id.to_s)+'"><span class="glyphicon glyphicon-search"></span></a>
             <a class="btn btn-sm btn-default" href="'+Rails.application.routes.url_helpers.edit_estado_medidor_path(record.id.to_s)+'"><span class="glyphicon glyphicon-pencil"></span></a>

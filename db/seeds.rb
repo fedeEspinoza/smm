@@ -948,6 +948,10 @@ Medidor.create(numero: 	32416	, multiplicador: 0, marca: '	SCHLUMBERGER MULTIMAC
 #Comentar para poner datos reales!
 medidors = Medidor.all
 medidors.each do |m|
-	estado_medidor = EstadoMedidor.create(novedad_id: 1, user_id: 4, estado_actual: 0, estado_anterior: 0, fecha_medicion: DateTime.now)
+	if m.tipo_medidor.codigo == 2
+		estado_medidor = EstadoMedidor.create(novedad_id: 1, user_id: 4, estado_actual: 0, estado_anterior: 0, promedio: 0, demanda: 0, fecha_medicion: DateTime.now)
+	else
+		estado_medidor = EstadoMedidor.create(novedad_id: 1, user_id: 4, estado_actual: 0, estado_anterior: 0, promedio: 0, fecha_medicion: DateTime.now)
+	end
 	MedidorEstadoMedidor.create(medidor_id: m.id, estado_medidor_id: estado_medidor.id)
 end

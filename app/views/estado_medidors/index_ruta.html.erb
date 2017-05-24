@@ -1,0 +1,134 @@
+<div class="page-header">
+  <h4>Mediciones por Ruta</h4>
+</div>
+<ol class="breadcrumb">
+  <li class="active">
+    <%= fa_icon "line-chart", text: "Mediciones" %>
+  </li>
+</ol>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= fa_icon "search" %> Historial de mediciones
+      <small> (Seleccione una <b>Ruta</b> y a continuación, un <b>período</b> para ver el historial)</small>       
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <%= label_tag :rutum, "Ruta", class: "col-sm-1 control-label" %>
+      <div class="col-sm-7">
+        <%= select_tag :rutum, options_from_collection_for_select(Rutum.all, :id, :to_s), {prompt: "Seleccione una Ruta", id: "rutum", class: "form-control"}%>
+      </div>  
+    </div>
+    <div class="row">
+      <%= label_tag :mes, "Mes", class: "col-sm-1 control-label" %>
+      <div class="col-sm-2">
+        <select class="form-control" name="mes" id="mes">
+          <option value="1">Enero </option>
+          <option value="2">Febrero </option>
+          <option value="3">Marzo </option>
+          <option value="4">Abril </option>
+          <option value="5">Mayo </option>
+          <option value="6">Junio </option>
+          <option value="7">Julio </option>
+          <option value="8">Agosto </option>
+          <option value="9">Septiembre </option>
+          <option value="10">Octubre </option>
+          <option value="11">Noviembre </option>
+          <option value="12">Diciembre </option>
+        </select>
+      </div>
+      <%= label_tag :anio, "Año", class: "col-sm-1 control-label" %>
+      <div class="col-sm-2">
+        <select class="form-control" name="anio" id="anio">
+          <script language="javascript" type="text/javascript">
+            var k;
+            var d = new Date();
+            var n = d.getFullYear(); 
+            for(k=n;k>=1970;k--){ 
+              $("#anio").append(new Option(k, k));
+            }
+          </script>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table table-striped table-bordered table-hover compact datatable_table" id="historial-ruta-table" data-source="<%= index_ruta_path(format: :json) %>">
+  <thead>
+    <tr>
+      <th class="col-md-4">Usuario</th>
+      <th class="col-md-4">Medidor</th>
+      <th class="col-md-3">Estado Medidor</th>
+      <th style="width: 85px">&nbsp;</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      
+  </tbody>
+</table>
+
+<script type="text/javascript">
+$('document').ready(function(){
+  
+  $('#mes').val(<%= @mes %>);
+  $('#anio').val(<%= @anio %>);
+
+  var tabla_mediciones = $('#historial-ruta-table').dataTable({
+    language: { "sUrl": "<%= asset_path('language.es.json') %>"},
+    processing: true,
+    serverSide: true,
+    ajax: $('#historial-ruta-table').data('source'),
+    pagingType: 'full_numbers',
+    columnDefs: [
+            {
+                "targets": [ 3 ],
+                "searchable": false,
+                "orderable": false
+            }
+        ]
+  });
+
+  $('#rutum').change(function(){
+    var ruta_id = parseInt($('#rutum').val(),10);
+    var mes = $('#mes').val();
+    var anio = $('#anio').val();
+    if (!isNaN(ruta_id))
+    {
+      // Vuelvo a obtener datos para datatable, esta vez con ruta
+      tabla_mediciones.api().ajax.url('<%= index_ruta_path(format: :json) %>?ruta_id='+ruta_id+'&mes='+mes+'&anio='+anio);
+      // Recargo la tabla
+      tabla_mediciones.api().ajax.reload();
+    }
+  });
+
+  $('#mes').change(function(){
+    var ruta_id = parseInt($('#rutum').val(),10);
+    var mes = $('#mes').val();
+    var anio = $('#anio').val();
+    if (!isNaN(ruta_id))
+    {
+      // Vuelvo a obtener datos para datatable, esta vez con ruta
+      tabla_mediciones.api().ajax.url('<%= index_ruta_path(format: :json) %>?ruta_id='+ruta_id+'&mes='+mes+'&anio='+anio);
+      // Recargo la tabla
+      tabla_mediciones.api().ajax.reload();
+    }
+  });
+
+  $('#anio').change(function(){
+    var ruta_id = parseInt($('#rutum').val(),10);
+    var mes = $('#mes').val();
+    var anio = $('#anio').val();
+    if (!isNaN(ruta_id))
+    {
+      // Vuelvo a obtener datos para datatable, esta vez con ruta
+      tabla_mediciones.api().ajax.url('<%= index_ruta_path(format: :json) %>?ruta_id='+ruta_id+'&mes='+mes+'&anio='+anio);
+      // Recargo la tabla
+      tabla_mediciones.api().ajax.reload();
+    }
+  });
+
+});
+</script>

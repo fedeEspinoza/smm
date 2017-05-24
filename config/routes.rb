@@ -1,4 +1,5 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do  
+  get 'estado_medidors/index_ruta' => 'estado_medidors#index_ruta', as: :index_ruta
   resources :estado_medidors
   resources :ruta_users
   resources :ruta
@@ -34,7 +35,10 @@ Rails.application.routes.draw do
   post 'restful/signup' => 'restful#signup', as: :signup
   post 'restful/descargar_ruta' => 'restful#descargar_ruta', as: :descargar_ruta
   post 'restful/guardar_medicion' => 'restful#guardar_medicion', as: :guardar_medicion
-  get 'restful/chequear_ruta' => 'restful#chequear_ruta', as: :chequear_ruta
+
+  #Sólo para pruebas, elminar cuando este terminado!
+  get 'restful/chequear_ruta' => 'restful#chequear_ruta', as: :chequear_ruta 
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

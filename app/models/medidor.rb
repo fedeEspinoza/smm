@@ -17,4 +17,8 @@ class Medidor < ActiveRecord::Base
   def to_s
 	"#{self.numero} - #{self.marca} - #{self.modelo}, (#{self.tipo_medidor})"
   end 
+
+  def promedio(mes, anio)
+    
+  end
 end
