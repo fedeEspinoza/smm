@@ -17,4 +17,9 @@ class EstadoMedidor < ActiveRecord::Base
     medidor = Medidor.find(medidor_id)
     return medidor.tipo_medidor.codigo == 2
   end
+
+  #Calculo el consumo para esa toma de estado
+  def consumo
+    estado_actual - estado_anterior
+  end
 end

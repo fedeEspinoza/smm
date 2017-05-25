@@ -18,7 +18,13 @@ class Medidor < ActiveRecord::Base
 	"#{self.numero} - #{self.marca} - #{self.modelo}, (#{self.tipo_medidor})"
   end 
 
-  def promedio(mes, anio)
-    
+  #Calcular consumo promedio hasta la fecha
+  def consumo_promedio
+    estados = self.estado_medidors.where("fecha_medicion <= ?",DateTime.now)
+    aux = 0
+    estados.each do |estado|
+      aux = aux + estado.consumo
+    end
+    aux / estados.count
   end
 end
