@@ -2,6 +2,7 @@ class EstadoMedidor < ActiveRecord::Base
   belongs_to :novedad
   belongs_to :user
   before_update :set_consumo_promedio
+  before_save :set_periodo
   before_update :set_periodo
 
   has_many :medidor_estado_medidors, :foreign_key => 'estado_medidor_id', :class_name => 'MedidorEstadoMedidor'
