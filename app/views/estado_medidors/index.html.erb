@@ -99,7 +99,7 @@ $('document').ready(function(){
       for(var i in data)
       {
         var id = data[i].id;
-        var opcion = data[i].numero+' - '+data[i].marca+' - '+data[i].modelo+', ('+data[i].nombre_tipo_medidor+')';
+        var opcion = 'Medidor N°: '+data[i].numero+' - '+data[i].marca+' - '+data[i].modelo+', ('+data[i].nombre_tipo_medidor+')';
         $("#medidor").append(new Option(opcion, id));
       }    
       $('#loading-image').hide();
