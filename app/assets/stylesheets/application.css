@@ -446,4 +446,5 @@ ul.alert-dropdown {
 
 .datatable_table{
   font-size: small;
+  width: inherit;
 }

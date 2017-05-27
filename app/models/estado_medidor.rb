@@ -1,7 +1,6 @@
 class EstadoMedidor < ActiveRecord::Base
   belongs_to :novedad
   belongs_to :user
-  before_update :set_consumo_promedio
   before_save :set_periodo
   before_update :set_periodo
 
@@ -20,13 +19,6 @@ class EstadoMedidor < ActiveRecord::Base
   	medidor_id = MedidorEstadoMedidor.where(estado_medidor_id: self.id).take.medidor_id
     medidor = Medidor.find(medidor_id)
     return medidor.tipo_medidor.codigo == 2
-  end
-
-  #Seteo el consumo promedio
-  def set_consumo_promedio
-    medidor_id = MedidorEstadoMedidor.where(estado_medidor_id: self.id).take.medidor_id
-    medidor = Medidor.find(medidor_id)
-    self.promedio = medidor.consumo_promedio
   end
 
   #Seteo el periodo "mes/anio"

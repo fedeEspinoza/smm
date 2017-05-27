@@ -35,7 +35,7 @@ class HistorialRutaDatatable < AjaxDatatablesRails::Base
       [
         "<b>Usuario N°: #{record.numero}</b> <br/> Dom. de serv.: #{record.domicilio_servicio}",
         "<b>Medidor N°: #{record.numero_medidor}</b> <br/> #{record.marca} - #{record.modelo} (#{TipoMedidor.find(record.tipo_medidor_id)})",
-        "<b>Estado actual: #{record.estado_actual}</b>, Promedio: #{record.promedio}, <br/> Fecha de medición: #{record.fecha_medicion}",
+        "<b>Estado actual: #{record.estado_actual}</b>, Cons. promedio: #{record.promedio}, <br/> Fecha de medición: #{record.fecha_medicion}",
         '<td class="text-center">            
 	        <a class="btn btn-xs btn-default" href="'+Rails.application.routes.url_helpers.estado_medidor_path(record.id_estado_medidor.to_s)+'"><span class="glyphicon glyphicon-search"></span></a>
             <a class="btn btn-xs btn-default" href="'+Rails.application.routes.url_helpers.edit_estado_medidor_path(record.id_estado_medidor.to_s)+'"><span class="glyphicon glyphicon-pencil"></span></a>
