@@ -39,7 +39,7 @@ class RestfulController < ApplicationController
     end
   end 
 
-  #Descargar ruta
+  #Descargar ruta, podria moverse al modelo rutum, ver!!
   def descargar_ruta
     user_email = params[:nombre].presence
     user = user_email && User.find_by_email(user_email)
@@ -51,8 +51,8 @@ class RestfulController < ApplicationController
 
       rutum = Rutum.joins(:users).find_by(users: {id: user.id}) 
       if !rutum.blank?
-        mes_actual = EstadoMedidor.order(fecha_medicion: :desc).first.fecha_medicion.month
-        anio_actual = EstadoMedidor.order(fecha_medicion: :desc).first.fecha_medicion.year
+        ultimo_mes = rutum.ultima_medicion.month
+        ultimo_anio = rutum.ultima_medicion.year
         ruta = Usuario.select("usuarios.id as id,
           usuarios.latitud as latitud,
           usuarios.longitud as longitud,
@@ -66,8 +66,8 @@ class RestfulController < ApplicationController
           Medidor.select("
             medidors.id as id_medidor,  
             estado_medidors.estado_anterior as estado_anterior").joins(:estado_medidors).
-          where("month(estado_medidors.fecha_medicion) = ?",mes_actual).
-          where("year(estado_medidors.fecha_medicion) = ?",anio_actual)
+          where("month(estado_medidors.fecha_medicion) = ?",ultimo_mes).
+          where("year(estado_medidors.fecha_medicion) = ?",ultimo_anio)
         )
         render json: { ruta: ruta }
       else
@@ -82,8 +82,8 @@ class RestfulController < ApplicationController
   def chequear_ruta
     rutum = Rutum.joins(:users).find_by(users: {id: current_user.id}) 
       if !rutum.blank?
-        mes_actual = EstadoMedidor.order(fecha_medicion: :desc).first.fecha_medicion.month
-        anio_actual = EstadoMedidor.order(fecha_medicion: :desc).first.fecha_medicion.year
+        ultimo_mes = rutum.ultima_medicion.month
+        ultimo_anio = rutum.ultima_medicion.year
         ruta = Usuario.select("usuarios.id as id,
           usuarios.latitud as latitud,
           usuarios.longitud as longitud,
@@ -98,8 +98,8 @@ class RestfulController < ApplicationController
             medidors.id as id_medidor,  
             estado_medidors.id as id_estado_medidor,
             estado_medidors.estado_anterior as estado_anterior").joins(:estado_medidors).
-          where("month(estado_medidors.fecha_medicion) = ?",mes_actual).
-          where("year(estado_medidors.fecha_medicion) = ?",anio_actual)
+          where("month(estado_medidors.fecha_medicion) = ?",ultimo_mes).
+          where("year(estado_medidors.fecha_medicion) = ?",ultimo_anio)
         )
         render json: { ruta: ruta }
       else

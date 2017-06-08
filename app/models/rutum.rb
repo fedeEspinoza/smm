@@ -18,4 +18,25 @@ class Rutum < ActiveRecord::Base
   	"Ruta N° #{self.numero} - #{self.nombre}, Zona: #{self.zona}"
   end
 
+  #Devuelve la ultima fecha de medicion de una ruta, util para poder obtener la ruta del próximo período
+  def ultima_medicion
+    ruta = Usuario.select("usuarios.id as id,
+          usuarios.latitud as latitud,
+          usuarios.longitud as longitud,
+          usuarios.numero as numero,
+          usuarios.domicilio_servicio as domicilio_postal, 
+          categoria.codigo as categoria, 
+          medidors.numero as numero_medidor,
+          medidors.multiplicador as multiplicador,
+          ruta.zona_id as zona_id,
+          medidors.tipo_medidor_id as tipo_medidor_id").joins(:rutum, :categorium, :medidors).where(ruta: {id: self.id}).merge(
+          Medidor.select("
+            medidors.id as id_medidor,  
+            estado_medidors.id as id_estado_medidor,
+            estado_medidors.estado_anterior as estado_anterior,
+            estado_medidors.fecha_medicion as fecha_medicion").joins(:estado_medidors)
+        ).order("estado_medidors.fecha_medicion DESC")
+    
+    ruta.first.fecha_medicion
+  end
 end
