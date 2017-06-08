@@ -498,7 +498,7 @@ CREATE TABLE `tipo_medidors` (
 
 LOCK TABLES `tipo_medidors` WRITE;
 /*!40000 ALTER TABLE `tipo_medidors` DISABLE KEYS */;
-INSERT INTO `tipo_medidors` VALUES (1,'Agua',0,'Medidor de agua','2017-05-24 22:15:39','2017-05-24 22:15:39'),(2,'Energía activa',1,'Medidor de energía reactiva','2017-05-24 22:15:39','2017-05-24 22:15:39'),(3,'Energía reactiva',2,'Medidor de energía activa','2017-05-24 22:15:39','2017-05-24 22:15:39');
+INSERT INTO `tipo_medidors` VALUES (1,'Agua',0,'Medidor de agua','2017-05-24 22:15:39','2017-05-24 22:15:39'),(2,'Energía activa',1,'Medidor de energía activa','2017-05-24 22:15:39','2017-05-24 22:15:39'),(3,'Energía reactiva',2,'Medidor de energía reactiva','2017-05-24 22:15:39','2017-05-24 22:15:39');
 /*!40000 ALTER TABLE `tipo_medidors` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -105,8 +105,8 @@ Novedad.create(codigo: 92 ,descripcion: "TERRENO BALDIO", prioridad_id: 3, codig
 # ===================
 
 TipoMedidor.create(nombre:"Agua", codigo: 0, descripcion: "Medidor de agua")
-TipoMedidor.create(nombre:"Energía activa", codigo: 1, descripcion: "Medidor de energía reactiva")
-TipoMedidor.create(nombre:"Energía reactiva", codigo: 2, descripcion: "Medidor de energía activa")
+TipoMedidor.create(nombre:"Energía activa", codigo: 1, descripcion: "Medidor de energía activa")
+TipoMedidor.create(nombre:"Energía reactiva", codigo: 2, descripcion: "Medidor de energía reactiva")
 
 
 # grupo de lectura
