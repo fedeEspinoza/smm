@@ -122,12 +122,13 @@ class RestfulController < ApplicationController
       estado_medidor.user_id = user.id
       estado_medidor.estado_actual = params[:estado_actual]
       estado_medidor.estado_anterior = params[:estado_anterior]
-      estado_medidor.promedio = params[:promedio]
       estado_medidor.demanda = params[:demanda]
       estado_medidor.observacion = params[:observacion]
       estado_medidor.fecha_medicion = params[:fecha_medicion]
       if estado_medidor.save
         MedidorEstadoMedidor.create(medidor_id: medidor.id, estado_medidor_id: estado_medidor.id)
+        estado_medidor.set_consumo_promedio
+        estado_medidor.save
         render json: { message: "La medicion se guardo con exito!." }
       else
         render json: { errors: "Ocurrió un error al guardar el estado en el servidor." }

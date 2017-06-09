@@ -116,12 +116,6 @@ class EstadoMedidorsController < ApplicationController
     respond_to do |format|
       @estado_medidor.fecha_modificacion = DateTime.now
       if @estado_medidor.update(estado_medidor_params)
-        #Recalculo y guardo consumo promedio
-        medidor_id = MedidorEstadoMedidor.where(estado_medidor_id: @estado_medidor.id).take.medidor_id
-        medidor = Medidor.find(medidor_id)
-        @estado_medidor.promedio = medidor.consumo_promedio
-        @estado_medidor.save
-
         format.html { redirect_to @estado_medidor, notice: 'Se ha actualizado la Medición.' }
         format.json { render :show, status: :ok, location: @estado_medidor }
       else

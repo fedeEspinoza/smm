@@ -3,6 +3,7 @@ class EstadoMedidor < ActiveRecord::Base
   belongs_to :user
   before_save :set_periodo
   before_update :set_periodo
+  before_update :set_consumo_promedio
 
   has_many :medidor_estado_medidors, :foreign_key => 'estado_medidor_id', :class_name => 'MedidorEstadoMedidor'
   has_many :medidors, :through => :medidor_estado_medidors
@@ -26,8 +27,27 @@ class EstadoMedidor < ActiveRecord::Base
     self.periodo = "#{self.fecha_medicion.month}/#{self.fecha_medicion.year}"
   end
 
+  #Seteo el consumo promedio
+  def set_consumo_promedio
+    self.promedio = self.consumo_promedio
+  end
+
   #Calculo el consumo para esa toma de estado
   def consumo
     estado_actual - estado_anterior
+  end
+
+  #Calcular consumo promedio hasta el dia de la fecha
+  def consumo_promedio
+    medidor_id = MedidorEstadoMedidor.where(estado_medidor_id: self.id).take.medidor_id
+    estado_medidor_id = MedidorEstadoMedidor.where(medidor_id: medidor_id).map(&:estado_medidor_id)
+    periodo = "#{self.fecha_medicion.month}/#{self.fecha_medicion.year}"
+    estados = EstadoMedidor.where(id: estado_medidor_id).where.not(periodo: periodo)
+    aux = 0
+    estados.each do |estado|
+      aux = aux + estado.consumo
+    end
+    aux = aux  + self.estado_actual
+    promedio = aux / (estados.count + 1)
   end
 end

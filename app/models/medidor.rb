@@ -15,16 +15,6 @@ class Medidor < ActiveRecord::Base
   validates :modelo, :presence => { :message => "Debe completar el campo Modelo" }
 
   def to_s
-	"Medidor N°: #{self.numero} - #{self.marca} - #{self.modelo}, (#{self.tipo_medidor})"
-  end 
-
-  #Calcular consumo promedio hasta el dia de la fecha
-  def consumo_promedio
-    estados = self.estado_medidors.where("fecha_medicion <= ?",DateTime.now)
-    aux = 0
-    estados.each do |estado|
-      aux = aux + estado.consumo
-    end
-    aux / estados.count
+	 "Medidor N°: #{self.numero} - #{self.marca} - #{self.modelo}, (#{self.tipo_medidor})"
   end
 end
