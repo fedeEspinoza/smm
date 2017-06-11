@@ -19,7 +19,7 @@ class Rutum < ActiveRecord::Base
   end
 
   #Devuelve la ultima fecha de medicion de una ruta, util para poder obtener la ruta del próximo período
-  def ultima_medicion
+  def fecha_ultima_medicion
     ruta = Usuario.select("usuarios.id as id,
           usuarios.latitud as latitud,
           usuarios.longitud as longitud,

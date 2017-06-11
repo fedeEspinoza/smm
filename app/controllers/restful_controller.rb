@@ -51,8 +51,8 @@ class RestfulController < ApplicationController
 
       rutum = Rutum.joins(:users).find_by(users: {id: user.id}) 
       if !rutum.blank?
-        ultimo_mes = rutum.ultima_medicion.month
-        ultimo_anio = rutum.ultima_medicion.year
+        ultimo_mes = rutum.fecha_ultima_medicion.month
+        ultimo_anio = rutum.fecha_ultima_medicion.year
         ruta = Usuario.select("usuarios.id as id,
           usuarios.latitud as latitud,
           usuarios.longitud as longitud,
@@ -82,8 +82,8 @@ class RestfulController < ApplicationController
   def chequear_ruta
     rutum = Rutum.joins(:users).find_by(users: {id: current_user.id}) 
       if !rutum.blank?
-        ultimo_mes = rutum.ultima_medicion.month
-        ultimo_anio = rutum.ultima_medicion.year
+        ultimo_mes = rutum.fecha_ultima_medicion.month
+        ultimo_anio = rutum.fecha_ultima_medicion.year
         ruta = Usuario.select("usuarios.id as id,
           usuarios.latitud as latitud,
           usuarios.longitud as longitud,
