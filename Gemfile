@@ -20,7 +20,6 @@ gem 'therubyracer', platforms: :ruby
 
 #gemas para administracion de usuarios
 gem 'devise'
-#gem 'devise', '4.1.1' #Agrego version de devise para poder subir a produccion
 
 gem 'cancancan'
 
