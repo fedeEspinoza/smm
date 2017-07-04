@@ -19,7 +19,8 @@ gem 'bootstrap-generators', :git => 'git://github.com/decioferreira/bootstrap-ge
 gem 'therubyracer', platforms: :ruby
 
 #gemas para administracion de usuarios
-gem 'devise'
+#gem 'devise'
+gem 'devise', '4.1.1' #Agrego version de devise para poder subir a produccion
 
 gem 'cancancan'
 
