@@ -65,7 +65,8 @@ class RestfulController < ApplicationController
           medidors.tipo_medidor_id as tipo_medidor_id").joins(:rutum, :categorium, :medidors).where(ruta: {id: rutum.id}).merge(
           Medidor.select("
             medidors.id as id_medidor,  
-            estado_medidors.estado_anterior as estado_anterior").joins(:estado_medidors).
+            estado_medidors.promedio as promedio,
+            estado_medidors.estado_actual as estado_anterior").joins(:estado_medidors).
           where("month(estado_medidors.fecha_medicion) = ?",ultimo_mes).
           where("year(estado_medidors.fecha_medicion) = ?",ultimo_anio)
         )
