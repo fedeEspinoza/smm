@@ -26,7 +26,7 @@ gem 'cancancan'
 #gemas para manejar datepickers
 gem 'jquery-ui-rails'
 
-gem 'jquery_datepicker'
+#gem 'jquery_datepicker'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
