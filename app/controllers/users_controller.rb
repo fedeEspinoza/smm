@@ -29,7 +29,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     empleado = Empleado.new(user_params[:empleado_attributes]) 
-    empleado.estado = Estado.find_by(descripcion: "Alta") #Estado "Alta"
     empleado.fecha_alta = DateTime.now
     @user.empleado = empleado
 
