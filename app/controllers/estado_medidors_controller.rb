@@ -128,7 +128,8 @@ class EstadoMedidorsController < ApplicationController
   # DELETE /estado_medidors/1
   # DELETE /estado_medidors/1.json
   def destroy
-    @estado_medidor.destroy
+    @estado_medidor.medidor_estado_medidors.destroy_all
+    @estado_medidor.destroy    
     respond_to do |format|
       format.html { redirect_to estado_medidors_url, notice: 'Se ha eliminado la Medición..' }
       format.json { head :no_content }

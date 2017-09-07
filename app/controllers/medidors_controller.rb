@@ -31,7 +31,7 @@ class MedidorsController < ApplicationController
 
     respond_to do |format|
       if @medidor.save
-        estado_medidor = EstadoMedidor.create(novedad_id: 1, user_id: current_user.id, estado_actual: 0, estado_anterior: 0, fecha_medicion: DateTime.now)
+        estado_medidor = EstadoMedidor.create(novedad_id: 1, user_id: current_user.id, estado_actual: 0, estado_anterior: 0, promedio: 0,fecha_medicion: DateTime.now)
         MedidorEstadoMedidor.create(medidor_id: @medidor.id, estado_medidor_id: estado_medidor.id)
         format.html { redirect_to @medidor, notice: 'Se ha creado un nuevo Medidor.' }
         format.json { render :show, status: :created, location: @medidor }
