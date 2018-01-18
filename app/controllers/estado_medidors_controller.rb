@@ -13,7 +13,7 @@ class EstadoMedidorsController < ApplicationController
     end 
     if params[:fecha_desde].present? && params[:fecha_hasta].present?
       ids = MedidorEstadoMedidor.where(medidor_id: medidor_id).map(&:estado_medidor_id)
-      estados = EstadoMedidor.joins(:novedad, :user).where(id: ids).where("DATE_FORMAT(fecha_medicion,'%Y-%m-%d') >= ?", params[:fecha_desde].to_date.strftime("%Y-%m-%d")).where("DATE_FORMAT(fecha_medicion,'%Y-%m-%d') <= ?", params[:fecha_hasta].to_date.strftime("%Y-%m-%d")).order(fecha_medicion: :desc)
+      estados = EstadoMedidor.joins(:novedad, :user).where(id: ids).where("fecha_medicion >= ?", params[:fecha_desde].to_date.strftime("%Y-%m-%d")).where("fecha_medicion <= ?", params[:fecha_hasta].to_date.strftime("%Y-%m-%d")).order(fecha_medicion: :desc)
     else
       ids = MedidorEstadoMedidor.where(medidor_id: medidor_id).map(&:estado_medidor_id)
       estados = EstadoMedidor.joins(:novedad, :user).where(id: ids).order(fecha_medicion: :desc)
@@ -48,8 +48,8 @@ class EstadoMedidorsController < ApplicationController
           estado_medidors.fecha_medicion as fecha_medicion"
           ).joins(:rutum, :categorium, :medidors).where(ruta: {id: ruta_id}).merge(
           Medidor.joins(:estado_medidors).
-          where("month(estado_medidors.fecha_medicion) = ?",params[:mes]).
-          where("year(estado_medidors.fecha_medicion) = ?",params[:anio])
+          where("date_part('month', estado_medidors.fecha_medicion) = ?",params[:mes]).
+          where("date_part('year', estado_medidors.fecha_medicion) = ?",params[:anio])
         )
     else
         ruta = Usuario.select("
