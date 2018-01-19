@@ -67,8 +67,8 @@ class RestfulController < ApplicationController
             medidors.id as id_medidor,  
             estado_medidors.promedio as promedio,
             estado_medidors.estado_actual as estado_anterior").joins(:estado_medidors).
-          where("month(estado_medidors.fecha_medicion) = ?",ultimo_mes).
-          where("year(estado_medidors.fecha_medicion) = ?",ultimo_anio)
+          where("date_part('month', estado_medidors.fecha_medicion) = ?",ultimo_mes).
+          where("date_part('year', estado_medidors.fecha_medicion) = ?",ultimo_anio)
         )
         render json: { ruta: ruta }
       else
@@ -99,8 +99,8 @@ class RestfulController < ApplicationController
             medidors.id as id_medidor,  
             estado_medidors.id as id_estado_medidor,
             estado_medidors.estado_anterior as estado_anterior").joins(:estado_medidors).
-          where("month(estado_medidors.fecha_medicion) = ?",ultimo_mes).
-          where("year(estado_medidors.fecha_medicion) = ?",ultimo_anio)
+          where("date_part('month', estado_medidors.fecha_medicion) = ?",ultimo_mes).
+          where("date_part('year', estado_medidors.fecha_medicion) = ?",ultimo_anio)
         )
         render json: { ruta: ruta }
       else
