@@ -1,4 +1,4 @@
-class Prioridad < ActiveRecord::Base
+class Prioridad < ApplicationRecord
 
 	validates :descripcion, :presence => { :message => "Debe completar el campo Descripción" }
 	validates :valor, :presence => { :message => "Debe completar el campo Valor" }

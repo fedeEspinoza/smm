@@ -1,4 +1,4 @@
-class Persona < ActiveRecord::Base
+class Persona < ApplicationRecord
   belongs_to :tipo_documento
   has_many :usuarios
 

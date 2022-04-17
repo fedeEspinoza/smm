@@ -1,4 +1,4 @@
-class EstadoMedidor < ActiveRecord::Base
+class EstadoMedidor < ApplicationRecord
   belongs_to :novedad
   belongs_to :user
   before_save :set_periodo

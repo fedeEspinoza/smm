@@ -25,28 +25,30 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @empleados) do |empleado| %>
-        <td><%= empleado.nro_legajo %></td>
-        <td><%= empleado.tipo_documento %></td>
-        <td><%= empleado.nro_documento %></td>
-        <td><%= empleado.apellido %></td>
-        <td><%= empleado.nombre %></td>
-        <td class="text-center">
-          <span class="label label-<%= empleado.fecha_baja != nil ? 'danger' : 'success' %>">
-            <%= empleado.fecha_baja != nil ? "Baja" : "Alta" %>
-          </span>
-        </td>
-        <td class="text-center">
-        <%= link_to empleado, class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-search"></span>
-        <% end %>
-        <%= link_to edit_empleado_path(empleado), class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-        <%= link_to empleado, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-        </td>
+      <% @empleados.each do |empleado| %>
+        <tr>
+          <td><%= empleado.nro_legajo %></td>
+          <td><%= empleado.tipo_documento %></td>
+          <td><%= empleado.nro_documento %></td>
+          <td><%= empleado.apellido %></td>
+          <td><%= empleado.nombre %></td>
+          <td class="text-center">
+            <span class="label label-<%= empleado.fecha_baja != nil ? 'danger' : 'success' %>">
+              <%= empleado.fecha_baja != nil ? "Baja" : "Alta" %>
+            </span>
+          </td>
+          <td class="text-center">
+          <%= link_to empleado, class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+          <%= link_to edit_empleado_path(empleado), class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+          <%= link_to empleado, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

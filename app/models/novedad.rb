@@ -1,4 +1,4 @@
-class Novedad < ActiveRecord::Base
+class Novedad < ApplicationRecord
   belongs_to :prioridad
 
   validates :codigo, presence: { message: "Debe completar el campo Código" }

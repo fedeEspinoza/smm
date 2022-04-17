@@ -13,9 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require dataTables/jquery.dataTables
-//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require turbolinks
+//= require datatables
 //= require leaflet
 //= require jquery_nested_form
 //= require select2-full

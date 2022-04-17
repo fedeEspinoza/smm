@@ -1,4 +1,4 @@
-class Categorium < ActiveRecord::Base
+class Categorium < ApplicationRecord
 
 	validates :codigo, :presence => { :message => "Debe completar el campo Código" }
 	validates :descripcion, :presence => { :message => "Debe completar el campo Descripción" }

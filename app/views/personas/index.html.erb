@@ -25,24 +25,26 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @personas) do |persona| %>
-            <td><%= persona.tipo_documento %></td>
-            <td><%= persona.nro_documento %></td>
-            <td><%= persona.apellido %></td>
-            <td><%= persona.nombre %></td>
-            <td><%= persona.telefono %></td>
-            <td><%= persona.email %></td>
-            <td class="text-center">
-              <%= link_to persona, class: 'btn btn-sm btn-default' do %>
-                <span class="glyphicon glyphicon-search"></span>
-              <% end %>
-              <%= link_to edit_persona_path(persona), class: 'btn btn-sm btn-default' do %>
-                <span class="glyphicon glyphicon-pencil"></span>
-              <% end %>
-              <%= link_to persona, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-                <span class="glyphicon glyphicon-trash"></span>
-              <% end %>
-            </td>            
+      <% @personas.each do |persona| %>
+        <tr>
+          <td><%= persona.tipo_documento %></td>
+          <td><%= persona.nro_documento %></td>
+          <td><%= persona.apellido %></td>
+          <td><%= persona.nombre %></td>
+          <td><%= persona.telefono %></td>
+          <td><%= persona.email %></td>
+          <td class="text-center">
+            <%= link_to persona, class: 'btn btn-sm btn-default' do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+            <%= link_to edit_persona_path(persona), class: 'btn btn-sm btn-default' do %>
+              <span class="glyphicon glyphicon-pencil"></span>
+            <% end %>
+            <%= link_to persona, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

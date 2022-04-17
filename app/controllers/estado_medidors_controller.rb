@@ -20,7 +20,7 @@ class EstadoMedidorsController < ApplicationController
     end
     respond_to do |format|
       format.html
-      format.json { render json: EstadoMedidorDatatable.new(view_context,{query: estados}) }
+      format.json { render json: EstadoMedidorDatatable.new(params, query: estados, view_context: view_context) }
     end
   end
 
@@ -70,7 +70,7 @@ class EstadoMedidorsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: HistorialRutaDatatable.new(view_context,{query: ruta}) }
+      format.json { render json: HistorialRutaDatatable.new(params, query: ruta, view_context: view_context) }
     end
   end
 

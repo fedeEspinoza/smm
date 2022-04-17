@@ -20,19 +20,21 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @tipo_documentos) do |tipo_documento| %>
-        <td><%= tipo_documento.descripcion %></td>
-        <td class="text-center">
-          <%= link_to tipo_documento, class: 'btn btn-sm btn-default' do %>
-            <span class="glyphicon glyphicon-search"></span>
-          <% end %>
-          <%= link_to edit_tipo_documento_path(tipo_documento), class: 'btn btn-sm btn-default' do %>
-            <span class="glyphicon glyphicon-pencil"></span>
-          <% end %>
-          <%= link_to tipo_documento, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-            <span class="glyphicon glyphicon-trash"></span>
-          <% end %>
-        </td>                  
+      <% @tipo_documentos.each do |tipo_documento| %>
+        <tr>
+          <td><%= tipo_documento.descripcion %></td>
+          <td class="text-center">
+            <%= link_to tipo_documento, class: 'btn btn-sm btn-default' do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+            <%= link_to edit_tipo_documento_path(tipo_documento), class: 'btn btn-sm btn-default' do %>
+              <span class="glyphicon glyphicon-pencil"></span>
+            <% end %>
+            <%= link_to tipo_documento, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

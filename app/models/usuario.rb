@@ -1,4 +1,4 @@
-class Usuario < ActiveRecord::Base
+class Usuario < ApplicationRecord
   belongs_to :categorium
   belongs_to :persona
 

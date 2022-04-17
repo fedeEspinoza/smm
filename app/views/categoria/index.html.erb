@@ -21,20 +21,22 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @categoria) do |categorium| %>
-        <td><%= categorium.codigo %></td>
-        <td><%= categorium.descripcion %></td>
-        <td class="text-center">
-        <%= link_to categorium, class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-search"></span>
-        <% end %>
-        <%= link_to edit_categorium_path(categorium), class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-        <%= link_to categorium, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-        </td>
+      <% @categoria.each do |categorium| %>
+        <tr>
+          <td><%= categorium.codigo %></td>
+          <td><%= categorium.descripcion %></td>
+          <td class="text-center">
+          <%= link_to categorium, class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+          <%= link_to edit_categorium_path(categorium), class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+          <%= link_to categorium, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

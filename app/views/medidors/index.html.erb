@@ -26,25 +26,27 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @medidors) do |medidor| %>
-            <td><%= medidor.numero %></td>
-            <td><%= medidor.multiplicador %></td>
-            <td><%= medidor.marca %></td>
-            <td><%= medidor.modelo %></td>
-            <!-- <td><%= medidor.fecha_alta %></td>
-            <td><%= medidor.fecha_baja %></td> -->
-            <td><%= medidor.tipo_medidor %></td>
-            <td class="text-center">
-              <%= link_to medidor, class: 'btn btn-sm btn-default' do %>
-                <span class="glyphicon glyphicon-search"></span>
-              <% end %>
-              <%= link_to edit_medidor_path(medidor), class: 'btn btn-sm btn-default' do %>
-                <span class="glyphicon glyphicon-pencil"></span>
-              <% end %>
-              <%= link_to medidor, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-                <span class="glyphicon glyphicon-trash"></span>
-              <% end %>
-            </td>
+      <% @medidors.each do |medidor| %>
+        <tr>
+          <td><%= medidor.numero %></td>
+          <td><%= medidor.multiplicador %></td>
+          <td><%= medidor.marca %></td>
+          <td><%= medidor.modelo %></td>
+          <!-- <td><%= medidor.fecha_alta %></td>
+          <td><%= medidor.fecha_baja %></td> -->
+          <td><%= medidor.tipo_medidor %></td>
+          <td class="text-center">
+            <%= link_to medidor, class: 'btn btn-sm btn-default' do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+            <%= link_to edit_medidor_path(medidor), class: 'btn btn-sm btn-default' do %>
+              <span class="glyphicon glyphicon-pencil"></span>
+            <% end %>
+            <%= link_to medidor, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

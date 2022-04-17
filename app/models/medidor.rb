@@ -1,4 +1,4 @@
-class Medidor < ActiveRecord::Base
+class Medidor < ApplicationRecord
   belongs_to :tipo_medidor
 
   has_many :usuario_medidors, :foreign_key => 'medidor_id', :class_name => 'UsuarioMedidor'

@@ -11,7 +11,7 @@
 </ol>
 
 <div align="right">
-  <%= link_to "#{ruta_path}.pdf", class: 'btn btn-sm btn-danger' do %>
+  <%= link_to "#{ruta_path}.pdf", class: 'btn btn-sm btn-danger', target: '_blank' do %>
     <%= fa_icon "file-pdf-o", text: "Exportar" %>
   <% end %>
 </div>
@@ -29,22 +29,24 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @ruta) do |rutum| %>
-            <td><%= rutum.numero %></td>
-            <td><%= rutum.nombre %></td>
-            <td><%= rutum.zona %></td>
-            <td><%= rutum.descripcion %></td>
-        <td class="text-center">
-        <%= link_to rutum, class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-search"></span>
-        <% end %>
-        <%= link_to edit_rutum_path(rutum), class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-        <%= link_to rutum, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-        </td>
+      <% @ruta.each do |rutum| %>
+        <tr>
+          <td><%= rutum.numero %></td>
+          <td><%= rutum.nombre %></td>
+          <td><%= rutum.zona %></td>
+          <td><%= rutum.descripcion %></td>
+          <td class="text-center">
+            <%= link_to rutum, class: 'btn btn-sm btn-default' do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+            <%= link_to edit_rutum_path(rutum), class: 'btn btn-sm btn-default' do %>
+              <span class="glyphicon glyphicon-pencil"></span>
+            <% end %>
+            <%= link_to rutum, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

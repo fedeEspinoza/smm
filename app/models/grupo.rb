@@ -1,4 +1,4 @@
-class Grupo < ActiveRecord::Base
+class Grupo < ApplicationRecord
 
 	validates :nombre, :presence => { :message => "Debe completar el campo Nombre" }
 	validates :descripcion, :presence => { :message => "Debe completar el campo Descripción" }

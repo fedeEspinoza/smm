@@ -21,20 +21,22 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @prioridads) do |prioridad| %>
-        <td><%= prioridad.descripcion %></td>
-        <td><%= prioridad.valor %></td>
-        <td class="text-center">
-        <%= link_to prioridad, class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-search"></span>
-        <% end %>
-        <%= link_to edit_prioridad_path(prioridad), class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-        <%= link_to prioridad, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-        </td>
+      <% @prioridads.each do |prioridad| %>
+        <tr>
+          <td><%= prioridad.descripcion %></td>
+          <td><%= prioridad.valor %></td>
+          <td class="text-center">
+          <%= link_to prioridad, class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+          <%= link_to edit_prioridad_path(prioridad), class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+          <%= link_to prioridad, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

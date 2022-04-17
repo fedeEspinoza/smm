@@ -1,4 +1,4 @@
-class TipoDocumento < ActiveRecord::Base
+class TipoDocumento < ApplicationRecord
 	
 	validates :descripcion, :presence => { :message => "Debe completar el campo Descripción" }
 

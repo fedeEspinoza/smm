@@ -62,12 +62,14 @@
         </thead>
 
         <tbody>
-          <%= content_tag_for(:tr, @rutum.usuarios) do |usuario| %>
-                <td><%= usuario.categorium.codigo %></td>
-                <td><%= usuario.numero %></td>
-                <td><%= usuario.razon_social %></td>
-                <td><%= usuario.persona %></td>            
-                <td><%= usuario.domicilio_servicio %></td>     
+          <% @rutum.usuarios.each do |usuario| %>
+            <tr>
+              <td><%= usuario.categorium.codigo %></td>
+              <td><%= usuario.numero %></td>
+              <td><%= usuario.razon_social %></td>
+              <td><%= usuario.persona %></td> 
+              <td><%= usuario.domicilio_servicio %></td>
+            </tr>
           <% end %>
         </tbody>
       </table>

@@ -11,7 +11,7 @@
 </ol>
 
 <div align="right">
-  <%= link_to "#{ruta_users_path}.pdf", class: 'btn btn-sm btn-danger' do %>
+  <%= link_to "#{ruta_users_path}.pdf", class: 'btn btn-sm btn-danger', target: '_blank' do %>
     <%= fa_icon "file-pdf-o", text: "Exportar" %>
   <% end %>
 </div>
@@ -28,21 +28,23 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @ruta_users) do |ruta_user| %>
-        <td><%= ruta_user.rutum %></td>
-        <td><%= ruta_user.user %></td>
-        <td><%= ruta_user.fecha_alta %></td>
-        <td class="text-center">
-        <%= link_to ruta_user, class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-search"></span>
-        <% end %>
-        <%= link_to edit_ruta_user_path(ruta_user), class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-        <%= link_to ruta_user, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-        </td>
+      <% @ruta_users.each do |ruta_user| %>
+        <tr>
+          <td><%= ruta_user.rutum %></td>
+          <td><%= ruta_user.user %></td>
+          <td><%= ruta_user.fecha_alta %></td>
+          <td class="text-center">
+          <%= link_to ruta_user, class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+          <%= link_to edit_ruta_user_path(ruta_user), class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+          <%= link_to ruta_user, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

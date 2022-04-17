@@ -21,20 +21,22 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @zonas) do |zona| %>
-        <td><%= zona.nombre %></td>
-        <td><%= zona.grupo %></td>
-        <td class="text-center">
-        <%= link_to zona, class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-search"></span>
-        <% end %>
-        <%= link_to edit_zona_path(zona), class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-        <%= link_to zona, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-        </td>
+      <% @zonas.each do |zona| %>
+        <tr>
+          <td><%= zona.nombre %></td>
+          <td><%= zona.grupo %></td>
+          <td class="text-center">
+          <%= link_to zona, class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+          <%= link_to edit_zona_path(zona), class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+          <%= link_to zona, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

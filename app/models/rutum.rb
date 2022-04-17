@@ -1,4 +1,4 @@
-class Rutum < ActiveRecord::Base
+class Rutum < ApplicationRecord
   belongs_to :zona
 
   has_many :ruta_usuarios, :foreign_key => 'rutum_id', :class_name => 'RutaUsuario'

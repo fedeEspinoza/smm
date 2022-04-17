@@ -1,15 +1,20 @@
-class HistorialRutaDatatable < AjaxDatatablesRails::Base
+class HistorialRutaDatatable < AjaxDatatablesRails::ActiveRecord
+  extend Forwardable
 
-  include AjaxDatatablesRails::Extensions::Kaminari
+  def_delegators :@view, :link_to
 
-  def sortable_columns
-    # Declare strings in this format: ModelName.column_name
-    @sortable_columns ||= ['Usuario.numero', 'Medidor.numero', 'EstadoMedidor.fecha_medicion']
+  def view_columns
+    @view_columns ||= {
+      usuario:        { source: "Usuario.numero", cond: :like },
+      medidor:        { source: "Medidor.numero", cond: :like },
+      estado_medidor: { source: "EstadoMedidor.estado_actual", cond: :like },
+      dt_actions:     { source: "EstadoMedidor.id" }
+    }
   end
 
-  def searchable_columns
-    # Declare strings in this format: ModelName.column_name
-    @searchable_columns ||= ['Usuario.numero', 'Medidor.numero', 'EstadoMedidor.fecha_medicion']
+  def initialize(params, opts = {})
+    @view = opts[:view_context]
+    super
   end
 
   def as_json(options = {})
@@ -32,18 +37,18 @@ class HistorialRutaDatatable < AjaxDatatablesRails::Base
 
   def data
     records.map do |record|
-      [
-        "<b>Usuario N°: #{record.numero}</b> <br/> Dom. de serv.: #{record.domicilio_servicio}",
-        "<b>Medidor N°: #{record.numero_medidor}</b> <br/> #{record.marca} - #{record.modelo} (#{TipoMedidor.find(record.tipo_medidor_id)})",
-        "<b>Estado actual: #{record.estado_actual}</b>, Cons. promedio: #{record.promedio}, <br/> Fecha de medición: #{record.fecha_medicion}",
-        '<td class="text-center">            
-	        <a class="btn btn-xs btn-default" href="'+Rails.application.routes.url_helpers.estado_medidor_path(record.id_estado_medidor.to_s)+'"><span class="glyphicon glyphicon-search"></span></a>
+      {
+        usuario: "<b>Usuario N°: #{record.numero}</b> <br/> Dom. de serv.: #{record.domicilio_servicio}",
+        medidor: "<b>Medidor N°: #{record.numero_medidor}</b> <br/> #{record.marca} - #{record.modelo} (#{TipoMedidor.find(record.tipo_medidor_id)})",
+        estado_medidor: "<b>Estado actual: #{record.estado_actual}</b>, Cons. promedio: #{record.promedio}, <br/> Fecha de medición: #{record.fecha_medicion}",
+        dt_actions: '<td class="text-center">            
+          <a class="btn btn-xs btn-default" href="'+Rails.application.routes.url_helpers.estado_medidor_path(record.id_estado_medidor.to_s)+'"><span class="glyphicon glyphicon-search"></span></a>
             <a class="btn btn-xs btn-default" href="'+Rails.application.routes.url_helpers.edit_estado_medidor_path(record.id_estado_medidor.to_s)+'"><span class="glyphicon glyphicon-pencil"></span></a>
             <a class="btn btn-xs btn-danger" data-confirm="¿Está seguro?" rel="nofollow" data-method="delete" href="'+Rails.application.routes.url_helpers.estado_medidor_path(record.id_estado_medidor.to_s)+'"><span class="glyphicon glyphicon-trash"></span></a>
-        </td>'        
+        </td>'
         # comma separated list of the values for each cell of a table row
         # example: record.attribute,
-      ]
+      }
     end
   end
 

@@ -14,11 +14,13 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @ruta) do |rutum| %>
-            <td><%= rutum.numero %></td>
-            <td><%= rutum.nombre %></td>
-            <td><%= rutum.zona %></td>
-            <td><%= rutum.descripcion %></td>        
+      <% @ruta.each do |rutum| %>
+        <tr>
+          <td><%= rutum.numero %></td>
+          <td><%= rutum.nombre %></td>
+          <td><%= rutum.zona %></td>
+          <td><%= rutum.descripcion %></td>
+        </tr>
       <% end %>
     </tbody>
   </table>

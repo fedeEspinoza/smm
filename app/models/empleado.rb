@@ -1,4 +1,4 @@
-class Empleado < ActiveRecord::Base
+class Empleado < ApplicationRecord
   belongs_to :tipo_documento
 
   validates :nro_documento, :presence => { :message => "Debe completar el campo Número de documento" }

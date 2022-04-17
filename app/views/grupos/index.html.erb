@@ -22,21 +22,23 @@
     </thead>
 
     <tbody>
-      <%= content_tag_for(:tr, @grupos) do |grupo| %>
-        <td><%= grupo.nombre %></td>
-        <td><%= grupo.descripcion %></td>
-        <td><%= grupo.codigo %></td>
-        <td class="text-center">
-        <%= link_to grupo, class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-search"></span>
-        <% end %>
-        <%= link_to edit_grupo_path(grupo), class: 'btn btn-sm btn-default' do %>
-          <span class="glyphicon glyphicon-pencil"></span>
-        <% end %>
-        <%= link_to grupo, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-        <% end %>
-        </td>
+      <% @grupos.each do |grupo| %>
+        <tr>
+          <td><%= grupo.nombre %></td>
+          <td><%= grupo.descripcion %></td>
+          <td><%= grupo.codigo %></td>
+          <td class="text-center">
+          <%= link_to grupo, class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-search"></span>
+          <% end %>
+          <%= link_to edit_grupo_path(grupo), class: 'btn btn-sm btn-default' do %>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
+          <%= link_to grupo, class: 'btn btn-sm btn-danger',method: :delete, data: { confirm: '¿Está seguro?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>

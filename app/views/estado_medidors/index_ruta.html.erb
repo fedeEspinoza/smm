@@ -55,7 +55,7 @@
   </div>
 </div>
 
-<table class="table table-striped table-bordered table-hover compact datatable_table" id="historial-ruta-table" data-source="<%= index_ruta_path(format: :json) %>">
+<table class="table table-striped table-bordered table-hover compact datatable_table" style="width:100%;" id="historial-ruta-table" data-source="<%= index_ruta_path(format: :json) %>">
   <thead>
     <tr>
       <th class="col-md-3">Usuario</th>
@@ -82,9 +82,16 @@ $('document').ready(function(){
     serverSide: true,
     ajax: $('#historial-ruta-table').data('source'),
     pagingType: 'full_numbers',
+    columns: [
+      {data: 'usuario' },
+      {data: 'medidor' },
+      {data: 'estado_medidor' },
+      {data: 'dt_actions' },
+    ],
     columnDefs: [
             {
                 "targets": [ 3 ],
+                "className": "text-center",
                 "searchable": false,
                 "orderable": false
             }

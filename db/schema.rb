@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -26,16 +25,15 @@ ActiveRecord::Schema.define(version: 20170519213833) do
   create_table "empleados", force: :cascade do |t|
     t.integer  "nro_legajo"
     t.integer  "tipo_documento_id"
-    t.integer  "nro_documento",     limit: 8
+    t.bigint   "nro_documento"
     t.string   "apellido"
     t.string   "nombre"
     t.datetime "fecha_alta"
     t.datetime "fecha_baja"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["tipo_documento_id"], name: "index_empleados_on_tipo_documento_id", using: :btree
   end
-
-  add_index "empleados", ["tipo_documento_id"], name: "index_empleados_on_tipo_documento_id", using: :btree
 
   create_table "estado_medidors", force: :cascade do |t|
     t.integer  "novedad_id"
@@ -50,10 +48,9 @@ ActiveRecord::Schema.define(version: 20170519213833) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "periodo"
+    t.index ["novedad_id"], name: "index_estado_medidors_on_novedad_id", using: :btree
+    t.index ["user_id"], name: "index_estado_medidors_on_user_id", using: :btree
   end
-
-  add_index "estado_medidors", ["novedad_id"], name: "index_estado_medidors_on_novedad_id", using: :btree
-  add_index "estado_medidors", ["user_id"], name: "index_estado_medidors_on_user_id", using: :btree
 
   create_table "grupos", force: :cascade do |t|
     t.string   "nombre"
@@ -68,10 +65,9 @@ ActiveRecord::Schema.define(version: 20170519213833) do
     t.integer  "estado_medidor_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.index ["estado_medidor_id"], name: "index_medidor_estado_medidors_on_estado_medidor_id", using: :btree
+    t.index ["medidor_id"], name: "index_medidor_estado_medidors_on_medidor_id", using: :btree
   end
-
-  add_index "medidor_estado_medidors", ["estado_medidor_id"], name: "index_medidor_estado_medidors_on_estado_medidor_id", using: :btree
-  add_index "medidor_estado_medidors", ["medidor_id"], name: "index_medidor_estado_medidors_on_medidor_id", using: :btree
 
   create_table "medidors", force: :cascade do |t|
     t.integer  "numero"
@@ -83,9 +79,8 @@ ActiveRecord::Schema.define(version: 20170519213833) do
     t.integer  "tipo_medidor_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["tipo_medidor_id"], name: "index_medidors_on_tipo_medidor_id", using: :btree
   end
-
-  add_index "medidors", ["tipo_medidor_id"], name: "index_medidors_on_tipo_medidor_id", using: :btree
 
   create_table "novedads", force: :cascade do |t|
     t.integer  "codigo"
@@ -95,22 +90,20 @@ ActiveRecord::Schema.define(version: 20170519213833) do
     t.datetime "updated_at",      null: false
     t.string   "codigo_servicio"
     t.boolean  "repite_estado"
+    t.index ["prioridad_id"], name: "index_novedads_on_prioridad_id", using: :btree
   end
-
-  add_index "novedads", ["prioridad_id"], name: "index_novedads_on_prioridad_id", using: :btree
 
   create_table "personas", force: :cascade do |t|
     t.integer  "tipo_documento_id"
-    t.integer  "nro_documento",     limit: 8
+    t.bigint   "nro_documento"
     t.string   "apellido"
     t.string   "nombre"
     t.string   "telefono"
     t.string   "email"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["tipo_documento_id"], name: "index_personas_on_tipo_documento_id", using: :btree
   end
-
-  add_index "personas", ["tipo_documento_id"], name: "index_personas_on_tipo_documento_id", using: :btree
 
   create_table "prioridads", force: :cascade do |t|
     t.string   "descripcion"
@@ -132,9 +125,8 @@ ActiveRecord::Schema.define(version: 20170519213833) do
     t.string   "descripcion"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["zona_id"], name: "index_ruta_on_zona_id", using: :btree
   end
-
-  add_index "ruta", ["zona_id"], name: "index_ruta_on_zona_id", using: :btree
 
   create_table "ruta_users", force: :cascade do |t|
     t.integer  "rutum_id"
@@ -143,10 +135,9 @@ ActiveRecord::Schema.define(version: 20170519213833) do
     t.datetime "fecha_baja"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["rutum_id"], name: "index_ruta_users_on_rutum_id", using: :btree
+    t.index ["user_id"], name: "index_ruta_users_on_user_id", using: :btree
   end
-
-  add_index "ruta_users", ["rutum_id"], name: "index_ruta_users_on_rutum_id", using: :btree
-  add_index "ruta_users", ["user_id"], name: "index_ruta_users_on_user_id", using: :btree
 
   create_table "ruta_usuarios", force: :cascade do |t|
     t.integer  "rutum_id"
@@ -155,10 +146,9 @@ ActiveRecord::Schema.define(version: 20170519213833) do
     t.datetime "fecha_baja"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["rutum_id"], name: "index_ruta_usuarios_on_rutum_id", using: :btree
+    t.index ["usuario_id"], name: "index_ruta_usuarios_on_usuario_id", using: :btree
   end
-
-  add_index "ruta_usuarios", ["rutum_id"], name: "index_ruta_usuarios_on_rutum_id", using: :btree
-  add_index "ruta_usuarios", ["usuario_id"], name: "index_ruta_usuarios_on_usuario_id", using: :btree
 
   create_table "tipo_documentos", force: :cascade do |t|
     t.string   "descripcion"
@@ -179,10 +169,9 @@ ActiveRecord::Schema.define(version: 20170519213833) do
     t.integer  "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_user_roles_on_role_id", using: :btree
+    t.index ["user_id"], name: "index_user_roles_on_user_id", using: :btree
   end
-
-  add_index "user_roles", ["role_id"], name: "index_user_roles_on_role_id", using: :btree
-  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -199,10 +188,9 @@ ActiveRecord::Schema.define(version: 20170519213833) do
     t.datetime "updated_at",                          null: false
     t.integer  "empleado_id"
     t.string   "authentication_token"
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "usuario_medidors", force: :cascade do |t|
     t.integer  "usuario_id"
@@ -211,10 +199,9 @@ ActiveRecord::Schema.define(version: 20170519213833) do
     t.datetime "fecha_baja"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["medidor_id"], name: "index_usuario_medidors_on_medidor_id", using: :btree
+    t.index ["usuario_id"], name: "index_usuario_medidors_on_usuario_id", using: :btree
   end
-
-  add_index "usuario_medidors", ["medidor_id"], name: "index_usuario_medidors_on_medidor_id", using: :btree
-  add_index "usuario_medidors", ["usuario_id"], name: "index_usuario_medidors_on_usuario_id", using: :btree
 
   create_table "usuarios", force: :cascade do |t|
     t.integer  "categorium_id"
@@ -235,19 +222,17 @@ ActiveRecord::Schema.define(version: 20170519213833) do
     t.datetime "fecha_baja"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["categorium_id"], name: "index_usuarios_on_categorium_id", using: :btree
+    t.index ["persona_id"], name: "index_usuarios_on_persona_id", using: :btree
   end
-
-  add_index "usuarios", ["categorium_id"], name: "index_usuarios_on_categorium_id", using: :btree
-  add_index "usuarios", ["persona_id"], name: "index_usuarios_on_persona_id", using: :btree
 
   create_table "zonas", force: :cascade do |t|
     t.string   "nombre"
     t.integer  "grupo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["grupo_id"], name: "index_zonas_on_grupo_id", using: :btree
   end
-
-  add_index "zonas", ["grupo_id"], name: "index_zonas_on_grupo_id", using: :btree
 
   add_foreign_key "empleados", "tipo_documentos"
   add_foreign_key "estado_medidors", "novedads"
